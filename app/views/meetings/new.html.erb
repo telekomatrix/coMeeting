@@ -1,0 +1,17 @@
+<div>
+  <%= form_for @meeting, :url => meetings_path do |f| %>
+
+    <%= render :partial => "form", :locals => {:f => f} %>
+
+    <button class="button" type="submit">
+      <%= image_tag("/assets/icons/tick.png", :alt => "") %> <%= t("meeting.views.new.buttons.create") %>
+    </button>
+    <span class="text_button_padding"><%= t("meeting.views.new.text.or") %></span>
+    <%= link_to t("meeting.views.new.buttons.cancel"), root_path, :class => "text_button_padding link_button" %>
+
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  locale = "<%= I18n.locale %>";
+</script>

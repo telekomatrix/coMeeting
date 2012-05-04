@@ -1,0 +1,3 @@
+USERNAME = 'foo'
+
+PASSWORD = 'bar'

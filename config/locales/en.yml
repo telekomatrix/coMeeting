@@ -1,0 +1,180 @@
+en:
+  hello:                                        "Hello world"
+
+  activerecord:
+    attributes:
+      meeting:
+        subject:                                "Subject"
+        location:                               "Location"
+        date:                                   "Date"
+        time:                                   "Time"
+        duration:                               "Duration"
+        extra_info:                             "Extra Info"
+        minutes:                                "Minutes"
+        topics:                                 "Topics"
+        created_at:                             "Created at"
+      user:
+        email:                                  "Email"
+        name:                                   "Name"
+        created_at:                             "Created at"
+    errors:
+      models:
+        meeting:
+          attributes:
+            subject:
+              blank:                            "Subject cannot be blank."
+            location:
+              blank:                            "Location cannot be blank."
+            date:
+              blank:                            "Date cannot be blank."
+        user:
+          attributes:
+            base:
+              email_and_name:                   "You can't leave both email and name blank. Please fill in at least one of the fields."
+            email:
+              taken:                            "Email already taken. Please choose a different one."
+
+  layout:
+    about:                                      "About"
+    privacy:                                    "Privacy"
+    us:                                         "Us"
+
+  meeting:
+    singular:                                   "Meeting"
+    plural:                                     "Meetings"
+    actions:
+      show:
+        label:                                  "Show"
+      edit:
+        label:                                  "Edit"
+      delete:
+        label:                                  "Delete"
+        confirm:                                "Are you sure you want to delete this meeting?"
+    controller:
+      show:
+        error:
+          notfound:                             "The meeting you are looking for does not exist!"
+      create:
+        error:
+          notcreated:                           "The meeting could not be created. Please try again."
+        notice:
+          withauth:                             "Meeting successfully created. Check your email to continue the creation process."
+          withoutauth:                          "Meeting successfully created without email confirmation."
+      edit:
+        error:
+          notfound:                             "The meeting you are looking for does not exist!"
+          notauthorized:                        "You are not authorized to edit this meeting."
+      update:
+        error:
+          notfound:                             "The meeting you are looking for does not exist!"
+          notauthorized:                        "You are not authorized to edit this meeting."
+          notupdated:                           "The meeting could not be updated. Please try again."
+        notice:                                 "Meeting successfully updated."
+      destroy:
+        error:
+          notfound:                             "The meeting you tried deleting does not exist!"
+          notauthorized:                        "You are not authorized to delete this meeting."
+        notice:                                 "Meeting successfully deleted."
+    views:
+      new:
+        text:
+          email:
+            label:                              "Your Email"
+            description:                        "If you fill in this field, you will receive an email to confirm your identity. If you leave it blank, all people invited to the meeting will know you did not authenticate yourself."
+          name:
+            label:                              "Your Name"
+            description:                        "This will be the name used in the invitations sent to the participants."
+          subject:
+            label:                              "Subject"
+          location:
+            label:                              "Location"
+          date:
+            label:                              "Date"
+          time:
+            label:                              "Time"
+          duration:
+            label:                              "Duration"
+          time_zone:
+            label:                              "Time Zone"
+          extra_info:
+            label:                              "Extra Info"
+          topics:
+            label:                              "Topics"
+          or:                                   "or"
+        buttons:
+          create:                               "Create"
+          cancel:                               "Cancel"
+          topics:
+            add:                                "Add topic"
+      edit:
+        text:
+          or:                                   "or"
+        buttons:
+          save:                                 "Save"
+          cancel:                               "Cancel"
+      show:
+        text:
+          attending:
+            unknown:                            "Yet to answer"
+            confirm:                            "Attending"
+            decline:                            "Not Attending"
+            confirmed:                          "Attendance confirmed"
+            declined:                           "Attendance declined"
+            unanswered:                         "Did not answer"
+            attended:                           "Attended"
+            not_attended:                       "Did not attend"
+          created_by:                           "Meeting created by"
+
+  email:
+    controller:
+      authenticate:
+        error:
+          notfound:                             "The user you tried to email is no longer on this meeting!"
+        notice:                                 "Email sent."
+    views:
+      authenticate:
+        subject:                                "%{name}, here's your meeting administration link"
+        header:                                 "Welcome to coMeeting, %{name}"
+        body:                                   "To continue the meeting creation process"
+        link:                                   "click here"
+        greeting:                               "Thanks for using coMeeting and have a great day!"
+      welcome:
+        subject:                                "You were invited to a meeting"
+        body:                                   "You were invited to use the service coMeeting. To do so, just click the following link:\n\n %{link} \n\n the coMeeting team"
+
+  user:
+    singular:                                   "User"
+    plural:                                     "Users"
+    actions:
+      show:
+        label:                                  "Show"
+      edit:
+        label:                                  "Edit"
+      delete:
+        label:                                  "Delete"
+        confirm:                                "Are you sure you want to delete this user?"
+    controller:
+      error:
+        notfound:                               "The user you tried deleting does not exist!"
+      notice:                                   "User successfully deleted."
+
+  static:
+    views:
+      home:
+        button:                                 "New meeting"
+      us:
+        title:                                  "About Us"
+        who_we_are:                             "We are a group of students from the Department of Informatics Engineering."
+        what_for:                               "This site was created as a project for the class Organization, Behavior, Knowledge and Innovation."
+
+  pdf:
+    created_by:                                 "Meeting created by"
+    subject:                                    "Subject"
+    location:                                   "Location"
+    date:                                       "Date"
+    time:                                       "Time"
+    duration:                                   "Duration"
+    extra_info:                                 "Extra Info"
+    minutes:                                    "Minutes"
+    topics:                                     "Topics"
+    participants:                               "Participants"

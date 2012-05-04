@@ -1,0 +1,4 @@
+$('#flash').hide();
+$("#flash").html('<%= escape_javascript(render 'shared/messages') %>');
+$('#flash').animate({ opacity: 'toggle', height: 'toggle' }, 1000);
+setTimeout(hideFlashMessages, 2500);

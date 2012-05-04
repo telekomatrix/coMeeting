@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= t("email.views.authenticate.header", :name => @name) %></h1>
+    <p><%= t("email.views.authenticate.body") %> <%= link_to t("email.views.authenticate.link"), meeting_url(locale, @meeting) %>.</p>
+    <p><%= t("email.views.authenticate.greeting") %></p>
+  </body>
+</html>

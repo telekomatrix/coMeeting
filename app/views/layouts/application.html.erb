@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+
+  <meta name="description" content="coMeeting helps scheduling meetings and other appointments. coMeeting is simple, quick, free and requires no registration." />
+  <meta name="application-name" content="coMeeting" />
+  <meta name="author" content="coMeeting" />
+
+  <title>coMeeting</title>
+  <%= favicon_link_tag %>
+
+  <%= stylesheet_link_tag "application" %>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <div id="header">
+    <h1><%= link_to "coMeeting" , root_path %></h1>
+    
+    <div id="main-navigation">
+      <ul>
+        <li><%= link_to t("layout.us"), us_path %></li>
+      </ul>
+    </div>
+    
+    <div id="user-navigation">
+      <div id="drop-menu">
+        <%= image_tag "/assets/icons/globe.png", :alt => "Change Language", :id => "drop-button" %>
+        <div id="bubble" style="display:none">
+          <ul id="drop-items">
+            <li><%= link_to "English", url_for( :locale => "en" ) %></li>
+            <li><%= link_to "Portugu&#234;s".html_safe, url_for( :locale => "pt" ) %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+      
+  <div id="flash">
+    <%= render :partial => 'shared/messages' %>
+  </div>
+  
+  <div id="content">
+		<%= yield %>
+	</div>
+  
+  <!--<div id="footer">
+    <p>Copyright &copy; 2011 coMeeting</p>
+	</div>-->
+  
+  <%= javascript_include_tag "application" %>
+</body>
+</html>

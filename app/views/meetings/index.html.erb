@@ -1,0 +1,20 @@
+<h1><%= t("meeting.plural") %></h1>
+<table>
+  <tr>
+    <th><%= t("activerecord.attributes.meeting.subject") %></th>
+    <th><%= t("activerecord.attributes.meeting.created_at") %></th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+  <% @meetings.each do |meeting| %>
+    <tr>
+      <td><%= meeting.subject %></td>
+      <td><%= meeting.created_at.strftime("%d-%m-%Y %H:%M") %></td>
+      <td><%= link_to t("meeting.actions.show.label"), meeting_path(meeting.participations.first.link) %></td>
+      <td><%= link_to t("meeting.actions.edit.label"), edit_meeting_path(meeting.participations.first.link) %></td>
+      <td><%= link_to t("meeting.actions.delete.label"), meeting_path(meeting.participations.first.link), :method => :delete, :confirm => t("meeting.actions.delete.confirm") %></td>
+    </tr>
+  <% end %>
+</table>
+<%= will_paginate @meetings %>

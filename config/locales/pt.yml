@@ -1,0 +1,171 @@
+pt:
+  hello:                                        "Olá mundo"
+
+  activerecord:
+    attributes:
+      meeting:
+        subject:                                "Assunto"
+        location:                               "Local"
+        date:                                   "Data"
+        time:                                   "Hora de início"
+        duration:                               "Duração"
+        extra_info:                             "Outras informações"
+        minutes:                                "Acta"
+        topics:                                 "Tópicos"
+        created_at:                             "Criado em"
+      user:
+        email:                                  "Email"
+        name:                                   "Nome"
+        created_at:                             "Criado em"
+    errors:
+      models:
+        meeting:
+          attributes:
+            subject:
+              blank:                            "O assunto não pode ficar em branco."
+            location:
+              blank:                            "O local não pode ficar em branco."
+            date:
+              blank:                            "A data não pode ficar em branco."
+        user:
+          attributes:
+            base:
+              email_and_name:                   "O email e o nome não podem ficar em branco. Preencha pelo menos um dos campos."
+            email:
+              taken:                            "Este email já está a ser utilizado. Por favor escolha um diferente."
+
+  layout:
+    about:                                      "Sobre"
+    privacy:                                    "Privacidade"
+    us:                                         "Quem Somos"
+
+  meeting:
+    singular:                                   "Reunião"
+    plural:                                     "Reuniões"
+    actions:
+      show:
+        label:                                  "Mostrar"
+      edit:
+        label:                                  "Editar"
+      delete:
+        label:                                  "Eliminar"
+        confirm:                                "Tem a certeza de que quer eliminar esta reunião?" 
+    controller:
+      show:
+        error:
+          notfound:                             "A reunião a que tentou aceder não existe!"
+      create:
+        error:
+          notcreated:                           "Ocorreu um erro ao criar a reunião. Por favor tente novamente."
+        notice:
+          withauth:                             "Reunião criada com sucesso. Verifique o seu email para continuar o processo de criação da reunião."
+          withoutauth:                          "Reunião criada com sucesso."
+      edit:
+        error:
+          notfound:                             "A reunião a que tentou aceder não existe!"
+          notauthorized:                        "Não está autorizado a editar esta reunião."
+      update:
+        error:
+          notfound:                             "A reunião a que tentou aceder não existe!"
+          notauthorized:                        "Não está autorizado a editar esta reunião."
+          notupdated:                           "Ocorreu um erro ao editar a reunião. Por favor tente novamente."
+        notice:                                 "Reunião editada com sucesso."
+      destroy:
+        error:
+          notfound:                             "A reunião que tentou eliminar não existe!"
+          notauthorized:                        "Não está autorizado a eliminar esta reunião."
+        notice:                                 "Reunião eliminada com sucesso."
+    views:
+      new:
+        text:
+          email:
+            label:                              "O seu email"
+            description:                        "Se preencher este campo, receberá um email para se autenticar. Se o deixar em branco, todos os participantes da reunião serão avisados de que a sua identidade não foi confirmada."
+          name:
+            label:                              "O seu nome"
+            description:                        "Este será o nome utilizado nos convites enviados por email aos participantes."
+          subject:
+            label:                              "Assunto"
+          location:
+            label:                              "Local"
+          date:
+            label:                              "Data"
+          time:
+            label:                              "Hora de início"
+          duration:
+            label:                              "Duração"
+          time_zone:
+            label:                              "Fuso Horário"
+          extra_info:
+            label:                              "Outras informações"
+          topics:
+            label:                              "Tópicos"
+          or:                                   "ou"
+        buttons:
+          create:                               "Criar"
+          cancel:                               "Cancelar"
+          topics:
+            add:                                "Adicionar Tópico"
+      edit:
+        text:
+          or:                                   "ou"
+        buttons:
+          save:                                 "Gravar alterações"
+          cancel:                               "Cancelar"
+      show:
+        text:
+          attending:
+            unknown:                            "Por confirmar"
+            confirm:                            "Vou estar presente"
+            decline:                            "Não vou estar presente"
+            confirmed:                          "Presença confirmada"
+            declined:                           "Indisponível"
+            unanswered:                         "Não respondeu"
+            attended:                           "Esteve presente"
+            not_attended:                       "Não esteve presente"
+            created_by:                         "Reunião criada por"
+
+  email:
+    controller:
+      authenticate:
+        error:
+          notfound:                             "O email não pode ser enviado porque o utilizador já não faz parte desta reunião!"
+        notice:                                 "Email enviado."
+    views:
+      authenticate:
+        subject:                                "%{name}, aqui está o link de administração da sua reunião"
+        header:                                 "Bem-vindo à coMeeting, %{name}"
+        body:                                   "Para continuar o processo de criação da reunião"
+        link:                                   "clique aqui"
+        greeting:                               "Obrigado por usar a coMeeting!"
+      welcome:
+        subject:                                "Foi convidado%{admin} para uma reunião"
+        body:                                   "Foi convidado para usar o serviço coMeeting. Para tal, basta clicar no seguinte endereço:\n\n %{link} \n\n a equipa coMeeting"
+
+  user:
+    singular:                                   "User"
+    plural:                                     "Users"
+    actions:
+      show:
+        label:                                  "Mostrar"
+      edit:
+        label:                                  "Editar"
+      delete:
+        label:                                  "Eliminar"
+        confirm:                                "Tem a certeza de que quer eliminar este utilizador?" 
+    controller:
+      error:
+        notfound:                               "O utilizador que tentou eliminar não existe!"
+      notice:                                   "Utilizador eliminada com sucesso."
+
+  static:
+    views:
+      home:
+        button:                                 "Criar reunião"
+      us:
+        title:                                  "Quem Somos"
+        who_we_are:                             "Somos um grupo de estudantes do Departamento de Engenharia Informática da Universidade de Coimbra"
+        what_for:                               "Este site foi criado no âmbito da cadeira de Organização,Comportamento,Conhecimento e Inovação."
+
+  pdf:
+    created_by:                                 "Reunião criada por"
