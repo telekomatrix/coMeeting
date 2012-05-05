@@ -25,30 +25,18 @@ class ParticipationsController < ApplicationController
         end
       end
     end
-    participation.is_attending = 1
-  
-    respond_to do |format|
-      if participation.save
-        format.html { redirect_to meeting_path(participation.link), notice: t("attending.notice.confirm") }
-      else
-        format.html { redirect_to meeting_path(participation.link) }
-      end
-    end
+    
+    participation.update_attribute(:is_attending, 1)
+
+    redirect_to meeting_path(participation.link), notice: t("attending.notice.confirm") }
   end
-  
   
   
   def decline
     participation = Participation.find_by_link(params[:id])
     
-    participation.is_attending = -1
+    participation.update_attribute(:is_attending, -1)
 
-    respond_to do |format|
-      if participation.save
-        format.html { redirect_to meeting_path(participation.link), notice: t("attending.notice.decline") }
-      else
-        format.html { redirect_to meeting_path(participation.link) }
-      end
-    end
+    redirect_to meeting_path(participation.link), notice: t("attending.notice.decline") }
   end
 end

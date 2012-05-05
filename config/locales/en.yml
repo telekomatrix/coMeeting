@@ -178,3 +178,7 @@ en:
     minutes:                                    "Minutes"
     topics:                                     "Topics"
     participants:                               "Participants"
+    attending:
+      confirmed:                                "Attendance confirmed"
+      declined:                                 "Attendance declined"
+      unanswered:                               "Did not answer"

@@ -155,38 +155,37 @@ class MeetingsController < ApplicationController
     participation = Participation.find_by_id(params[:id])
 
     participation.update_attributes(:action_item => params[:action_item], :deadline => params[:deadline])
-
-    meeting = Meeting.find_by_id(participation.meeting_id)
         
-    @static_minutes = create_static_minutes(meeting)
+    @static_minutes = participation.meeting.static_minutes
 
-    respond_to do |format|
-      format.js
-    end
-    # render :js ?
+    # respond_to do |format|
+    #  format.js
+    # end
+    render :js
   end
 
 
   def update_minutes
-    meeting = Meeting.find_by_link(params[:id])
+    participation = Participation.find_by_link(params[:id])
 
-    meeting.update_attribute(:minutes, params[:minutes])
+    unless participation.nil?
+      participation.meeting.update_attribute(:minutes, params[:minutes])
+    end
 
     render :nothing => true
   end
 
 
   def get_minutes
-    meeting = Meeting.find_by_link(params[:id])
-    
-    @static_minutes = create_static_minutes(meeting)
-    
-    @minutes = meeting.minutes
-    
-    render :js
-    # respond_to do |format|
-    # format.js
-    # end
+    participation = Participation.find_by_link(params[:id])
+
+    unless participation.nil?
+      @static_minutes = participation.meeting.static_minutes
+      @minutes = meeting.minutes
+      render :js
+    else
+      render :nothing => true
+    end
   end
 
   respond_to :js
@@ -210,73 +209,11 @@ class MeetingsController < ApplicationController
     participation = Participation.find_by_link(params[:id])
 
     unless participation.nil?
-      meeting = participation.meeting
-      static_minutes = create_static_minutes(meeting)
-
       my_file = "tmp/minutes_#{SecureRandom.urlsafe_base64(10)}.pdf"
-
       Prawn::Document.generate(my_file) do
-        text static_minutes + (meeting.minutes.nil? ? "" : "\n\n" + meeting.minutes)
+        text participation.meeting.minutes_to_pdf
       end
-
       send_file my_file
     end
-  end 
-  
-
-  protected
-  def create_static_minutes(meeting)
-
-    topics = ""
-    participants = ""
-    action_items = ""
-
-    meeting.topics.each do |topic|
-      topics += "- " + topic + "\n\t"
-    end
-
-    meeting.participations.each do |participation|
-      if participation.user.name.blank?
-        participants += "- #{participation.user.email}".ljust(60)
-      else
-        participants += "- #{participation.user.name} (#{participation.user.email})".ljust(60)
-      end
-      
-      if participation.is_attending == 1
-        participants += " " + t("meeting.views.show.text.attending.attended")
-      elsif participation.is_attending == 0
-        participants += " " + t("meeting.views.show.text.attending.unanswered")
-      elsif participation.is_attending == -1
-        participants += " " + t("meeting.views.show.text.attending.not_attended")
-      end
-      participants += "\n\t"
-      # if !participation.action_item.nil? && !participation.deadline.nil? && !participation.action_item.empty? && !participation.deadline.empty?
-      #   if !participation.user.name.empty?
-      #     action_items += "\n\t- " + participation.user.name + " (" + participation.user.email + ")" + " => " + participation.action_item.to_s + " " + t('until') + " " + participation.deadline.to_s
-      #   else
-      #     action_items += "\n\t- " + participation.user.email + " => " + participation.action_item.to_s + " " + t('until') + " " + participation.deadline.to_s
-      #   end
-      # end
-    end
-    
-    minutes = "\ncoMeeting\n" +
-      "\n" + meeting.subject + "\n" +
-      "\n #{t('pdf.created_by')}: #{meeting.creator.get_name_and_email}\n" +
-      "\n #{t('pdf.location')}: #{meeting.location}" +
-      "\n #{t('pdf.date')}: #{meeting.date.strftime("%d/%m/%Y")}" +
-      "\n #{t('pdf.time')}: #{meeting.time.strftime("%1Hh:%Mm")} #{meeting.time_zone}" +
-      "\n #{t('pdf.duration')}: #{meeting.duration.strftime("%1Hh:%Mm")}" +
-      "\n #{t('pdf.extra_info')}: #{meeting.extra_info}"
-    
-
-    
-    minutes +=
-      "\n\n\t" + t("pdf.topics") + ":" +
-      "\n\t" + topics +
-      "\n\t" + t("pdf.participants") + ":" +
-      "\n\t" + participants # +
-    #   "\n\t" + t("actions") + ":" + action_items
-      
-    return minutes
-  end 
+  end
 end

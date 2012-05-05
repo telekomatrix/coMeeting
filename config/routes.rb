@@ -15,7 +15,9 @@ CoMeeting::Application.routes.draw do
 		get "meetings/:id/confirm" => "participations#confirm", :as => "confirm"
 		get "meetings/:id/decline" => "participations#decline", :as => "decline"
 
-		resources :meetings
+		resources :meetings do
+			resources :participations
+		end
 
 		resources :users, :only => [:index, :destroy]
     

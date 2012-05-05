@@ -7,11 +7,9 @@
       <%= image_tag("/assets/icons/tick.png", :alt => "") %> <%= t("meeting.views.edit.buttons.save") %>
     </button>
     <span class="text_button_padding"><%= t("or") %></span>
-    <%= link_to t("meeting.views.edit.buttons.cancel"), meeting_path(@participation.link), :class => "text_button_padding link_button" %>
+    <%= link_to t("meeting.views.edit.buttons.cancel"), meeting_path(@participation.link) %>
 
   <% end %>
 </div>
 
-<script type="text/javascript">
-  locale = "<%= I18n.locale %>";
-</script>
+<%= hidden_field_tag :locale, locale %>
