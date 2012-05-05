@@ -28,7 +28,7 @@ class Meeting < ActiveRecord::Base
     end
 
     participations.each do |participation|
-        participants += "- #{participation.user.get_name_and_email}".ljust(60)
+        participants += "- #{participation.user.name_and_email}".ljust(60)
       
       if participation.is_attending == 0
         participants += " " + t("pdf.attending.unanswered")
@@ -49,7 +49,7 @@ class Meeting < ActiveRecord::Base
     
     minutes = "\ncoMeeting\n" +
       "\n" + subject + "\n" +
-      "\n #{t('pdf.created_by')}: #{creator.get_name_and_email}\n" +
+      "\n #{t('pdf.created_by')}: #{creator.name_and_email}\n" +
       "\n #{t('pdf.location')}: #{location}" +
       "\n #{t('pdf.date')}: #{date.strftime("%d/%m/%Y")}" +
       "\n #{t('pdf.time')}: #{time.strftime("%1Hh:%Mm")} #{time_zone}" +

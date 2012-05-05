@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= t("email.views.invite.header") %></h1>
+    <p>
+      <%= t("email.views.invite.setup") %><%= t("email.views.invite.about", :subject => @about) unless @about.blank? %>.
+    </p>
+    <p>
+      <%= link_to t("email.views.invite.link"), meeting_url(locale, @link) %> <%= t("email.views.invite.explanation") %>
+    </p>
+    <p style="margin: 30px 0 0 0;">
+      <%= t("email.views.invite.greeting") %>
+    </p>
+  </body>
+</html>

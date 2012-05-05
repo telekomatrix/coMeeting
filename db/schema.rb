@@ -14,7 +14,7 @@
 ActiveRecord::Schema.define(:version => 20120430111618) do
 
   create_table "action_items", :force => true do |t|
-    t.integer  "participation_id",                    :null => false
+    t.integer  "participation_id",  :null => false
     t.string   "todo"
     t.string   "deadline"
     t.boolean  "completed",        :default => false, :null => false

@@ -10,10 +10,9 @@
   <% end %>
 </div>
 
-
 <div>
   <p>
-    <b><%= t("meeting.views.show.text.created_by") %>:</b><%= @meeting.creator.get_name_and_email %>
+    <b><%= t("meeting.views.show.text.created_by") %>:</b><%= @meeting.creator.name_and_email %>
   </p>
   <p>
     <b><%= t("activerecord.attributes.meeting.subject") %>:</b><%= @meeting.subject %>

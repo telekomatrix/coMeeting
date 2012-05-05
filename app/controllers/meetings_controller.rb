@@ -112,7 +112,7 @@ class MeetingsController < ApplicationController
       #   admin = User.find(meeting.admin)
       #   admin.name = params[:admin][:name]
       #   admin.save
-      #   name = " " + t("by") +" " + admin.get_name
+      #   name = " " + t("by") +" " + admin.name_formatted
       # else
       #   name = ""
       # end
@@ -168,7 +168,7 @@ class MeetingsController < ApplicationController
   def update_minutes
     participation = Participation.find_by_link(params[:id])
 
-    unless participation.nil?
+    if !participation.nil? && participation.is_creator
       participation.meeting.update_attribute(:minutes, params[:minutes])
     end
 

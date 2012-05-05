@@ -1,17 +1,20 @@
 class EmailsController < ApplicationController
-  def invite
-    participation = Participation.find_by_link(params[:participation])
-
-    if participation.nil?
-      flash.now[:error] = t("email.controller.confirm.error.notfound")
+  def reinvite
+    sender = Participation.find_by_link(params[:link])
+    if sender.nil?
+      flash.now[:error] = t("email.controller.reinvite.error.notfound.sender")
     else
-      sender = participation.user
-      receiver = params[:user]
-      meeting = participation.meeting
 
-      UserMailer.invite_email(sender, receiver, meeting).deliver
+      recipient = sender.meeting.participations.where(:user_id => params[:id]).first
+      if recipient.nil?
+        flash.now[:error] = t("email.controller.reinvite.error.notfound.recipient")
+      else
 
-      flash.now[:notice] = t("email.controller.confirm.notice")
+        UserMailer.invite(sender, recipient).deliver
+        flash.now[:notice] = t("email.controller.reinvite.notice")
+
+      end
+
     end
     render 'shared/flash_messages'
   end

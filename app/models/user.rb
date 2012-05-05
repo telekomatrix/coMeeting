@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
     user
   end
 
-  def get_name
+  def name_formatted
     if self.name.blank?
       name = self.email.scan(/^.+(?=@.+)/)[0]
     else
@@ -48,11 +48,17 @@ class User < ActiveRecord::Base
     name
   end
 
-  def get_name_and_email
-    name = self.get_name
+  def name_and_email
+    name = self.name_formatted
     unless self.email.blank?
       name += " (#{self.email})"
     end
     name
+  end
+
+  def email_address
+    address = Mail::Address.new email       # ex: "john@example.com"
+    address.display_name = name_formatted   # ex: "John Doe"
+    address.format                          # returns "John Doe <john@example.com>"
   end
 end

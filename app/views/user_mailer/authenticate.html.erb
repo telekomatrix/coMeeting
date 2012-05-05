@@ -5,7 +5,11 @@
   </head>
   <body>
     <h1><%= t("email.views.authenticate.header", :name => @name) %></h1>
-    <p><%= t("email.views.authenticate.body") %> <%= link_to t("email.views.authenticate.link"), meeting_url(locale, @meeting) %>.</p>
-    <p><%= t("email.views.authenticate.greeting") %></p>
+    <p>
+      <%= t("email.views.authenticate.body") %> <%= link_to t("email.views.authenticate.link"), meeting_url(locale, @link) %>.
+    </p>
+    <p style="margin: 30px 0 0 0;">
+      <%= t("email.views.authenticate.greeting") %>
+    </p>
   </body>
 </html>

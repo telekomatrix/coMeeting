@@ -123,13 +123,15 @@ pt:
             unanswered:                         "Não respondeu"
             attended:                           "Esteve presente"
             not_attended:                       "Não esteve presente"
-            created_by:                         "Reunião criada por"
+          created_by:                           "Reunião criada por"
 
   email:
     controller:
-      authenticate:
+      reinvite:
         error:
-          notfound:                             "O email não pode ser enviado porque o utilizador já não faz parte desta reunião!"
+          notfound:
+            sender:                             "Não está autorizado a enviar este email."
+            recipient:                          "O email não pode ser enviado porque o utilizador já não faz parte desta reunião."
         notice:                                 "Email enviado."
     views:
       authenticate:
@@ -137,10 +139,17 @@ pt:
         header:                                 "Bem-vindo à coMeeting, %{name}"
         body:                                   "Para continuar o processo de criação da reunião"
         link:                                   "clique aqui"
+        url:                                    "clique no seguinte url"
         greeting:                               "Obrigado por usar a coMeeting!"
-      welcome:
-        subject:                                "Foi convidado%{admin} para uma reunião"
-        body:                                   "Foi convidado para usar o serviço coMeeting. Para tal, basta clicar no seguinte endereço:\n\n %{link} \n\n a equipa coMeeting"
+      invite:
+        subject:                                "%{name} convidou-o para uma reunião"
+        header:                                 "Bem-vindo à coMeeting"
+        setup:                                  "Foi convidado para participar numa reunião"
+        about:                                  " sobre %{subject}"
+        link:                                   "Clique aqui"
+        url:                                    "Clique no seguinte url"
+        explanation:                            "para confirmar ou não a sua presença. Este link é também o seu único modo de aceder à reunião por isso guarde este email."
+        greeting:                               "Obrigado por usar a coMeeting!"
 
   user:
     singular:                                   "User"

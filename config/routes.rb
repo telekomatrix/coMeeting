@@ -8,7 +8,7 @@ CoMeeting::Application.routes.draw do
 	post 'meetings/update_action_item'
 	
 	get 'authenticate' => 'emails#authenticate', :as => 'authenticate' # to be removed
-	get 'invite' => 'emails#invite', :as => 'invite'
+	get 'reinvite' => 'emails#reinvite', :as => 'reinvite'
 
   post '/confirm/:id' => 'participations#confirm', :as => 'confirm_participation'
 	post 'decline/:id' => 'participations#decline', :as => 'decline_participation'

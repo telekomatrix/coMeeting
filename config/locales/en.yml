@@ -127,9 +127,11 @@ en:
 
   email:
     controller:
-      authenticate:
+      reinvite:
         error:
-          notfound:                             "The user you tried to email is no longer on this meeting!"
+          notfound:
+            sender:                             "You are not authorized to send this email."
+            recipient:                          "The user you tried to email is no longer on this meeting."
         notice:                                 "Email sent."
     views:
       authenticate:
@@ -137,10 +139,17 @@ en:
         header:                                 "Welcome to coMeeting, %{name}"
         body:                                   "To continue the meeting creation process"
         link:                                   "click here"
-        greeting:                               "Thanks for using coMeeting and have a great day!"
-      welcome:
-        subject:                                "You were invited to a meeting"
-        body:                                   "You were invited to use the service coMeeting. To do so, just click the following link:\n\n %{link} \n\n the coMeeting team"
+        url:                                    "follow this next url"
+        greeting:                               "Thank you for using coMeeting and have a great day!"
+      invite:
+        subject:                                "%{name} invited you to attend a meeting"
+        header:                                 "Welcome to coMeeting"
+        setup:                                  "You were invited to attend a meeting"
+        about:                                  " about %{subject}"
+        link:                                   "Click here"
+        url:                                    "Follow the url given"
+        explanation:                            "to confirm or decline your attendance. This link will also be your only way to access the meeting so please keep this email."
+        greeting:                               "Thank you for using coMeeting and have a great day!"
 
   user:
     singular:                                   "User"

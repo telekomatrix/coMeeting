@@ -1,0 +1,9 @@
+<%= t("email.views.invite.header") %>
+===============================================
+ 
+<%= t("email.views.invite.setup") %><%= t("email.views.invite.about", :subject => @subject) unless @subject.blank? %>.
+<%= t("email.views.invite.url") %> <%= t("email.views.invite.explanation") %>
+<%= meeting_url(locale, @link) %>
+
+
+<%= t("email.views.invite.greeting") %>
