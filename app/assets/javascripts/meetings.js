@@ -111,3 +111,8 @@ function _initMinutesListener(){
         } catch (err) { }
     });
 };
+
+
+$("#attending a").click(function(){
+  $(this).parent().slideUp();
+});

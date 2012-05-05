@@ -1,34 +1,11 @@
 <div>
   <% if @participation.is_admin %>
     
-    <div>
-      <%= link_to image_tag("/assets/icons/application_edit.png", :alt => "")+ " " + t("meeting.actions.edit.label"), edit_meeting_path(@participation.link) %>
-      <%= link_to image_tag("/assets/icons/cross.png", :alt => "") + " " + t("meeting.actions.delete.label"), meeting_path(@participation.link), :confirm => t("meeting.actions.delete.confirm"), :method => :delete %>
-    </div>
+      <%= render 'admin_buttons' %>
       
   <% else %>
 
-    <div>
-      <% if @participation.is_attending == 0 %>       <%# User still has not decided %>
-      
-        <%= link_to image_tag("/assets/icons/tick.png", :alt => "")+ " " + t("meeting.views.show.text.attending.confirm"), confirm_participation_path(@participation.link) %>
-
-        <%= link_to image_tag("/assets/icons/cross.png", :alt => "")+ " " + t("meeting.views.show.text.attending.decline"), decline_participation_path(@participation.link) %>
-
-      <% elsif @participation.is_attending == 1 %>    <%# User is attending %>
-
-        <span><%= t("meeting.views.show.text.attending.confirmed") %></span>
-
-        <%= link_to image_tag("/assets/icons/cross.png", :alt => "")+ " " + t("meeting.views.show.text.attending.decline"), decline_participation_path(@participation.link) %>
-
-      <% else %>                                      <%# User is not attending %>
-
-        <%= link_to image_tag("/assets/icons/tick.png", :alt => "")+ " " + t("meeting.views.show.text.attending.confirm"), confirm_participation_path(@participation.link) %>
-
-        <span><%= t("meeting.views.show.text.attending.declined") %></span>
-          
-      <% end %>
-    </div>
+      <%= render 'participant_buttons' %>
 
   <% end %>
 </div>
@@ -86,10 +63,10 @@
 
 <% if @participation.is_attending != 0 %>
   <div id="partialstatic_minutes">
-    <%= render :partial => 'static_minutes' %>
+    <%= render 'static_minutes' %>
   </div>
   <div id="partialminutes">
-    <%= render :partial => 'minutes' %>
+    <%= render 'minutes' %>
   </div>
 
   <div>

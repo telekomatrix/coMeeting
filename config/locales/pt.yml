@@ -158,6 +158,13 @@ pt:
         notfound:                               "O utilizador que tentou eliminar não existe!"
       notice:                                   "Utilizador eliminada com sucesso."
 
+  participation:
+    controller:
+      confirm:
+        notice:                                 "Presença confirmada com sucesso."
+      decline:
+        notice:                                 "Presença rejeitada com sucesso."
+
   static:
     views:
       home:

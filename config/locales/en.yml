@@ -158,6 +158,13 @@ en:
         notfound:                               "The user you tried deleting does not exist!"
       notice:                                   "User successfully deleted."
 
+  participation:
+    controller:
+      confirm:
+        notice:                                 "Attendance successfully confirmed."
+      decline:
+        notice:                                 "Attendance successfully declined."
+
   static:
     views:
       home:
