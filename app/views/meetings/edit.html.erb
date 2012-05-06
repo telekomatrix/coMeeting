@@ -6,10 +6,10 @@
     <button class="button" type="submit">
       <%= image_tag("/assets/icons/tick.png", :alt => "") %> <%= t("meeting.views.edit.buttons.save") %>
     </button>
-    <span class="text_button_padding"><%= t("or") %></span>
+    <span class="text_button_padding"><%= t("meeting.views.edit.text.or") %></span>
     <%= link_to t("meeting.views.edit.buttons.cancel"), meeting_path(@participation.link) %>
 
   <% end %>
 </div>
 
-<%= hidden_field_tag :locale, locale %>
+<%= hidden_field_tag :locale, locale %>         <%# for the calendar translation %>

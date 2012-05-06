@@ -32,15 +32,10 @@ class MeetingsController < ApplicationController
 
   def create
     # params[:meeting][:topics].reject!( &:blank? )
-
     meeting = Meeting.new(params[:meeting])
 
     if meeting.valid?
       
-      # params[:users].each do |email|
-      #  user = User.find_or_create_by_email(email)
-      #  @meeting.participations.create(:user_id => user.id)
-      # end
       creator = User.find_or_new(params[:creator][:email], params[:creator][:name])
 
       if creator.valid?
@@ -50,10 +45,6 @@ class MeetingsController < ApplicationController
         participation.is_creator = true
         participation.is_admin = true
         participation.save
-
-        # meeting.participations.each do |participation|
-        #   UserMailer.email(participation.user.email, t("email.participant.subject", :admin => params[:creator][:name].empty? ? "" : " by "+ params[:creator][:name] ), t("email.participant.body", :link => "#{ENV['HOST']}/#{params[:locale]}/meetings/#{participation.link}")).deliver
-        # end
 
         if creator.email.blank?
           redirect_to meeting_path(participation.link), notice: t("meeting.controller.create.notice.withoutauth")
@@ -87,9 +78,6 @@ class MeetingsController < ApplicationController
     
     
   def update
-    # params[:meeting][:topics].reject!( &:blank? )
-    # params[:participations].reject!( &:blank? )
-
     participation = Participation.find_by_link(params[:id])
     if participation.nil?
       flash[:error] = t("meeting.controller.update.error.notfound")
@@ -98,7 +86,10 @@ class MeetingsController < ApplicationController
       flash[:error] = t("meeting.controller.update.error.notauthorized")
       redirect_to root_path
     else
-      meeting = partipation.meeting
+      meeting = participation.meeting
+
+      # params[:meeting][:topics].reject!( &:blank? )
+      # params[:participations].reject!( &:blank? )
 
       # meeting.timezone = ActiveSupport::TimeZone.zones_map[params[:timezone]].to_s
 
@@ -117,17 +108,17 @@ class MeetingsController < ApplicationController
       #   name = ""
       # end
 
-      params[:participations].each do |email|
-        user = User.find_or_create_by_email(email)
-        participation = meeting.participations.find_by_user_id(user.id)
-        if participation.nil?
-          meeting.participations.create(:user_id => user.id)
-          # UserMailer.email(email, t("email.participant.subject", :admin => name), t("email.participant.body", :link => "#{ENV['HOST']}/#{params[:locale]}/meetings/#{participation.link}")).deliver
-        end
-      end
+      # params[:participations].each do |email|
+      #   user = User.find_or_create_by_email(email)
+      #   participation = meeting.participations.find_by_user_id(user.id)
+      #   if participation.nil?
+      #     meeting.participations.create(:user_id => user.id)
+      #     UserMailer.invite(...).deliver
+      #   end
+      # end
 
       if meeting.update_attributes(params[:meeting])
-        redirect_to meeting_path(@meeting.link), notice: t("meeting.controller.update.notice")
+        redirect_to meeting_path(participation.link), notice: t("meeting.controller.update.notice")
       else
         flash[:error] = t("meeting.controller.update.error.notupdated")
         render action: "edit"

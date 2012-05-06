@@ -18,11 +18,4 @@ class EmailsController < ApplicationController
     end
     render 'shared/flash_messages'
   end
-
-  def authenticate
-    participation = Participation.find_by_link(params[:participation])
-    UserMailer.authenticate(participation).deliver
-    flash.now[:notice] = "Sent!"
-    render 'shared/flash_messages'
-  end
 end

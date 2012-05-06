@@ -67,5 +67,5 @@ CoMeeting::Application.configure do
   config.active_support.deprecation = :notify
 
   # Sets the correct host for emails
-  config.action_mailer.default_url_options = { :host => 'radiant-snow-3384.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'comeeting.herokuapp.com' }
 end

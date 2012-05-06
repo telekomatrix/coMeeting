@@ -11,7 +11,7 @@ class UserMailer < ActionMailer::Base
         )
   end
 
-  def invite(sender, recipient)
+  def invite(sender, recipient)         # sender and recipient are both participations
     user = recipient.user
     @link = recipient.link
     @about = recipient.meeting.subject

@@ -1,17 +1,17 @@
 CoMeeting::Application.routes.draw do
 
+	# these first 4 routes probably need some refactoring
 	get 'meetings/get_admin_circles'
-
-	get 'meetings/:id/download_pdf' => 'meetings#download_pdf', :as => 'download_pdf'
 	get 'meetings/get_minutes'
 	post 'meetings/update_minutes'
 	post 'meetings/update_action_item'
 	
-	get 'authenticate' => 'emails#authenticate', :as => 'authenticate' # to be removed
 	get 'reinvite' => 'emails#reinvite', :as => 'reinvite'
 
-  post '/confirm/:id' => 'participations#confirm', :as => 'confirm_participation'
-	post 'decline/:id' => 'participations#decline', :as => 'decline_participation'
+  post 'participations/:id/confirm' => 'participations#confirm', :as => 'confirm_participation'
+	post 'participations/:id/decline' => 'participations#decline', :as => 'decline_participation'
+
+	get 'meetings/:id/download_pdf' => 'meetings#download_pdf', :as => 'download_pdf'
 
 	scope "(:locale)", :locale => /en|pt/ do
 
