@@ -11,13 +11,13 @@ class UserMailer < ActionMailer::Base
         )
   end
 
-  def invite(sender, recipient)         # sender and recipient are both participations
+  def invite(sender_name, recipient)         # sender and recipient are both participations
     user = recipient.user
     @link = recipient.link
     @about = recipient.meeting.subject
 
     mail( :to => user.email_address,
-          :subject => t("email.views.invite.subject", :name => sender.user.name_formatted)
+          :subject => t("email.views.invite.subject", :name => sender_name)
         )
   end
 end

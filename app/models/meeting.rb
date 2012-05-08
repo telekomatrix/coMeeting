@@ -17,6 +17,14 @@ class Meeting < ActiveRecord::Base
   end
 
 
+  def find_participation_by_email(email)
+    self.participations.each do |participation|
+      return participation if participation.user.email == email
+    end
+    nil
+  end
+
+
   def static_minutes
 
     topics = ""

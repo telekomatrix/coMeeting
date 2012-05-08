@@ -1,0 +1,16 @@
+<% unless @meeting.topics.blank? %>
+  <p>
+    <b><%= t("activerecord.attributes.meeting.topics") %>:</b>
+  </p>
+  <div>
+    <table>
+      <% @meeting.topics.each do |topic| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td>
+              <%= topic %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>

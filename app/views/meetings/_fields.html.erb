@@ -1,0 +1,28 @@
+  <p>
+    <b><%= t("meeting.views.show.text.created_by") %>:</b><%= @meeting.creator.name_and_email %>
+  </p>
+  <p>
+    <b><%= t("activerecord.attributes.meeting.subject") %>:</b><%= @meeting.subject %>
+  </p>
+
+  <p>
+    <b><%= t("activerecord.attributes.meeting.location") %>:</b><%= @meeting.location %>
+  </p>
+
+  <p>
+    <b><%= t("activerecord.attributes.meeting.date") %>:</b><%= @meeting.date.strftime("%d/%m/%Y") %>
+  </p>
+
+  <p>
+    <b><%= t("activerecord.attributes.meeting.time") %>:</b><%= @meeting.time.strftime("%1Hh:%Mm") %> <%= @meeting.time_zone %>
+  </p>
+
+  <p>
+    <b><%= t("activerecord.attributes.meeting.duration") %>:</b><%= @meeting.duration.strftime("%1Hh:%Mm") %>
+  </p>
+
+  <% unless @meeting.extra_info.blank? %>
+    <p>
+      <b><%= t("activerecord.attributes.meeting.extra_info") %>:</b><%= @meeting.extra_info %>
+    </p>
+  <% end %>

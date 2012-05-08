@@ -1,64 +1,74 @@
-  <% if @meeting.errors.any? %>
-    <% @meeting.errors.messages.each do |message| %>
-      <div class="message"><%= message.last.last.html_safe %></div>
-    <% end %>
+<% if @meeting.errors.any? %>
+  <% @meeting.errors.messages.each do |message| %>
+    <div class="message"><%= message.last.last.html_safe %></div>
   <% end %>
+<% end %>
 
-  <% if @creator.errors.any? %>
-    <% @creator.errors.messages.each do |message| %>
-      <div class="message"><%= message.last.last.html_safe %></div>
-    <% end %>
+<% if @creator.errors.any? %>
+  <% @creator.errors.messages.each do |message| %>
+    <div class="message"><%= message.last.last.html_safe %></div>
   <% end %>
+<% end %>
 
-  <div>
-    <%= label_tag :name, t("meeting.views.new.text.name.label") %>
-    <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field", :autofocus => "true" %>
-    <span class="description"><%= t("meeting.views.new.text.name.description") %></span>
-  </div>
-   <div>
-    <%= label_tag :email, t("meeting.views.new.text.email.label") %>
-    <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field" %>
-    <span class="description"><%= t("meeting.views.new.text.email.description") %></span>
-  </div>
+<div>
+  <%= label_tag :name, t("meeting.views.new.text.name.label") %>
+  <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field", :autofocus => "true" %>
+  <span class="description"><%= t("meeting.views.new.text.name.description") %></span>
+</div>
+ <div>
+  <%= label_tag :email, t("meeting.views.new.text.email.label") %>
+  <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field" %>
+  <span class="description"><%= t("meeting.views.new.text.email.description") %></span>
+</div>
 
-  <div class="group">
-    <%= f.label :subject, t("meeting.views.new.text.subject.label") %>
-    <%= f.text_field :subject, :class => "text_field" %>
-  </div>
+<div class="group">
+  <%= f.label :subject, t("meeting.views.new.text.subject.label") %>
+  <%= f.text_field :subject, :class => "text_field" %>
+</div>
 
-  <div class="group">
-    <%= f.label :location, t("meeting.views.new.text.location.label") %>
-    <%= f.text_field :location, :class => "text_field" %>
-  </div>
+<div class="group">
+  <%= f.label :location, t("meeting.views.new.text.location.label") %>
+  <%= f.text_field :location, :class => "text_field" %>
+</div>
 
-  <div class="group">
-    <%= f.label :date, t("meeting.views.new.text.date.label") %>
-    <%= f.text_field :date, :value => current_date %>
-    <span id="date_picker"></span>
-  </div>
+<div class="group">
+  <%= f.label :date, t("meeting.views.new.text.date.label") %>
+  <%= f.text_field :date, :value => current_date %>
+  <span id="date_picker"></span>
+</div>
 
-  <div class="group">
-    <%= label :time, t("meeting.views.new.text.time.label") %>
-    <%= f.time_select :time, :minute_step => 15 %>
-    <%= f.time_zone_select :time_zone, nil, {:default => "Lisbon"} %>
-  </div>
+<div class="group">
+  <%= label :time, t("meeting.views.new.text.time.label") %>
+  <%= f.time_select :time, :minute_step => 15 %>
+  <%= f.time_zone_select :time_zone, nil, {:default => "Lisbon"} %>
+</div>
 
-  <div class="group">
-    <%= f.label :duration, t("meeting.views.new.text.duration.label") %>
-    <%= f.time_select :duration, :default => Time.now.change(:hour => 1), :minute_step => 15 %>
-  </div>
+<div class="group">
+  <%= f.label :duration, t("meeting.views.new.text.duration.label") %>
+  <%= f.time_select :duration, :default => Time.now.change(:hour => 1), :minute_step => 15 %>
+</div>
 
-  <div class="group">
-    <%= f.label :extra_info, t("meeting.views.new.text.extra_info.label") %>
-    <%= f.text_field :extra_info, :class => "text_field" %>
-  </div>
+<div class="group">
+  <%= f.label :extra_info, t("meeting.views.new.text.extra_info.label") %>
+  <%= f.text_field :extra_info, :class => "text_field" %>
+</div>
 
-  <div class="group">
-		<div id="topicsDiv">
-      <%= f.label :topics, t("meeting.views.new.text.topics.label") %>
-			<div id="topic0">
-				<%= f.text_field :topics, :id => "meeting_topic_0", :class => "text_field", :name => "meeting[topics][]", :value => "" %> <img alt="" src="/assets/icons/cross.png" class="clickable">
-			</div>
-		</div>
-    <input type="hidden" id="topicNumber" value="1" />
+<div class="group">
+  <div id="topicsDiv">
+    <%= f.label :topics, t("meeting.views.new.text.topics.label") %>
+    <div>
+      <%= text_field_tag :topics, nil, :class => "text_field", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
+    </div>
   </div>
+  <input type="hidden" id="topicNumber" value="1" />
+</div>
+
+<div class="group">
+  <div id="participantsDiv">
+    <%= f.label :participants, t("meeting.views.new.text.participants.label") %>
+    <div>
+      <%= text_field_tag :participants, nil, :class => "text_field", :name => "participants[]", :size => "50" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
+    </div>
+  </div>
+  <input type="hidden" id="participantNumber" value="1" />
+</div>

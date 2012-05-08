@@ -13,7 +13,7 @@
       <td><%= meeting.created_at.strftime("%d-%m-%Y %H:%M") %></td>
       <td><%= link_to t("meeting.actions.show.label"), meeting_path(meeting.participations.first.link) %></td>
       <td><%= link_to t("meeting.actions.edit.label"), edit_meeting_path(meeting.participations.first.link) %></td>
-      <td><%= link_to t("meeting.actions.delete.label"), meeting_path(meeting.participations.first.link), :method => :delete, :confirm => t("meeting.actions.delete.confirm") %></td>
+      <td><%= link_to t("meeting.actions.delete.label"), meeting_path(:id => meeting.participations.first.link, :goto => "index"), :method => :delete, :confirm => t("meeting.actions.delete.confirm") %></td>
     </tr>
   <% end %>
 </table>

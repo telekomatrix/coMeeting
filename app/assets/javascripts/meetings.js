@@ -30,18 +30,12 @@ $(document).ready(function() {
       minHeight: 50
     });
 
-    $('#static_minutes')
-    .autoResize({
-      maxHeight: 1000,
-      minHeight: 50
-    });
-
     if (creator == 'true') {
       _initMinutesListener();
       $('#minutes').tabby();
     }
     else {
-      setInterval('getMinutes()', 5000);
+      setInterval('getMinutes()', 4000);
     }
   }
 });
@@ -50,16 +44,15 @@ $(document).ready(function() {
 function updateMinutes() {
   $.ajax({
     type    : 'POST',
-    url     : '/meetings/update_minutes',
-    data    : { authenticity_token: $('meta[name="csrf-token"]').attr('content'), id: participation_id, minutes: $('#minutes').val() },
+    url     : '/meetings/'+participation_id+'/update_minutes',
+    data    : { authenticity_token: $('meta[name="csrf-token"]').attr('content'), minutes: $('#minutes').val() },
   });
 }
 
 function getMinutes() {
   $.ajax({
     type    : 'GET',
-    url     : '/meetings/get_minutes',
-    data    : { id: participation_id },
+    url     : '/meetings/'+participation_id+'/show_minutes'
   });
 }
 
@@ -67,7 +60,7 @@ function getMinutes() {
 // idle.js (c) Alexios Chouchoulas 2009
 // Released under the terms of the GNU Public License version 2.0 (or later).
   
-var _idleTimeout = 5000;  // 5 seconds
+var _idleTimeout = 4000;  // 5 seconds
  
 var _idleNow = false;
 var _idleTimestamp = null;
@@ -83,12 +76,12 @@ function setIdleTimeout(ms){
 };
  
 function _makeIdle(){
-    var t = new Date().getTime();
-    if (t < _idleTimestamp) {
+  var t = new Date().getTime();
+  if (t < _idleTimestamp) {
     _idleTimer = setTimeout(_makeIdle, _idleTimestamp - t + 50);
     return;
-    }
-    _idleNow = true;
+  }
+  _idleNow = true;
   updateMinutes();
 };
  
@@ -100,16 +93,16 @@ function _active(event){
     setIdleTimeout(_idleTimeout);
   }
  
-    _idleNow = false;
+  _idleNow = false;
 };
  
 function _initMinutesListener(){
-    var doc = $(document);
-    doc.ready(function(){
-        try {
-            doc.keydown(_active);
-        } catch (err) { }
-    });
+  var doc = $(document);
+  doc.ready(function(){
+    try {
+      doc.keydown(_active);
+    } catch (err) { }
+  });
 };
 
 
@@ -125,11 +118,8 @@ var topicsDiv = document.getElementById("topicsDiv");
 $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(topicNumber.value);
-      var divName = 'topic' + num;
       var newDiv = document.createElement('div');
-      newDiv.setAttribute('id', divName);
-
-      newDiv.innerHTML = "<input class='text_field' id='meeting_topic_" + num + "' name='meeting[topics][]' size='30' type='text'> <img alt='' src='/assets/icons/cross.png' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field' name='meeting[topics][]' size='30' type='text'> <img src='/assets/icons/cross.png' alt='' class='clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
@@ -138,6 +128,31 @@ $('#topicsDiv div:last-child input').live('keyup', function(){
 
 $('#topicsDiv img').live('click', function(){
   if(topicsDiv.childElementCount > 2){
+    $(this).parent().remove();
+  }
+  else{
+    $(this).prev().val('');
+  }
+});
+
+
+var participantNumber = document.getElementById('participantNumber');
+var participantsDiv = document.getElementById("participantsDiv");
+
+
+$('#participantsDiv div:last-child input').live('keyup', function(){
+    if ($(this).val() != "") {
+      var num = parseInt(participantNumber.value);
+      var newDiv = document.createElement('div');
+      newDiv.innerHTML = "<input class='text_field' name='participants[]' size='50' type='text'> <img src='/assets/icons/cross.png' alt='' class='clickable'>";
+      participantsDiv.appendChild(newDiv);
+
+      participantNumber.value = num + 1;
+    }
+  });
+
+$('#participantsDiv img').live('click', function(){
+  if(participantsDiv.childElementCount > 2){
     $(this).parent().remove();
   }
   else{

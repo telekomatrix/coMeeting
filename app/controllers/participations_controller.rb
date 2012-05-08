@@ -7,7 +7,7 @@ class ParticipationsController < ApplicationController
     else
       participation.update_attribute(:is_attending, 1)
 
-      flash[:notice] = t("attending.notice.confirm")
+      flash.now[:notice] = t("participation.controller.confirm.notice")
       render 'shared/flash_messages'
     end
   end
@@ -21,7 +21,7 @@ class ParticipationsController < ApplicationController
     else
       participation.update_attribute(:is_attending, -1)
 
-      flash[:notice] = t("attending.notice.decline")
+      flash.now[:notice] = t("participation.controller.decline.notice")
       render 'shared/flash_messages'
     end
   end

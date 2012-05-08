@@ -1,5 +1,1 @@
-<% if @participation.is_creator %>
-	<%= text_area :minutes, nil, :id => 'minutes', :value => @meeting.minutes , :onclick => "_idleNow = true;" %>
-<% else %>
-	<%= text_area :minutes, nil, :id => 'minutes', :value => @minutes, :class => "autosize disabled", :disabled => true %>
-<% end %>
+<%= text_area_tag :minutes, @minutes, :disabled => true, :cols =>"40" %>

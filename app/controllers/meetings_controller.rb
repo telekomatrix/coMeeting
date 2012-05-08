@@ -13,13 +13,7 @@ class MeetingsController < ApplicationController
       redirect_to root_path
     else
       @meeting = @participation.meeting
-
-      # if @meeting.verified == false
-      #   @meeting.participations.each do |participation|
-      #     UserMailer.email(participation.user.email, t("email.participant.subject", :admin => name), t("email.participant.body", :link => "#{ENV['HOST']}/#{params[:locale]}/meetings/#{participation.link}") ).deliver
-      #   end
-      #   @meeting.update_attribute(:verified, true)
-      # end
+      @minutes = @meeting.minutes
     end
   end
 
@@ -32,6 +26,7 @@ class MeetingsController < ApplicationController
 
   def create
     params[:meeting][:topics].reject!( &:blank? )
+
     @meeting = Meeting.new(params[:meeting])
 
     if @meeting.valid?
@@ -41,15 +36,23 @@ class MeetingsController < ApplicationController
       if @creator.valid?
         @meeting.save
         @creator.save
-        participation = @meeting.participations.new(:user_id => @creator.id, :is_attending => 1)
-        participation.is_creator = true
-        participation.is_admin = true
-        participation.save
+        cp = @meeting.participations.new(:user_id => @creator.id, :is_attending => 1)
+        cp.is_creator = true
+        cp.is_admin = true
+        cp.save
+
+        params[:participants].each do |email|
+          unless email.blank?
+            user = User.find_or_create_by_email(email)
+            participation = @meeting.participations.create(:user_id => user.id)
+            UserMailer.invite(@creator.name_formatted, participation).deliver
+          end
+        end
 
         if @creator.email.blank?
-          redirect_to meeting_path(participation.link), notice: t("meeting.controller.create.notice.withoutauth")
+          redirect_to meeting_path(cp.link), notice: t("meeting.controller.create.notice.withoutauth")
         else
-          UserMailer.authenticate(participation).deliver
+          UserMailer.authenticate(cp).deliver
           redirect_to root_path, notice: t("meeting.controller.create.notice.withauth")
         end
       else
@@ -88,34 +91,25 @@ class MeetingsController < ApplicationController
     else
       @meeting = participation.meeting
 
+      admin_name = participation.user.name_formatted
+
       params[:meeting][:topics].reject!( &:blank? )
-      # params[:participations].reject!( &:blank? )
+      params[:participants].reject!( &:blank? )
 
-      # @meeting.timezone = ActiveSupport::TimeZone.zones_map[params[:timezone]].to_s
+      @meeting.participations.each do |participation|
+        unless params[:participants].include?(participation.user.email)
+          participation.destroy
+        end
+      end
 
-      # @meeting.participations.each do |participation|
-      #   unless params[:participations].include?(participation.user.email)
-      #     participation.destroy
-      #   end
-      # end
-      
-      # if meeting.admin != -1
-      #   admin = User.find(meeting.admin)
-      #   admin.name = params[:admin][:name]
-      #   admin.save
-      #   name = " " + t("by") +" " + admin.name_formatted
-      # else
-      #   name = ""
-      # end
-
-      # params[:participations].each do |email|
-      #   user = User.find_or_create_by_email(email)
-      #   participation = meeting.participations.find_by_user_id(user.id)
-      #   if participation.nil?
-      #     meeting.participations.create(:user_id => user.id)
-      #     UserMailer.invite(...).deliver    # see example in emails_controller
-      #   end
-      # end
+      params[:participants].each do |email|
+        up = @meeting.find_participation_by_email(email)
+        if up.nil?
+          user = User.find_or_create_by_email(email)
+          up = @meeting.participations.create(:user_id => user.id)
+          UserMailer.invite(admin_name, up).deliver
+        end
+      end
 
       if @meeting.update_attributes(params[:meeting])
         redirect_to meeting_path(participation.link), notice: t("meeting.controller.update.notice")
@@ -134,25 +128,16 @@ class MeetingsController < ApplicationController
       redirect_to root_path
     elsif participation.is_admin
       participation.meeting.destroy
-      redirect_to root_path, notice: t("meeting.controller.destroy.notice")
+      flash[:notice] =  t("meeting.controller.destroy.notice")
+      if params[:goto] == "index"
+        redirect_to meetings_path
+      else
+        redirect_to root_path
+      end
     else
       flash[:error] = t("meeting.controller.destroy.error.notauthorized")
       redirect_to root_path
     end
-  end
-
-
-  def update_action_item
-    participation = Participation.find_by_id(params[:id])
-
-    participation.update_attributes(:action_item => params[:action_item], :deadline => params[:deadline])
-        
-    @static_minutes = participation.meeting.static_minutes
-
-    # respond_to do |format|
-    #  format.js
-    # end
-    render :js
   end
 
 
@@ -167,13 +152,11 @@ class MeetingsController < ApplicationController
   end
 
 
-  def get_minutes
+  def show_minutes
     participation = Participation.find_by_link(params[:id])
 
     unless participation.nil?
-      @static_minutes = participation.meeting.static_minutes
-      @minutes = meeting.minutes
-      render :js
+      @minutes = participation.meeting.minutes
     else
       render :nothing => true
     end
@@ -191,4 +174,20 @@ class MeetingsController < ApplicationController
       send_file my_file
     end
   end
+
+
+  # def update_action_item
+  #   participation = Participation.find_by_id(params[:id])
+
+  #   participation.update_attributes(:action_item => params[:action_item], :deadline => params[:deadline])
+        
+  #   @static_minutes = participation.meeting.static_minutes
+
+  #   respond_to do |format|
+  #    format.js
+  #   end
+  #   # render :js ?
+  #   # Aqui não é preciso meter respond_to nem render :js. Isto vai automaticamente ao ficheiro com o nome desta action
+  # end
+
 end

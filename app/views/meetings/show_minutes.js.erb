@@ -1,2 +1,6 @@
-$("#partialstatic_minutes").html('<%= escape_javascript(render 'static_minutes') %>');
-$("#partialminutes").html('<%= escape_javascript(render 'minutes') %>');
+$("#partialminutes").html("<%= escape_javascript(render 'minutes') %>");
+$('#minutes')
+.autoResize({
+  maxHeight: 1000,
+  minHeight: 50
+});

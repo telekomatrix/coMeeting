@@ -100,6 +100,8 @@ pt:
             label:                              "Outras informações"
           topics:
             label:                              "Tópicos"
+          participants:
+            label:                              "Participants"
           or:                                   "ou"
         buttons:
           create:                               "Criar"
@@ -124,6 +126,7 @@ pt:
             attended:                           "Esteve presente"
             not_attended:                       "Não esteve presente"
           created_by:                           "Reunião criada por"
+          participants:                         "Participantes"
 
   email:
     controller:

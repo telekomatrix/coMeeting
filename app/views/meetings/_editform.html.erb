@@ -1,58 +1,73 @@
-  <% if @meeting.errors.any? %>
-    <% @meeting.errors.messages.each do |message| %>
-      <div class="message"><%= message.last.last.html_safe %></div>
-    <% end %>
+<% if @meeting.errors.any? %>
+  <% @meeting.errors.messages.each do |message| %>
+    <div class="message"><%= message.last.last.html_safe %></div>
   <% end %>
+<% end %>
 
-  <div class="group">
-    <%= f.label :subject, t("meeting.views.new.text.subject.label") %>
-    <%= f.text_field :subject, :class => "text_field" %>
-  </div>
+<div class="group">
+  <%= f.label :subject, t("meeting.views.new.text.subject.label") %>
+  <%= f.text_field :subject, :class => "text_field" %>
+</div>
 
-  <div class="group">
-    <%= f.label :location, t("meeting.views.new.text.location.label") %>
-    <%= f.text_field :location, :class => "text_field" %>
-  </div>
+<div class="group">
+  <%= f.label :location, t("meeting.views.new.text.location.label") %>
+  <%= f.text_field :location, :class => "text_field" %>
+</div>
 
-  <div class="group">
-    <%= f.label :date, t("meeting.views.new.text.date.label") %>
-    <%= f.text_field :date, :value => meeting_date(@meeting) %>
-    <span id="date_picker"></span>
-  </div>
+<div class="group">
+  <%= f.label :date, t("meeting.views.new.text.date.label") %>
+  <%= f.text_field :date, :value => meeting_date(@meeting) %>
+  <span id="date_picker"></span>
+</div>
 
-  <div class="group">
-    <%= label :time, t("meeting.views.new.text.time.label") %>
-    <%= f.time_select :time, :minute_step => 15 %>
-    <%= f.time_zone_select :time_zone, nil, {:default => "Lisbon"} %>
-  </div>
+<div class="group">
+  <%= label :time, t("meeting.views.new.text.time.label") %>
+  <%= f.time_select :time, :minute_step => 15 %>
+  <%= f.time_zone_select :time_zone, nil, {:default => "Lisbon"} %>
+</div>
 
-  <div class="group">
-    <%= f.label :duration, t("meeting.views.new.text.duration.label") %>
-    <%= f.time_select :duration, :default => Time.now.change(:hour => 1), :minute_step => 15 %>
-  </div>
+<div class="group">
+  <%= f.label :duration, t("meeting.views.new.text.duration.label") %>
+  <%= f.time_select :duration, :default => Time.now.change(:hour => 1), :minute_step => 15 %>
+</div>
 
-  <div class="group">
-    <%= f.label :extra_info, t("meeting.views.new.text.extra_info.label") %>
-    <%= f.text_field :extra_info, :class => "text_field" %>
-  </div>
+<div class="group">
+  <%= f.label :extra_info, t("meeting.views.new.text.extra_info.label") %>
+  <%= f.text_field :extra_info, :class => "text_field" %>
+</div>
 
-  <div class="group">
-    <div id="topicsDiv">
-      <%= f.label :topics, t("meeting.views.new.text.topics.label") %>
-      <% if @meeting.topics.size > 0 %>
-        <% num = 0 %>
-        <% @meeting.topics.each do |topic| %>
-          <div id=<%= "topic#{num}" %>>
-            <%= f.text_field :topics, :class => "shorter text_field", :name => "meeting[topics][]", :value => topic %> <img alt="" src="/assets/icons/cross.png">
-          </div>
-          <% num = num + 1 %>
-        <% end %>
-      <% else %>
-        <div id="topic0">
-          <%= f.text_field :topics, :id => "meeting_topic_0", :class => "text_field", :name => "meeting[topics][]", :value => "" %> <img alt="" src="/assets/icons/cross.png" class="clickable">
+<div class="group">
+  <div id="topicsDiv">
+    <%= f.label :topics, t("meeting.views.new.text.topics.label") %>
+    <% if @meeting.topics.size > 0 %>
+      <% @meeting.topics.each do |topic| %>
+        <div>
+          <%= text_field_tag :topics, topic, :class => "text_field", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
         </div>
-        <% num = 1 %>
       <% end %>
+    <% end %>
+    <div>
+      <%= text_field_tag :topics, nil, :class => "text_field", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
     </div>
-    <input type="hidden" id="topicNumber" value="<%=num%>" />
+    <% num = @meeting.topics.size + 1 %>
   </div>
+  <input type="hidden" id="topicNumber" value="<%=num%>" />
+</div>
+
+<div class="group">
+  <div id="participantsDiv">
+    <%= f.label :participants, t("meeting.views.new.text.participants.label") %>
+    <% if @meeting.participations.size > 0 %>
+      <% @meeting.participations.each do |participation| %>
+        <div>
+          <%= text_field_tag :participants, participation.user.email, :class => "text_field", :name => "participants[]", :size => "50" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
+        </div>
+      <% end %>
+    <% end %>
+    <div>
+      <%= text_field_tag :participants, nil, :class => "text_field", :name => "participants[]", :size => "50" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
+    </div>
+    <% num = @meeting.participations.size + 1 %>
+  </div>
+  <input type="hidden" id="participantNumber" value="<%=num%>" />
+</div>

@@ -1,0 +1,16 @@
+<% unless @meeting.participations.blank? %>
+  <p>
+    <b><%= t("meeting.views.show.text.participants") %>:</b>
+  </p>
+  <div>
+    <table>
+      <% @meeting.participations.each do |participation| %>
+          <tr class="<%= cycle("odd", "even") %>">
+            <td>
+              <%= participation.user.name_formatted %>
+            </td>
+          </tr>
+      <% end %>
+    </table>
+  </div>
+<% end %>
