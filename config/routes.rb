@@ -1,7 +1,6 @@
 CoMeeting::Application.routes.draw do
 
-	# these first 4 routes probably need some refactoring
-	get 'meetings/get_admin_circles'
+	# these first 3 routes probably need some refactoring
 	get 'meetings/get_minutes'
 	post 'meetings/update_minutes'
 	post 'meetings/update_action_item'
@@ -15,9 +14,7 @@ CoMeeting::Application.routes.draw do
 
 	scope "(:locale)", :locale => /en|pt/ do
 
-		resources :meetings do
-			resources :participations
-		end
+		resources :meetings
 
 		resources :users, :only => [:index, :destroy]
     
@@ -29,6 +26,6 @@ CoMeeting::Application.routes.draw do
 
 	end
 	
-	# match '*uri' => redirect('/')
+	match '*uri' => redirect('/')
 
 end

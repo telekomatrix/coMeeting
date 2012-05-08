@@ -1,9 +1,9 @@
 var mouse_is_outside = false;
 
 $(document).ready(function() {
-  // if ($("#flash > div").length > 0) {
-  //   setTimeout(hideFlashMessages, 2500);
-  // }
+  if ($("#flash > div").length > 0) {
+    setTimeout(hideFlashMessages, 2500);
+  }
   
   $('#drop-button').click(function(){
     $('#bubble').fadeToggle();

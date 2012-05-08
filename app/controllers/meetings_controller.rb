@@ -2,7 +2,7 @@ class MeetingsController < ApplicationController
   before_filter :authenticate, :only => [:index]
 
   def index
-    @meetings = Meeting.order('created_at ASC').paginate(:page => params[:page], :per_page => 20)
+    @meetings = Meeting.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
   end
 
 
@@ -31,22 +31,22 @@ class MeetingsController < ApplicationController
 
 
   def create
-    # params[:meeting][:topics].reject!( &:blank? )
-    meeting = Meeting.new(params[:meeting])
+    params[:meeting][:topics].reject!( &:blank? )
+    @meeting = Meeting.new(params[:meeting])
 
-    if meeting.valid?
+    if @meeting.valid?
       
-      creator = User.find_or_new(params[:creator][:email], params[:creator][:name])
+      @creator = User.find_or_new(params[:creator][:email], params[:creator][:name])
 
-      if creator.valid?
-        meeting.save
-        creator.save
-        participation = meeting.participations.new(:user_id => creator.id, :is_attending => 1)
+      if @creator.valid?
+        @meeting.save
+        @creator.save
+        participation = @meeting.participations.new(:user_id => @creator.id, :is_attending => 1)
         participation.is_creator = true
         participation.is_admin = true
         participation.save
 
-        if creator.email.blank?
+        if @creator.email.blank?
           redirect_to meeting_path(participation.link), notice: t("meeting.controller.create.notice.withoutauth")
         else
           UserMailer.authenticate(participation).deliver
@@ -86,14 +86,14 @@ class MeetingsController < ApplicationController
       flash[:error] = t("meeting.controller.update.error.notauthorized")
       redirect_to root_path
     else
-      meeting = participation.meeting
+      @meeting = participation.meeting
 
-      # params[:meeting][:topics].reject!( &:blank? )
+      params[:meeting][:topics].reject!( &:blank? )
       # params[:participations].reject!( &:blank? )
 
-      # meeting.timezone = ActiveSupport::TimeZone.zones_map[params[:timezone]].to_s
+      # @meeting.timezone = ActiveSupport::TimeZone.zones_map[params[:timezone]].to_s
 
-      # meeting.participations.each do |participation|
+      # @meeting.participations.each do |participation|
       #   unless params[:participations].include?(participation.user.email)
       #     participation.destroy
       #   end
@@ -113,11 +113,11 @@ class MeetingsController < ApplicationController
       #   participation = meeting.participations.find_by_user_id(user.id)
       #   if participation.nil?
       #     meeting.participations.create(:user_id => user.id)
-      #     UserMailer.invite(...).deliver
+      #     UserMailer.invite(...).deliver    # see example in emails_controller
       #   end
       # end
 
-      if meeting.update_attributes(params[:meeting])
+      if @meeting.update_attributes(params[:meeting])
         redirect_to meeting_path(participation.link), notice: t("meeting.controller.update.notice")
       else
         flash[:error] = t("meeting.controller.update.error.notupdated")
@@ -177,22 +177,6 @@ class MeetingsController < ApplicationController
     else
       render :nothing => true
     end
-  end
-
-  respond_to :js
-  def get_admin_circles
-    user = User.find_by_email(params[:email])
-
-    @data = ""
-    user.circles.each do |u|
-      email = User.find_by_id(u).email
-      if email.include?(params[:term])
-        @data = @data + email.to_s
-        @data = @data + ", "
-      end
-    end
-
-    respond_with(@data)
   end
 
 

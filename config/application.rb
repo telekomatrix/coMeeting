@@ -58,7 +58,7 @@ module CoMeeting
     config.assets.version = '1.0'
 
     # Prevents ApplicationController from loading all the helpers.
-    config.action_controller.include_all_helpers = false
+    config.action_controller.include_all_helpers = true
 
     # Sets the correct settings for sending emails through Gmail.
     # Each host is defined in each different environment.

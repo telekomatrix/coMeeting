@@ -1,5 +1,17 @@
-<div class="center-wrapper">
-  <div class="centered">
-    <%= link_to t("static.views.home.button"), new_meeting_path, :class => "home-button" %>
+
+<%= form_for @meeting, :url => meetings_path, :html => { :style => "" } do |f| %>
+  
+  <div id="fields" style="display: none;">
+    <%= render :partial => "meetings/newform", :locals => {:f => f} %>
   </div>
-</div>
+
+  <hr style="display:none;" id="line" />
+
+  <button type="submit" id="new" class="home-button"><%= t("static.views.home.button") %></button>
+
+  <button type="button" id="cancel" class="home-button" style="display:none;">X</button>
+
+<% end %>
+
+
+<%= hidden_field_tag :locale, locale %>         <%# for the calendar translation %>    

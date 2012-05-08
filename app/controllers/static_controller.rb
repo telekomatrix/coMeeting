@@ -1,5 +1,7 @@
 class StaticController < ApplicationController
   def home
+    @meeting = Meeting.new
+    @creator = User.new
   end
   
 	def management

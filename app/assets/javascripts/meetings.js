@@ -1,28 +1,28 @@
 $(document).ready(function() {
 
-  locale = $("#locale").val();
+  // locale = $('#locale').val();
 
-  if (locale != undefined){
-    if (locale=="pt")
-      locale = PT;
-    else
-      locale = EN;
+  // if (locale != undefined){
+  //   if (locale=='pt')
+  //     locale = PT;
+  //   else
+  //     locale = EN;
 
-    $('#date_picker').DatePicker({
-      flat: true,
-      format: 'd/m/Y',
-      date: $('#meeting_date').val(),
-      locale: locale,
-      calendars: 1,
-      onChange: function(formated, dates){
-        $('#meeting_date').val(formated);
-      }
-    });
-  }
+  //   $('#date_picker').DatePicker({
+  //     flat: true,
+  //     format: 'd/m/Y',
+  //     date: $('#meeting_date').val(),
+  //     locale: locale,
+  //     calendars: 1,
+  //     onChange: function(formated, dates){
+  //       $('#meeting_date').val(formated);
+  //     }
+  //   });
+  // }
   
-  creator = $("#creator").val();
+  creator = $('#creator').val();
   if (creator != undefined){
-    participation_id = $("input#token").val();
+    participation_id = $('input#token').val();
 
     $('#minutes')
     .autoResize({
@@ -36,12 +36,12 @@ $(document).ready(function() {
       minHeight: 50
     });
 
-    if (creator == "true") {
+    if (creator == 'true') {
       _initMinutesListener();
       $('#minutes').tabby();
     }
     else {
-      setInterval("getMinutes()", 5000);
+      setInterval('getMinutes()', 5000);
     }
   }
 });
@@ -49,16 +49,16 @@ $(document).ready(function() {
 
 function updateMinutes() {
   $.ajax({
-    type    : "POST",
-    url     : "/meetings/update_minutes",
+    type    : 'POST',
+    url     : '/meetings/update_minutes',
     data    : { authenticity_token: $('meta[name="csrf-token"]').attr('content'), id: participation_id, minutes: $('#minutes').val() },
   });
 }
 
 function getMinutes() {
   $.ajax({
-    type    : "GET",
-    url     : "/meetings/get_minutes",
+    type    : 'GET',
+    url     : '/meetings/get_minutes',
     data    : { id: participation_id },
   });
 }
@@ -113,6 +113,34 @@ function _initMinutesListener(){
 };
 
 
-$("#attending a").click(function(){
+$('#attending a').click(function(){
   $(this).parent().slideUp();
+});
+
+
+var topicNumber = document.getElementById('topicNumber');
+var topicsDiv = document.getElementById("topicsDiv");
+
+
+$('#topicsDiv div:last-child input').live('keyup', function(){
+    if ($(this).val() != "") {
+      var num = parseInt(topicNumber.value);
+      var divName = 'topic' + num;
+      var newDiv = document.createElement('div');
+      newDiv.setAttribute('id', divName);
+
+      newDiv.innerHTML = "<input class='text_field' id='meeting_topic_" + num + "' name='meeting[topics][]' size='30' type='text'> <img alt='' src='/assets/icons/cross.png' class='clickable'>";
+      topicsDiv.appendChild(newDiv);
+
+      topicNumber.value = num + 1;
+    }
+  });
+
+$('#topicsDiv img').live('click', function(){
+  if(topicsDiv.childElementCount > 2){
+    $(this).parent().remove();
+  }
+  else{
+    $(this).prev().val('');
+  }
 });

@@ -1,7 +1,7 @@
 <div>
   <%= form_for @meeting, :url => meetings_path do |f| %>
 
-    <%= render :partial => "form", :locals => {:f => f} %>
+    <%= render :partial => "newform", :locals => {:f => f} %>
 
     <button class="button" type="submit">
       <%= image_tag("/assets/icons/tick.png", :alt => "") %> <%= t("meeting.views.new.buttons.create") %>
