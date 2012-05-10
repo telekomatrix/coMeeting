@@ -1,13 +1,22 @@
-<div>
-  <% if @participation.is_admin %>
+<%= render :partial => 'showform' %>
+<%= form_for @meeting, :url => meeting_path(@participation.link), :html => { :class => "" } do |f| %>
+  <%= render :partial => 'editform', :locals => {:f => f}  %>  
+<% end %>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<button type="submit" id="dlp" class="dlp-button"></button>
+<!--<% if @participation.is_admin %>
+  
+    <%= render 'admin_buttons' %>
     
-      <%= render 'admin_buttons' %>
-      
-  <% else %>
+<% else %>
 
-      <%= render 'participant_buttons' %>
+    <%= render 'participant_buttons' %>
 
-  <% end %>
+<% end %>
 </div>
 
 <div>
@@ -33,7 +42,7 @@
 
   <div>
     <%= link_to image_tag("/assets/icons/application_edit.png", :alt => "")+ " " + t("meeting.pdf"), download_pdf_path(@participation.link) %>
-  </div>
+  </div>-->
 <% end %>
 
 <%= hidden_field_tag :token, @participation.link %>

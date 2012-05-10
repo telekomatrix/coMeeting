@@ -1,0 +1,30 @@
+<div id="form" class="form">
+  <div id="extra" class="extra">
+    <% if @participation.is_admin %>
+      <button type="button" id="edit" class="ent-button"></button>
+    <% else %>
+      <b><%= t("meeting.views.show.text.presence") %> - </b>
+      <% if @participation.is_attending == 1 %>
+        <%= t("meeting.views.show.text.attending.confirm", :default=> "Attending") %>
+      <% elsif @participation.is_attending == -1 %>
+        <%= t("meeting.views.show.text.attending.decline", :default=> "Not Attending") %>
+      <% end %>
+    <% end %>
+  </div>
+  <div id="esqAct" class="esqAct">
+    <%= render 'topics' %>
+    <%= render 'participants' %>
+  </div>
+  <div id="dirAct" class="dirAct">
+    <% if @participation.is_attending != 0 %>
+      <p><b><%= t("activerecord.attributes.meeting.minutes") %></b></p>
+      <div id="partialminutes">
+        <% if @participation.is_creator %>
+          <%= text_area_tag :minutes, @minutes, :onclick => "_idleNow = true;", :cols =>"40", :rows =>"20" %>
+        <% else %>
+          <%= render 'minutes' %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

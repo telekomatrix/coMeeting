@@ -26,8 +26,10 @@ $(document).ready(function() {
 
     $('#minutes')
     .autoResize({
-      maxHeight: 1000,
-      minHeight: 50
+      maxHeight: 500,
+      minHeight: 490,
+      maxWidth: 560,
+      minWidth: 560
     });
 
     if (creator == 'true') {
@@ -119,7 +121,7 @@ $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(topicNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field' name='meeting[topics][]' size='30' type='text'> <img src='/assets/icons/cross.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field3' name='meeting[topics][]' type='text'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
@@ -144,7 +146,7 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field' name='participants[]' size='50' type='text'> <img src='/assets/icons/cross.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field3' name='participants[]' type='text'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       participantsDiv.appendChild(newDiv);
 
       participantNumber.value = num + 1;
@@ -158,4 +160,25 @@ $('#participantsDiv img').live('click', function(){
   else{
     $(this).prev().val('');
   }
+});
+
+
+$('#edit').click(function(){
+  $("#form").animate({height: 'toggle' }, 500, function(){
+    $("#dlp").removeClass('dlp-button');
+    $("#dlp").addClass('home-button');
+    $("#form-edit").animate({height: 'toggle' }, 500, function(){
+
+    });
+  }); 
+});
+
+$('#cancel').click(function(){
+  $("#form-edit").animate({height: 'toggle' }, 500, function(){
+    $("#dlp").removeClass('home-button');
+    $("#dlp").addClass('dlp-button');
+    $("#form").animate({height: 'toggle' }, 500, function(){
+
+    });
+  }); 
 });

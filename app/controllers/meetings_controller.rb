@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  before_filter :authenticate, :only => [:index]
+  #before_filter :authenticate, :only => [:index]
 
   def index
     @meetings = Meeting.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
@@ -28,6 +28,7 @@ class MeetingsController < ApplicationController
     params[:meeting][:topics].reject!( &:blank? )
 
     @meeting = Meeting.new(params[:meeting])
+    # maybe you need @creator here
 
     if @meeting.valid?
       
@@ -57,11 +58,11 @@ class MeetingsController < ApplicationController
         end
       else
         flash[:error] = t("meeting.controller.create.error.notcreated")
-        render action: "new"
+        render "static/home"
       end
     else
       flash[:error] = t("meeting.controller.create.error.notcreated")
-      render action: "new"
+      render "static/home"
     end
   end
 

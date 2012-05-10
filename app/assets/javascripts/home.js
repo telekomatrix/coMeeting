@@ -3,13 +3,14 @@ var button_text;
 
 $("#new").click(function(e){
   if (hidden){
-    $("#line").toggle(500, function(){
-      $("#fields").animate({height: 'toggle' }, 500, function(){
+    /*$("#line").toggle(500, function(){
+      $("#form").animate({height: 'toggle' }, 500, function(){
         $("#line").toggle(500);
         button_text = $("#new").text();
-        $("#new").text("✓");
-        $("#cancel").show();
       });
+    });*/
+    $("#form").animate({height: 'toggle' }, 700, function(){
+        button_text = $("#new").text();
     });
     hidden = false;
     e.preventDefault();
@@ -25,13 +26,15 @@ $("#cancel").click(function(e){
     //resetForm($('#new_meeting'));
   }
   else{
-    $(this).hide();
-    $("#line").toggle(500, function(){
+    $("#form").animate({height: 'toggle' }, 700, function(){
+        button_text = $("#new").text();
+    });
+    /*$("#line").toggle(500, function(){
       $("#fields").animate({height: 'toggle' }, 500, function(){
         $("#line").toggle(500);
         $("#new").text(button_text);
       });
-    });
+    });*/
 
     //resetForm($('#new_meeting'));
     hidden = true;

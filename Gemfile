@@ -4,7 +4,6 @@ gem 'rails', '3.1.4'
 gem 'rake', '0.8.7'
 gem 'jquery-rails', '>= 1.0.12'
 gem 'will_paginate', '~> 3.0'
-gem 'formtastic'
 gem 'prawn'
 
 group :production do

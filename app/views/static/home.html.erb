@@ -1,15 +1,17 @@
 
-<%= form_for @meeting, :url => meetings_path, :html => { :style => "" } do |f| %>
+<%= form_for @meeting, :url => meetings_path, :html => { :class => "" } do |f| %>
   
-  <div id="fields" style="display: none;">
+  <div id="form" class="form" style="display: none;">
     <%= render :partial => "meetings/newform", :locals => {:f => f} %>
   </div>
 
-  <hr style="display:none;" id="line" />
-
-  <button type="submit" id="new" class="home-button"><%= t("static.views.home.button") %></button>
+  <div id="effect">
+  	<hr id="line" style="display:none;"/>
+  	<button type="submit" id="new" class="home-button"></button>
+  </div>
 
   <button type="button" id="cancel" class="home-button" style="display:none;">X</button>
+
 
 <% end %>
 

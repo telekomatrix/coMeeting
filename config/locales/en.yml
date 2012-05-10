@@ -79,10 +79,10 @@ en:
       new:
         text:
           email:
-            label:                              "Your Email"
+            label:                              "Email"
             description:                        "If you fill in this field, you will receive an email to confirm your identity. If you leave it blank, all people invited to the meeting will know you did not authenticate yourself."
           name:
-            label:                              "Your Name"
+            label:                              "Name"
             description:                        "This will be the name used in the invitations sent to the participants."
           subject:
             label:                              "Subject"
@@ -116,6 +116,7 @@ en:
           cancel:                               "Cancel"
       show:
         text:
+          presence:                             "Presence"
           attending:
             unknown:                            "Yet to answer"
             confirm:                            "Attending"

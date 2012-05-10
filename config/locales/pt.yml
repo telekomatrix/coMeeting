@@ -101,7 +101,7 @@ pt:
           topics:
             label:                              "Tópicos"
           participants:
-            label:                              "Participants"
+            label:                              "Participantes"
           or:                                   "ou"
         buttons:
           create:                               "Criar"

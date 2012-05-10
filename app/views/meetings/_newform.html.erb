@@ -1,74 +1,85 @@
-<% if @meeting.errors.any? %>
-  <% @meeting.errors.messages.each do |message| %>
-    <div class="message"><%= message.last.last.html_safe %></div>
-  <% end %>
-<% end %>
-
-<% if @creator.errors.any? %>
-  <% @creator.errors.messages.each do |message| %>
-    <div class="message"><%= message.last.last.html_safe %></div>
-  <% end %>
-<% end %>
-
-<div>
-  <%= label_tag :name, t("meeting.views.new.text.name.label") %>
-  <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field", :autofocus => "true" %>
-  <span class="description"><%= t("meeting.views.new.text.name.description") %></span>
-</div>
- <div>
-  <%= label_tag :email, t("meeting.views.new.text.email.label") %>
-  <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field" %>
-  <span class="description"><%= t("meeting.views.new.text.email.description") %></span>
-</div>
-
-<div class="group">
-  <%= f.label :subject, t("meeting.views.new.text.subject.label") %>
-  <%= f.text_field :subject, :class => "text_field" %>
-</div>
-
-<div class="group">
-  <%= f.label :location, t("meeting.views.new.text.location.label") %>
-  <%= f.text_field :location, :class => "text_field" %>
-</div>
-
-<div class="group">
-  <%= f.label :date, t("meeting.views.new.text.date.label") %>
-  <%= f.text_field :date, :value => current_date %>
-  <span id="date_picker"></span>
-</div>
-
-<div class="group">
-  <%= label :time, t("meeting.views.new.text.time.label") %>
-  <%= f.time_select :time, :minute_step => 15 %>
-  <%= f.time_zone_select :time_zone, nil, {:default => "Lisbon"} %>
-</div>
-
-<div class="group">
-  <%= f.label :duration, t("meeting.views.new.text.duration.label") %>
-  <%= f.time_select :duration, :default => Time.now.change(:hour => 1), :minute_step => 15 %>
-</div>
-
-<div class="group">
-  <%= f.label :extra_info, t("meeting.views.new.text.extra_info.label") %>
-  <%= f.text_field :extra_info, :class => "text_field" %>
-</div>
-
-<div class="group">
-  <div id="topicsDiv">
-    <%= f.label :topics, t("meeting.views.new.text.topics.label") %>
-    <div>
-      <%= text_field_tag :topics, nil, :class => "text_field", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
-    </div>
+<button type="button" id="cancel" class="x-button"></button>
+<div id="esqForm" class="esqForm">
+  <div class="edit_field">
+    <b><%= label_tag :name, t("meeting.views.new.text.name.label"), :class=> 'cenas' %>*</b>
+    <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field" %>
+    <span class="description"><i><%= t("meeting.views.new.text.name.description") %></i></span>
   </div>
-  <input type="hidden" id="topicNumber" value="1" />
-</div>
-
-<div class="group">
-  <div id="participantsDiv">
-    <%= f.label :participants, t("meeting.views.new.text.participants.label") %>
-    <div>
-      <%= text_field_tag :participants, nil, :class => "text_field", :name => "participants[]", :size => "50" %> <img src="/assets/icons/cross.png" alt="" class="clickable">
-    </div>
+  
+  <div class="edit_field">
+    <b><%= label_tag :email, t("meeting.views.new.text.email.label") %>*</b>
+    <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field" %>
+    <span class="description"><i><%= t("meeting.views.new.text.email.description") %></i></span>
   </div>
-  <input type="hidden" id="participantNumber" value="1" />
+  
+  <div class="edit_field">
+    <b><%= f.label :subject, t("meeting.views.new.text.subject.label") %></b>
+    <%= f.text_field :subject, :class => "text_field" %>
+  </div>
+  
+  <div class="edit_field">
+    <b><%= f.label :location, t("meeting.views.new.text.location.label") %></b>
+    <%= f.text_field :location, :class => "text_field" %>
+  </div>
+</div>
+<div id="meioForm" class="meioForm">
+  
+  <div class="edit_field">
+    <b><%= f.label :date, t("meeting.views.new.text.date.label") %></b>
+    <%= f.text_field :date, :class => "text_field" %>
+  </div>
+  
+  <div class="edit_field">
+    <b><%= label :time, t("meeting.views.new.text.time.label") %></b><br/>
+    <input id="meeting_time_1i" name="meeting[time(1i)]" type="hidden" value="2012">
+    <input id="meeting_time_2i" name="meeting[time(2i)]" type="hidden" value="5">
+    <input id="meeting_time_3i" name="meeting[time(3i)]" type="hidden" value="9">
+    <select class="sel_field" id="meeting_time_4i" name="meeting[time(4i)]"> 
+      <%= options_for_select(0..23, '0' )%> 
+    </select>
+    <select class="sel_field" id="meeting_time_5i" name="meeting[time(5i)]"> 
+      <%= options_for_select(['00','15','30','45'], '00') %> 
+    </select> 
+    <%= f.time_zone_select :time_zone, nil, {:default => "Lisbon"}, :class => 'sel_field2' %>
+  </div>
+
+  <div class="edit_field2">
+    <b><%= f.label :duration, t("meeting.views.new.text.duration.label") %></b>
+    <input id="meeting_duration_1i" name="meeting[duration(1i)]" type="hidden" value="2012" />
+    <input id="meeting_duration_2i" name="meeting[duration(2i)]" type="hidden" value="5" />
+    <input id="meeting_duration_3i" name="meeting[duration(3i)]" type="hidden" value="9" />
+    <select class="sel_field" id="meeting_duration_4i" name="meeting[duration(4i)]"> 
+      <%= options_for_select('00'..'06', '00') %> 
+    </select>
+    <select class="sel_field" id="meeting_duration_5i" name="meeting[duration(5i)]"> 
+      <%= options_for_select(['00','15','30','45'], '00') %> 
+    </select> 
+  </div>
+
+  <div class="edit_field">
+    <b><%= f.label :extra_info, t("meeting.views.new.text.extra_info.label") %></b>
+    <%= f.text_area :extra_info, :class => "text_area" %>
+  </div>
+
+</div>
+<div id="dirForm" class="dirForm">
+  <div class="edit_field">
+    <div id="topicsDiv" class="area_scroll">
+      <b><%= f.label :topics, t("meeting.views.new.text.topics.label") %></b>
+      <div>
+        <%= text_field_tag :topics, nil, :class => "text_field3", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+      </div>
+    </div>
+    <input type="hidden" id="topicNumber" value="1" />
+  </div>
+
+  <div class="edit_field">
+    <div id="participantsDiv">
+      <b><%= f.label :participants, t("meeting.views.new.text.participants.label") %></b>
+      <div>
+        <%= text_field_tag :participants, nil, :class => "text_field3", :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+      </div>
+    </div>
+    <input type="hidden" id="participantNumber" value="1" />
+  </div>
 </div>
