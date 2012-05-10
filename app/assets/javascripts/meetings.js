@@ -165,8 +165,8 @@ $('#participantsDiv img').live('click', function(){
 
 $('#edit').click(function(){
   $("#form").animate({height: 'toggle' }, 500, function(){
-    $("#dlp").removeClass('dlp-button');
-    $("#dlp").addClass('home-button');
+    $("#dlp").hide();
+    $("#confirm").show();
     $("#form-edit").animate({height: 'toggle' }, 500, function(){
 
     });
@@ -175,8 +175,8 @@ $('#edit').click(function(){
 
 $('#cancel').click(function(){
   $("#form-edit").animate({height: 'toggle' }, 500, function(){
-    $("#dlp").removeClass('home-button');
-    $("#dlp").addClass('dlp-button');
+    $("#confirm").hide();
+    $("#dlp").show();
     $("#form").animate({height: 'toggle' }, 500, function(){
 
     });

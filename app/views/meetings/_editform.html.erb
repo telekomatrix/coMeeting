@@ -33,6 +33,9 @@
       
       <div class="edit_field">
         <b><%= label :time, t("meeting.views.new.text.time.label") %></b><br/>
+        <input id="meeting_time_1i" name="meeting[time(1i)]" type="hidden" value="<%=Time.now.year.to_i %>"/>
+        <input id="meeting_time_2i" name="meeting[time(2i)]" type="hidden" value="<%=Time.now.month.to_i %>"/>
+        <input id="meeting_time_3i" name="meeting[time(3i)]" type="hidden" value="<%=Time.now.day.to_i %>"/>
         <select class="sel_field" id="meeting_time_4i" name="meeting[time(4i)]"> 
           <%= options_for_select(0..23, @meeting.time.hour.to_i) %> 
         </select>
@@ -44,6 +47,9 @@
 
       <div class="edit_field2">
         <b><%= f.label :duration, t("meeting.views.new.text.duration.label") %></b>
+        <input id="meeting_duration_1i" name="meeting[duration(1i)]" type="hidden" value="<%=Time.now.year.to_i %>"/>
+        <input id="meeting_duration_2i" name="meeting[duration(2i)]" type="hidden" value="<%=Time.now.month.to_i %>"/>
+        <input id="meeting_duration_3i" name="meeting[duration(3i)]" type="hidden" value="<%=Time.now.day.to_i %>"/>
         <select class="sel_field" id="meeting_duration_4i" name="meeting[duration(4i)]"> 
           <%= options_for_select('00'..'06', @meeting.duration.hour.to_i) %> 
         </select>
@@ -72,7 +78,7 @@
           <% end %>
 
           <div>
-            <%= text_field_tag :topics, '...', :class => "text_field3", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag :topics, nil, :class => "text_field3", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
           </div>
           <% num = @meeting.topics.size + 1 %>
         </div>
@@ -90,7 +96,7 @@
             <% end %>
           <% end %>
           <div>
-            <%= text_field_tag :participants, '...', :class => "text_field3", :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag :participants, nil, :class => "text_field3", :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
           </div>
           <% num = @meeting.participations.size + 1 %>
         </div>

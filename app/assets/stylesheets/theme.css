@@ -590,6 +590,14 @@ div#effect{
   padding-top:30px;
 }
 
+button#dlp{
+  margin-top:100px;
+}
+
+button#confirm{
+  margin-top:100px;
+}
+
 span.description{
   font-style:italic;
 }
