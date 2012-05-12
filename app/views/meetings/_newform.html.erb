@@ -74,7 +74,7 @@
   </div>
 
   <div class="edit_field">
-    <div id="participantsDiv">
+    <div id="participantsDiv" class="area_scroll">
       <b><%= f.label :participants, t("meeting.views.new.text.participants.label") %></b>
       <div>
         <%= text_field_tag :participants, nil, :class => "text_field3", :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">

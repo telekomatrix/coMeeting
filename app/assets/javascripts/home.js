@@ -9,7 +9,7 @@ $("#new").click(function(e){
         button_text = $("#new").text();
       });
     });*/
-    $("#form").animate({height: 'toggle' }, 700, function(){
+    $("#form").animate({height: 'toggle' }, 800, function(){
         button_text = $("#new").text();
     });
     hidden = false;
@@ -26,7 +26,7 @@ $("#cancel").click(function(e){
     //resetForm($('#new_meeting'));
   }
   else{
-    $("#form").animate({height: 'toggle' }, 700, function(){
+    $("#form").animate({height: 'toggle' }, 800, function(){
         button_text = $("#new").text();
     });
     /*$("#line").toggle(500, function(){

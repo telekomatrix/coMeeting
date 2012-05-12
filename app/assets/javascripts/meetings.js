@@ -164,20 +164,20 @@ $('#participantsDiv img').live('click', function(){
 
 
 $('#edit').click(function(){
-  $("#form").animate({height: 'toggle' }, 500, function(){
+  $("#form").animate({height: 'toggle' }, 800, function(){
     $("#dlp").hide();
     $("#confirm").show();
-    $("#form-edit").animate({height: 'toggle' }, 500, function(){
+    $("#form-edit").animate({height: 'toggle' }, 800, function(){
 
     });
   }); 
 });
 
 $('#cancel').click(function(){
-  $("#form-edit").animate({height: 'toggle' }, 500, function(){
+  $("#form-edit").animate({height: 'toggle' }, 800, function(){
     $("#confirm").hide();
     $("#dlp").show();
-    $("#form").animate({height: 'toggle' }, 500, function(){
+    $("#form").animate({height: 'toggle' }, 800, function(){
 
     });
   }); 

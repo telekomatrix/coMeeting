@@ -1,7 +1,7 @@
 <div id="form" class="form">
   <div id="extra" class="extra">
     <% if @participation.is_admin %>
-      <button type="button" id="edit" class="ent-button"></button>
+      <button type="button" id="edit" class="ent-button clickable"></button>
     <% else %>
       <b><%= t("meeting.views.show.text.presence") %> - </b>
       <% if @participation.is_attending == 1 %>
