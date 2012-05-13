@@ -10,15 +10,15 @@
   </p>
 
   <p>
-    <b><%= t("activerecord.attributes.meeting.date") %>:</b><%= @meeting.date.strftime("%d/%m/%Y") %>
+    <b><%= t("activerecord.attributes.meeting.date") %>:</b><% if !@meeting.date.nil? %><%= @meeting.date.strftime("%d/%m/%Y") %><% end %>
   </p>
 
   <p>
-    <b><%= t("activerecord.attributes.meeting.time") %>:</b><%= @meeting.time.strftime("%1Hh:%Mm") %> <%= @meeting.time_zone %>
+    <b><%= t("activerecord.attributes.meeting.time") %>:</b><% if !@meeting.time.nil? %><%= @meeting.time.strftime("%1Hh:%Mm") %> <%= @meeting.time_zone %><% end %>
   </p>
 
   <p>
-    <b><%= t("activerecord.attributes.meeting.duration") %>:</b><%= @meeting.duration.strftime("%1Hh:%Mm") %>
+    <b><%= t("activerecord.attributes.meeting.duration") %>:</b><% if !@meeting.duration.nil? %><%= @meeting.duration.strftime("%1Hh:%Mm") %><% end %>
   </p>
 
   <% unless @meeting.extra_info.blank? %>

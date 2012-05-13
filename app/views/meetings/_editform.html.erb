@@ -90,9 +90,11 @@
           <b><%= f.label :participants, t("meeting.views.new.text.participants.label") %></b>
           <% if @meeting.participations.size > 0 %>
             <% @meeting.participations.each do |participation| %>
-              <div>
-                <%= text_field_tag :participants, participation.user.email, :class => "text_field3", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
-              </div>
+              <% if !participation.user.email.nil? %>
+                <div>
+                  <%= text_field_tag :participants, participation.user.email, :class => "text_field3", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+                </div>
+              <% end %>
             <% end %>
           <% end %>
           <div>

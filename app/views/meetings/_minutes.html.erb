@@ -1,1 +1,5 @@
-<%= text_area_tag :minutes, @minutes, :disabled => true, :cols =>"40" %>
+<% if @participation.is_admin %>
+	<%= text_area :minutes, nil, :id => 'static_minutes', :value => @minutes, :class => "static_minutes", :onclick => "_idleNow = true;" %>
+<% else %>
+	<%= text_area :minutes, nil, :id => 'minutes', :value => @minutes, :class => "minutes", :disabled => true %>
+<% end %>

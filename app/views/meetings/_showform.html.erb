@@ -18,13 +18,12 @@
   <div id="dirAct" class="dirAct">
     <% if @participation.is_attending != 0 %>
       <p><b><%= t("activerecord.attributes.meeting.minutes") %></b></p>
-      <div id="partialminutes">
-        <% if @participation.is_creator %>
-          <%= text_area_tag :minutes, @minutes, :onclick => "_idleNow = true;", :cols =>"40", :rows =>"20" %>
-        <% else %>
-          <%= render 'minutes' %>
-        <% end %>
+      <div class="inner" id="partialstatic_minutes">
+        <%= render :partial => 'static_minutes' %>
       </div>
+      <div class="inner" id="partialminutes">
+        <%= render :partial => 'minutes' %>
+        </div>
     <% end %>
   </div>
 </div>

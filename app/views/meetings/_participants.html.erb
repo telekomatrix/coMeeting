@@ -1,10 +1,30 @@
-<% unless @meeting.participations.blank? %>
+<% unless @meeting.participations.nil? %>
   <p>
     <b><%= t("meeting.views.show.text.participants") %></b>
   </p>
   <div class="list">
-    <% @meeting.participations.each do |participation| %>
-      <p><%= participation.user.name_formatted %></p>
-    <% end %>
+    <table>
+      <% num = 0 %>
+      <% @meeting.participations.each do |participation| %>
+          <div id="participant_<%=num%>">
+            <tr>
+              <td width="90%"><%= participation.user.name_formatted %></td>
+              <td><a class="action_item"><img src="/assets/icons/script.png" alt="" class="clickable"></a></t>
+              <% if @participation.id != participation.id %>
+                <td><a class="email"><img src="/assets/icons/email.png" alt="" class="clickable"></a></td>
+              <% end %>
+            </tr>
+            <% unless participation.action_items.nil? %>
+              <% participation.action_items.each do |action_item| %>
+                <tr>
+                  <td width="90%"><%= action_item.todo %></td>
+                  <td><%= action_item.deadline %></td>
+                  <td><%= action_item.completed %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </div>
+      <% end %>
+  </table>
   </div>
 <% end %>

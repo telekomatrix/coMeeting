@@ -119,14 +119,28 @@ var topicsDiv = document.getElementById("topicsDiv");
 
 $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
+      $(this).removeClass('text_field_new');
+      $(this).addClass('text_field3');
       var num = parseInt(topicNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field3' name='meeting[topics][]' type='text'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_new' name='meeting[topics][]' type='text' value='add a new topic here'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
     }
   });
+
+$('#topicsDiv div:last-child input').live('click',function(){
+  $(this).val('');
+});
+
+$('#topicsDiv div:last-child input').live('focusout',function(){
+  if($(this).val() == ""){
+    $(this).removeClass('text_field3');
+    $(this).addClass('text_field_new');
+    $(this).val('add a new topic here');
+  }
+});
 
 $('#topicsDiv img').live('click', function(){
   if(topicsDiv.childElementCount > 2){
@@ -144,14 +158,28 @@ var participantsDiv = document.getElementById("participantsDiv");
 
 $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
+      $(this).removeClass('text_field_new');
+      $(this).addClass('text_field3');
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field3' name='participants[]' type='text'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' value='add a new participant here'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       participantsDiv.appendChild(newDiv);
 
       participantNumber.value = num + 1;
     }
   });
+
+$('#participantsDiv div:last-child input').live('click',function(){
+  $(this).val('');
+});
+
+$('#participantsDiv div:last-child input').live('focusout',function(){
+  if($(this).val() == ""){
+    $(this).removeClass('text_field3');
+    $(this).addClass('text_field_new');
+    $(this).val('add a new participant here');
+  }
+});
 
 $('#participantsDiv img').live('click', function(){
   if(participantsDiv.childElementCount > 2){
@@ -161,6 +189,10 @@ $('#participantsDiv img').live('click', function(){
     $(this).prev().val('');
   }
 });
+
+$('.participantDiv img').live('click', function(){
+
+})
 
 
 $('#edit').click(function(){

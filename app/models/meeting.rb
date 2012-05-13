@@ -31,19 +31,19 @@ class Meeting < ActiveRecord::Base
     participants = ""
     action_items = ""
 
-    topics.each do |topic|
+    self.topics.each do |topic|
       topics += "- " + topic + "\n\t"
     end
 
-    participations.each do |participation|
-        participants += "- #{participation.user.name_and_email}".ljust(60)
+    self.participations.each do |participation|
+        participants += "- #{participation.user.name_and_email}".ljust(45)
       
       if participation.is_attending == 0
-        participants += " " + t("pdf.attending.unanswered")
+        participants += " " + I18n.t("pdf.attending.unanswered")
       elsif participation.is_attending == 1
-        participants += " " + t("pdf.attending.attended")
+        participants += " " + I18n.t("pdf.attending.confirmed")
       elsif participation.is_attending == -1
-        participants += " " + t("pdf.attending.not_attended")
+        participants += " " + I18n.t("pdf.attending.declined")
       end
       participants += "\n\t"
       # if !participation.action_item.nil? && !participation.deadline.nil? && !participation.action_item.empty? && !participation.deadline.empty?
@@ -57,19 +57,25 @@ class Meeting < ActiveRecord::Base
     
     minutes = "\ncoMeeting\n" +
       "\n" + subject + "\n" +
-      "\n #{t('pdf.created_by')}: #{creator.name_and_email}\n" +
-      "\n #{t('pdf.location')}: #{location}" +
-      "\n #{t('pdf.date')}: #{date.strftime("%d/%m/%Y")}" +
-      "\n #{t('pdf.time')}: #{time.strftime("%1Hh:%Mm")} #{time_zone}" +
-      "\n #{t('pdf.duration')}: #{duration.strftime("%1Hh:%Mm")}" +
-      "\n #{t('pdf.extra_info')}: #{extra_info}"
+      "\n #{I18n.t('pdf.created_by')}: #{creator.name_and_email}\n" +
+      "\n #{I18n.t('pdf.location')}: #{location}"
+    if !date.nil?
+      minutes += "\n #{I18n.t('pdf.date')}: #{date.strftime("%d/%m/%Y")}"
+    end
+    if !time.nil?
+      minutes += "\n #{I18n.t('pdf.time')}: #{time.strftime("%1Hh:%Mm")} #{time_zone}"
+    end
+    if !duration.nil?
+      minutes += "\n #{I18n.t('pdf.duration')}: #{duration.strftime("%1Hh:%Mm")}"
+    end
+    minutes += "\n #{I18n.t('pdf.extra_info')}: #{extra_info}"
     
 
     
     minutes +=
-      "\n\n\t" + t("pdf.topics") + ":" +
+      "\n\n\t" + I18n.t("pdf.topics") + ":" +
       "\n\t" + topics +
-      "\n\t" + t("pdf.participants") + ":" +
+      "\n\t" + I18n.t("pdf.participants") + ":" +
       "\n\t" + participants # +
     #   "\n\t" + t("actions") + ":" + action_items
       

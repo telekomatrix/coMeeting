@@ -18,10 +18,10 @@ body {
   background-color: -moz-radial-gradient(50% 50%, farthest-side, #fff, #949494); background:-webkit-gradient(radial, 50% 50%, 0, 50% 50%, 800, from(#fff), to(#949494)); background:-o-radial-gradient(#fff, #949494);
   background-repeat:no-repeat;
   background-position:center;
-	background-size: 100% 2000px;
- -o-background-size: 100% 2000px;
- -moz-background-size: 100% 2000px;
- -webkit-background-size: 100% 2000px;
+	background-size: 200%;
+ -o-background-size: 200%;
+ -moz-background-size: 200%;
+ -webkit-background-size: 200%;
   overflow-y: scroll;
   overflow-x: hidden;
 /**background-color:white; **/
@@ -418,10 +418,6 @@ button.button:active, a.button:active {
 	padding-top:10px;
 	padding-left:20px;
 	padding-right:20px;
-	
-
-	
-	
 }
 .dirAct{
 	position:absolute;
@@ -457,11 +453,8 @@ button.button:active, a.button:active {
 	padding-top:10px;
 	padding-left:20px;
 	padding-right:20px;
-	
-
-	
-	
 }
+
 .meioForm{
 	position:absolute;
 	top:40px;
@@ -498,24 +491,38 @@ button.button:active, a.button:active {
 	margin-bottom:5px;
 	
 }
-.text_field2{
-	/*text_field a escrever*/
+
+.text_field_new{
+	/*text_field antes de escrever*/
 	height:20px;
-	background-color:#F8F8F8;
-	border: 1px solid #888;
+	/*background-color:#F8F8F8;*/
 	width:182px;
-	margin-bottom:0px;
-	margin-top:5px;
-	
+  margin-right:15px;
+	margin-bottom:5px;
+	margin-top:0px;
+  font-style:italic;
+  font-size:8pt;
 }
+
 .text_field3{
 	/*text_field nao selecionado*/
 	height:20px;
 	background-color:transparent;
 	width:182px;
-	margin-bottom:0px;
+	margin-bottom:5px;
   margin-right:15px;
 	
+}
+
+.text_field4{
+  /*text_field nao selecionado*/
+  height:20px;
+  background-color:transparent;
+  width:182px;
+  margin-bottom:0px;
+  margin-right:15px;
+  border-bottom: 1px solid #888;
+  
 }
 
 .text_area{
@@ -593,15 +600,27 @@ button.dlp-button {
 	background-color:transparent;
 }
 
+textarea.static_minutes{
+ resize: none;
+ width:560px;
+ height:245px;
+ overflow-y: auto;
+ background-color:#F8F8F8;
+ border: 1px solid #888;
+ /*margin-top:5px;
+ margin-bottom:5px;*/
+ font-size:8pt;
+}
+
 textarea#minutes{
  resize: none;
  width:560px;
- height:490px;
- overflow-y: hidden;
- background-color:#F8F8F8;
+ height:245px;
+ overflow-y: scroll;
  border: 1px solid #888;
- margin-top:5px;
- margin-bottom:5px;
+ /*margin-top:5px;
+ margin-bottom:5px;*/
+ font-size:8pt;
 }
 
 div.list{
@@ -620,8 +639,12 @@ div.edit_field2{
 }
 
 div#effect{
-  margin-top:70px;
-  padding-top:30px;
+  /*margin-top:70px;*/
+  padding-top:100px;
+}
+
+div#flash_effect{
+  margin-top:35px;
 }
 
 button#dlp{

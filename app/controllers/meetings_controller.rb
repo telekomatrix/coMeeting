@@ -14,6 +14,7 @@ class MeetingsController < ApplicationController
     else
       @meeting = @participation.meeting
       @minutes = @meeting.minutes
+      @static_minutes = @meeting.static_minutes
     end
   end
 
@@ -25,7 +26,9 @@ class MeetingsController < ApplicationController
 
 
   def create
-    params[:meeting][:topics].reject!( &:blank? )
+    params[:meeting][:topics].reject!( &:blank?)
+    params[:meeting][:topics].reject! { |s| s == 'add a new topic here' }
+    params[:participants].reject! { |s| s == 'add a new participant here' }
 
     @meeting = Meeting.new(params[:meeting])
     # maybe you need @creator here
@@ -84,6 +87,7 @@ class MeetingsController < ApplicationController
   def update
     participation = Participation.find_by_link(params[:id])
     if participation.nil?
+      puts '0aaaaaaaaaaaaa'
       flash[:error] = t("meeting.controller.update.error.notfound")
       redirect_to root_path
     elsif !participation.is_admin
@@ -96,6 +100,8 @@ class MeetingsController < ApplicationController
 
       params[:meeting][:topics].reject!( &:blank? )
       params[:participants].reject!( &:blank? )
+      params[:meeting][:topics].reject! { |s| s == 'add a new topic here' }
+      params[:participants].reject! { |s| s == 'add a new participant here' }
 
       @meeting.participations.each do |participation|
         unless params[:participants].include?(participation.user.email)
@@ -175,7 +181,6 @@ class MeetingsController < ApplicationController
       send_file my_file
     end
   end
-
 
   # def update_action_item
   #   participation = Participation.find_by_id(params[:id])
