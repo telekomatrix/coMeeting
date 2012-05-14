@@ -83,7 +83,7 @@ ul {
   position:absolute;
   top:40px;
   right:-20px;
-  /*background-color:#949494;*/
+  background-color:transparent;
   border:1px solid;
   border-radius:6px;
   -moz-border-radius:6px;

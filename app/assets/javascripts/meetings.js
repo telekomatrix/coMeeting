@@ -115,7 +115,9 @@ $('#attending a').click(function(){
 
 var topicNumber = document.getElementById('topicNumber');
 var topicsDiv = document.getElementById("topicsDiv");
-
+/* FIX ME - MARTELADAS */
+var localeTopic = null;
+var localeParticipant = null;
 
 $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
@@ -123,7 +125,7 @@ $('#topicsDiv div:last-child input').live('keyup', function(){
       $(this).addClass('text_field3');
       var num = parseInt(topicNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_new' name='meeting[topics][]' type='text' value='add a new topic here'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_new' name='meeting[topics][]' type='text' value='" + localeTopic + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
@@ -131,6 +133,10 @@ $('#topicsDiv div:last-child input').live('keyup', function(){
   });
 
 $('#topicsDiv div:last-child input').live('click',function(){
+  if(localeTopic == null){
+    localeTopic = $(this).val();
+    alert(localeTopic);
+  }
   $(this).val('');
 });
 
@@ -162,7 +168,7 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
       $(this).addClass('text_field3');
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' value='add a new participant here'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' value='" + localeParticipant + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       participantsDiv.appendChild(newDiv);
 
       participantNumber.value = num + 1;
@@ -170,6 +176,9 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
   });
 
 $('#participantsDiv div:last-child input').live('click',function(){
+  if(localeParticipant == null){
+    localeParticipant = $(this).val();
+  }
   $(this).val('');
 });
 

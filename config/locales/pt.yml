@@ -100,8 +100,10 @@ pt:
             label:                              "Outras informações"
           topics:
             label:                              "Tópicos"
+            help:                               "Adicione um novo tópico aqui"
           participants:
             label:                              "Participantes"
+            help:                               "Adicione um novo participante aqui"
           or:                                   "ou"
         buttons:
           create:                               "Criar"
