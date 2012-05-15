@@ -1,13 +1,13 @@
 <button type="button" id="cancel" class="x-button"></button>
 <div id="esqForm" class="esqForm">
   <div class="edit_field">
-    <b><%= label_tag :name, t("meeting.views.new.text.name.label"), :class=> 'cenas' %>*</b>
+    <b><%= label_tag "creator_name", t("meeting.views.new.text.name.label"), :class=> 'cenas' %>*</b>
     <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field" %>
     <span class="description"><i><%= t("meeting.views.new.text.name.description") %></i></span>
   </div>
   
   <div class="edit_field">
-    <b><%= label_tag :email, t("meeting.views.new.text.email.label") %>*</b>
+    <b><%= label_tag "creator_email", t("meeting.views.new.text.email.label") %>*</b>
     <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field" %>
     <span class="description"><i><%= t("meeting.views.new.text.email.description") %></i></span>
   </div>
@@ -30,7 +30,7 @@
   </div>
   
   <div class="edit_field">
-    <b><%= label :time, t("meeting.views.new.text.time.label") %></b><br/>
+    <b><%= label_tag "meeting_time_4i", t("meeting.views.new.text.time.label") %></b><br/>
     <input id="meeting_time_1i" name="meeting[time(1i)]" type="hidden" value="<%=Time.now.year.to_i %>"/>
     <input id="meeting_time_2i" name="meeting[time(2i)]" type="hidden" value="<%=Time.now.month.to_i %>"/>
     <input id="meeting_time_3i" name="meeting[time(3i)]" type="hidden" value="<%=Time.now.day.to_i %>"/>
@@ -44,7 +44,7 @@
   </div>
 
   <div class="edit_field2">
-    <b><%= f.label :duration, t("meeting.views.new.text.duration.label") %></b>
+    <b><%= label_tag "meeting_duration_4i", t("meeting.views.new.text.duration.label") %></b>
     <input id="meeting_duration_1i" name="meeting[duration(1i)]" type="hidden" value="<%=Time.now.year.to_i %>"/>
     <input id="meeting_duration_2i" name="meeting[duration(2i)]" type="hidden" value="<%=Time.now.month.to_i %>"/>
     <input id="meeting_duration_3i" name="meeting[duration(3i)]" type="hidden" value="<%=Time.now.day.to_i %>"/>
@@ -67,7 +67,7 @@
     <b><%= f.label :topics, t("meeting.views.new.text.topics.label") %></b>
     <div id="topicsDiv" class="area_scroll">
       <div>
-        <%= text_field_tag :topics, nil, :value => t("meeting.views.new.text.topics.help"), :class => "text_field_new", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+        <%= text_field_tag "meeting_topics", t("meeting.views.new.text.topics.help"), :class => "text_field_new", :name => "meeting[topics][]", :size => "30" %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
       </div>
     </div>
     <input type="hidden" id="topicNumber" value="1" />
@@ -77,7 +77,7 @@
     <b><%= f.label :participants, t("meeting.views.new.text.participants.label") %></b>
     <div id="participantsDiv" class="area_scroll">
       <div>
-        <%= text_field_tag :participants, nil, :value => t("meeting.views.new.text.participants.help") , :class => "text_field_new", :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+        <%= text_field_tag "meeting_participants", t("meeting.views.new.text.participants.help"), :class => "text_field_new", :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
       </div>
     </div>
     <input type="hidden" id="participantNumber" value="1" />

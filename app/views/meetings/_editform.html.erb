@@ -3,13 +3,13 @@
     <div id="esqForm" class="esqForm">
       
       <div class="edit_field">
-        <b><%= label_tag :name, t("meeting.views.new.text.name.label"), :class=> 'cenas' %>*</b>
+        <b><%= label_tag "creator_name", t("meeting.views.new.text.name.label"), :class=> 'cenas' %>*</b>
         <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field", :value => @participation.user.name %>
         <span class="description"><i><%= t("meeting.views.new.text.name.description") %></i></span>
       </div>
       
       <div class="edit_field">
-        <b><%= label_tag :email, t("meeting.views.new.text.email.label") %>*</b>
+        <b><%= label_tag "creator_email", t("meeting.views.new.text.email.label") %>*</b>
         <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field", :value => @participation.user.email %>
         <span class="description"><i><%= t("meeting.views.new.text.email.description") %></i></span>
       </div>
@@ -77,7 +77,7 @@
           <% end %>
 
           <div>
-            <%= text_field_tag :topics, nil, :class => "text_field_new", :value => t("meeting.views.new.text.topics.help"), :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag "meeting_topics", t("meeting.views.new.text.topics.help"), :class => "text_field_new", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
           </div>
           <% num = @meeting.topics.size + 1 %>
         </div>
@@ -97,7 +97,7 @@
             <% end %>
           <% end %>
           <div>
-            <%= text_field_tag :participants, nil, :class => "text_field_new", :value => t("meeting.views.new.text.participants.help"), :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag "meeting_participants", t("meeting.views.new.text.participants.help"), :name => "participants[]", :class => "text_field_new" %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
           </div>
           <% num = @meeting.participations.size + 1 %>
         </div>
