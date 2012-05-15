@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  #before_filter :authenticate, :only => [:index]
+  before_filter :authenticate, :only => [:index]
 
   def index
     @meetings = Meeting.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
