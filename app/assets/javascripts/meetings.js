@@ -135,7 +135,6 @@ $('#topicsDiv div:last-child input').live('keyup', function(){
 $('#topicsDiv div:last-child input').live('click',function(){
   if(localeTopic == null){
     localeTopic = $(this).val();
-    alert(localeTopic);
   }
   $(this).val('');
 });
@@ -144,7 +143,7 @@ $('#topicsDiv div:last-child input').live('focusout',function(){
   if($(this).val() == ""){
     $(this).removeClass('text_field3');
     $(this).addClass('text_field_new');
-    $(this).val('add a new topic here');
+    $(this).val(localeTopic);
   }
 });
 
@@ -170,7 +169,6 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
       var newDiv = document.createElement('div');
       newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' value='" + localeParticipant + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       participantsDiv.appendChild(newDiv);
-
       participantNumber.value = num + 1;
     }
   });
@@ -186,7 +184,7 @@ $('#participantsDiv div:last-child input').live('focusout',function(){
   if($(this).val() == ""){
     $(this).removeClass('text_field3');
     $(this).addClass('text_field_new');
-    $(this).val('add a new participant here');
+    $(this).val(localeParticipant);
   }
 });
 
