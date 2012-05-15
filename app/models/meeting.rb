@@ -36,7 +36,7 @@ class Meeting < ActiveRecord::Base
     end
 
     self.participations.each do |participation|
-        participants += "- #{participation.user.name_and_email}".ljust(45)
+      participants += "- #{participation.user.name_and_email}".ljust(45)
       
       if participation.is_attending == 0
         participants += " " + I18n.t("pdf.attending.unanswered")
