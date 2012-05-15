@@ -27,8 +27,8 @@ class MeetingsController < ApplicationController
 
   def create
     params[:meeting][:topics].reject!( &:blank?)
-    params[:meeting][:topics].reject! { |s| s == 'add a new topic here' }
-    params[:participants].reject! { |s| s == 'add a new participant here' }
+    params[:meeting][:topics].reject! { |s| s == 'Add a new topic here' }
+    params[:participants].reject! { |s| s == 'Add a new participant here' }
 
     @meeting = Meeting.new(params[:meeting])
     # maybe you need @creator here
