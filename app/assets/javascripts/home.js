@@ -34,4 +34,3 @@ function resetForm($form){
   $form.find('input:radio, input:checkbox')
        .removeAttr('checked').removeAttr('selected');
 };
-
