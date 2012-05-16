@@ -6,7 +6,7 @@ $(document).ready(function() {
   }
   
   $('#drop-button').click(function(){
-    $('#bubble').fadeToggle();
+    $('#options').fadeToggle();
   });
 
   $('#drop-menu').hover(function(){ 
@@ -16,7 +16,7 @@ $(document).ready(function() {
   });
 
   $("body").mouseup(function(){ 
-    if(mouse_is_outside) $('#bubble').fadeOut();
+    if(mouse_is_outside) $('#options').fadeOut();
   });
 });
 

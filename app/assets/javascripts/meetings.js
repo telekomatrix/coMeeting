@@ -203,21 +203,20 @@ $('.participantDiv img').live('click', function(){
 
 
 $('#edit').click(function(){
-  $("#form").animate({height: 'toggle' }, 800, function(){
+  $("#form").slideUp(800, function(){
     $("#dlp").hide();
     $("#confirm").show();
-    $("#form-edit").animate({height: 'toggle' }, 800, function(){
+    $("#form-edit").slideDown(800, function(){
 
     });
   }); 
 });
 
 $('#cancel').click(function(){
-  $("#form-edit").animate({height: 'toggle' }, 800, function(){
+  $("#form-edit").slideUp(800, function(){
     $("#confirm").hide();
     $("#dlp").show();
-    $("#form").animate({height: 'toggle' }, 800, function(){
-
+    $("#form").slideDown(800, function(){
     });
   }); 
 });
