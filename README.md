@@ -14,3 +14,4 @@ Projecto no âmbito das disciplinas OCCI e IHC. Realizado por:
 * Datepicker
 * Adicionar e **remover** action items
 * Footer
+* Get updating minutes to work
