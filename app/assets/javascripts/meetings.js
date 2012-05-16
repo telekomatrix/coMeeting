@@ -20,19 +20,17 @@ $(document).ready(function() {
   //   });
   // }
   
-  creator = $('#creator').val();
-  if (creator != undefined){
-    participation_id = $('input#token').val();
+  if (is_creator != undefined){
+    // $('#minutes')
+    // .autoResize({
+    //   maxHeight: 500,
+    //   minHeight: 490,
+    //   maxWidth: 560,
+    //   minWidth: 560
+    // });
+    // I guess if everything has a fixed size then this is not needed?
 
-    $('#minutes')
-    .autoResize({
-      maxHeight: 500,
-      minHeight: 490,
-      maxWidth: 560,
-      minWidth: 560
-    });
-
-    if (creator == 'true') {
+    if (is_creator == 'true') {
       _initMinutesListener();
       $('#minutes').tabby();
     }

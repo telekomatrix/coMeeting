@@ -10,7 +10,6 @@
 //= require global
 //= require translations
 //= require datepicker
-//= require datepicker2
 //= require home
 //= require meetings
 //= require textarea
