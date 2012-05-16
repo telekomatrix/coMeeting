@@ -7,3 +7,10 @@ Projecto no âmbito das disciplinas OCCI e IHC. Realizado por:
 * João Cunha
 * João Barbosa
 * José Maria Cunha
+
+# TODO
+
+* Botões com imagens não são traduzidos
+* Datepicker
+* Adicionar e **remover** action items
+* Footer
