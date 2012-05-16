@@ -5,6 +5,7 @@ $("#new").click(function(e){
   if (hidden){
     $("#form").slideDown(800, function(){
         button_text = $("#new").text();
+        $(this).find('input').filter(':first').focus();
     });
     hidden = false;
     e.preventDefault();
@@ -16,21 +17,18 @@ $("#new").click(function(e){
 
 
 $("#cancel").click(function(e){
-  if (hidden){
-    //resetForm($('#new_meeting'));
-  }
-  else{
+  if (!hidden){
     $("#form").slideUp(800, function(){
         button_text = $("#new").text();
     });
-    //resetForm($('#new_meeting'));
     hidden = true;
   }
+  //resetForm($('#new_meeting'));
   e.preventDefault();
 });
 
 function resetForm($form){
   $form.find('input:text, input:password, input:file, select').val('');
   $form.find('input:radio, input:checkbox')
-       .removeAttr('checked').removeAttr('selected');
+    .removeAttr('checked').removeAttr('selected');
 };
