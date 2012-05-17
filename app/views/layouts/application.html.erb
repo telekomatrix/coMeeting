@@ -27,7 +27,7 @@
     <div id="user-navigation">
       <div id="drop-menu">
         <%= image_tag "/assets/icons/globe.png", :alt => "Change Language", :id => "drop-button", :class => "clickable" %>
-        <div id="bubble" style="display:none">
+        <div id="options" class="" style="display:none">
           <ul id="drop-items">
             <li><%= link_to "English", url_for( :locale => "en" ) %></li>
             <li><%= link_to "Portugu&#234;s".html_safe, url_for( :locale => "pt" ) %></li>

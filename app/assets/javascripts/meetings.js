@@ -19,19 +19,17 @@ $(document).ready(function() {
   //   });
   // }
   
-  creator = $('#creator').val();
-  if (creator != undefined){
-    participation_id = $('input#token').val();
+  if (is_creator != undefined){
+    // $('#minutes')
+    // .autoResize({
+    //   maxHeight: 500,
+    //   minHeight: 490,
+    //   maxWidth: 560,
+    //   minWidth: 560
+    // });
+    // I guess if everything has a fixed size then this is not needed?
 
-    $('#minutes')
-    .autoResize({
-      maxHeight: 500,
-      minHeight: 490,
-      maxWidth: 560,
-      minWidth: 560
-    });
-
-    if (creator == 'true') {
+    if (is_creator == 'true') {
       _initMinutesListener();
       $('#minutes').tabby();
     }
@@ -122,7 +120,7 @@ $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(topicNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_new' name='meeting[topics][]' type='text' placeholder='" + t[locale]['new_topic'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_no_border' name='meeting[topics][]' type='text' placeholder='" + t[locale]['new_topic'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
@@ -147,7 +145,7 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       participantsDiv.appendChild(newDiv);
       participantNumber.value = num + 1;
     }
@@ -168,23 +166,22 @@ $('.participantDiv img').live('click', function(){
 
 
 $('#edit').click(function(){
-  $("#form").animate({height: 'toggle' }, 800, function(){
+  $("#form").slideUp(800, function(){
     $("#dlp").hide();
     $("#confirm").removeClass('home-button');
     $("#confirm").addClass('confirm-button');
     $("#confirm").show();
-    $("#form-edit").animate({height: 'toggle' }, 800, function(){
+    $("#form-edit").slideDown(800, function(){
 
     });
   });
 });
 
 $('#cancel').click(function(){
-  $("#form-edit").animate({height: 'toggle' }, 800, function(){
+  $("#form-edit").slideUp(800, function(){
     $("#confirm").hide();
     $("#dlp").show();
-    $("#form").animate({height: 'toggle' }, 800, function(){
-
+    $("#form").slideDown(800, function(){
     });
   }); 
 });

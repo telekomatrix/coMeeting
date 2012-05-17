@@ -79,10 +79,14 @@ ul {
   cursor:pointer;
 }
 
-#bubble {
+#options {
   position:absolute;
   top:40px;
   right:-20px;
+  background-color:transparent;
+}
+
+.bubble {
   background-color:#AFAFAF;
   border:1px solid;
   border-radius:6px;
@@ -90,7 +94,7 @@ ul {
   -webkit-border-radius:6px;
 }
 
-#bubble:before {
+.bubble:before {
   content:' ';
   position:absolute;
   width:0;
@@ -101,8 +105,8 @@ ul {
   border-color:transparent transparent #000000 transparent;
 }
 
-#bubble:after {
-  content: ' ';
+.bubble:after {
+  content:' ';
   position:absolute;
   width:0;
   height:0;
@@ -502,37 +506,13 @@ button.button:active, a.button:active {
 	
 }
 
-.text_field_new{
-	/*text_field antes de escrever*/
-	height:20px;
-	/*background-color:#F8F8F8;*/
-	width:182px;
-  margin-right:15px;
-	margin-bottom:5px;
-	margin-top:0px;
-  font-style:italic;
-  font-size:8pt;
-}
-
-.text_field3{
-	/*text_field nao selecionado*/
+.text_field_no_border{
 	height:20px;
 	background-color:transparent;
 	width:182px;
 	margin-bottom:5px;
   margin-right:15px;
 	
-}
-
-.text_field4{
-  /*text_field nao selecionado*/
-  height:20px;
-  background-color:transparent;
-  width:182px;
-  margin-bottom:0px;
-  margin-right:15px;
-  border-bottom: 1px solid #888;
-  
 }
 
 .text_area{

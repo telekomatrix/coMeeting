@@ -1,5 +1,5 @@
 class MeetingsController < ApplicationController
-  #before_filter :authenticate, :only => [:index]
+  before_filter :authenticate, :only => [:index]
 
   def index
     @meetings = Meeting.order('created_at DESC').paginate(:page => params[:page], :per_page => 20)
@@ -98,8 +98,6 @@ class MeetingsController < ApplicationController
 
       params[:meeting][:topics].reject!( &:blank? )
       params[:participants].reject!( &:blank? )
-      params[:meeting][:topics].reject! { |s| s == 'add a new topic here' }
-      params[:participants].reject! { |s| s == 'add a new participant here' }
 
       @meeting.participations.each do |participation|
         unless params[:participants].include?(participation.user.email)
@@ -150,6 +148,8 @@ class MeetingsController < ApplicationController
     participation = Participation.find_by_link(params[:id])
 
     if !participation.nil? && participation.is_creator
+      puts 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+      puts params
       participation.meeting.update_attribute(:minutes, params[:minutes])
     end
 
@@ -179,19 +179,4 @@ class MeetingsController < ApplicationController
       send_file my_file
     end
   end
-
-  # def update_action_item
-  #   participation = Participation.find_by_id(params[:id])
-
-  #   participation.update_attributes(:action_item => params[:action_item], :deadline => params[:deadline])
-        
-  #   @static_minutes = participation.meeting.static_minutes
-
-  #   respond_to do |format|
-  #    format.js
-  #   end
-  #   # render :js ?
-  #   # Aqui não é preciso meter respond_to nem render :js. Isto vai automaticamente ao ficheiro com o nome desta action
-  # end
-
 end

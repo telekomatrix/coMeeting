@@ -9,5 +9,8 @@
 <% end %>
 
 
-<%= hidden_field_tag :token, @participation.link %>
-<%= hidden_field_tag :creator, @participation.is_creator %>
+<%= javascript_tag do %>
+  window.is_creator = "<%= @participation.is_creator %>";
+  window.participation_id = "<%= @participation.link %>";
+  window.locale = "<%= locale %>";
+<% end %>
