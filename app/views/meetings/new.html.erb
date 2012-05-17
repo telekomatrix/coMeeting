@@ -12,4 +12,6 @@
   <% end %>
 </div>
 
-<%= hidden_field_tag :locale, locale %>         <%# for the calendar translation %>
+<%= javascript_tag do %>
+  window.locale = "<%= locale %>";
+<% end %>

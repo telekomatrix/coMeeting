@@ -3,28 +3,25 @@
     <b><%= t("meeting.views.show.text.participants") %></b>
   </p>
   <div class="list">
-    <table>
       <% num = 0 %>
       <% @meeting.participations.each do |participation| %>
           <div id="participant_<%=num%>">
-            <tr>
-              <td width="90%"><%= participation.user.name_formatted %></td>
-              <td><a class="action_item"><img src="/assets/icons/script.png" alt="" class="clickable"></a></t>
-              <% if @participation.id != participation.id %>
-                <td><a class="email"><img src="/assets/icons/email.png" alt="" class="clickable"></a></td>
-              <% end %>
-            </tr>
-            <% unless participation.action_items.nil? %>
+            <%= participation.user.name_formatted %>
+            <% if @participation.id != participation.id %>
+              <a class="action_item"><img src="/assets/buttons/button-actions.png" alt="" class="clickable"></a>
+              <a class="email"><img src="/assets/buttons/button-email.png" alt="" class="clickable"></a>
+            <% else %>
+              <a class="action_item"><img src="/assets/buttons/button-actions.png" alt="" class="clickable"></a>
+            <% end %>
+            <!--<% unless participation.action_items.nil? %>
               <% participation.action_items.each do |action_item| %>
-                <tr>
-                  <td width="90%"><%= action_item.todo %></td>
-                  <td><%= action_item.deadline %></td>
-                  <td><%= action_item.completed %></td>
+                  <%= action_item.todo %>
+                  <%= action_item.deadline %>
+                  <%= action_item.completed %>
                 </tr>
               <% end %>
-            <% end %>
+            <% end %>-->
           </div>
       <% end %>
-  </table>
   </div>
 <% end %>

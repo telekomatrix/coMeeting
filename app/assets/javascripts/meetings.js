@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
   // locale = $('#locale').val();
 
   // if (locale != undefined){
@@ -121,31 +120,14 @@ var localeParticipant = null;
 
 $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
-      $(this).removeClass('text_field_new');
-      $(this).addClass('text_field3');
       var num = parseInt(topicNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_new' name='meeting[topics][]' type='text' value='" + localeTopic + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_new' name='meeting[topics][]' type='text' placeholder='" + t[locale]['new_topic'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
     }
   });
-
-$('#topicsDiv div:last-child input').live('click',function(){
-  if(localeTopic == null){
-    localeTopic = $(this).val();
-  }
-  $(this).val('');
-});
-
-$('#topicsDiv div:last-child input').live('focusout',function(){
-  if($(this).val() == ""){
-    $(this).removeClass('text_field3');
-    $(this).addClass('text_field_new');
-    $(this).val(localeTopic);
-  }
-});
 
 $('#topicsDiv img').live('click', function(){
   if(topicsDiv.childElementCount > 2){
@@ -163,30 +145,13 @@ var participantsDiv = document.getElementById("participantsDiv");
 
 $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
-      $(this).removeClass('text_field_new');
-      $(this).addClass('text_field3');
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' value='" + localeParticipant + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_new' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
       participantsDiv.appendChild(newDiv);
       participantNumber.value = num + 1;
     }
   });
-
-$('#participantsDiv div:last-child input').live('click',function(){
-  if(localeParticipant == null){
-    localeParticipant = $(this).val();
-  }
-  $(this).val('');
-});
-
-$('#participantsDiv div:last-child input').live('focusout',function(){
-  if($(this).val() == ""){
-    $(this).removeClass('text_field3');
-    $(this).addClass('text_field_new');
-    $(this).val(localeParticipant);
-  }
-});
 
 $('#participantsDiv img').live('click', function(){
   if(participantsDiv.childElementCount > 2){
@@ -205,11 +170,13 @@ $('.participantDiv img').live('click', function(){
 $('#edit').click(function(){
   $("#form").animate({height: 'toggle' }, 800, function(){
     $("#dlp").hide();
+    $("#confirm").removeClass('home-button');
+    $("#confirm").addClass('confirm-button');
     $("#confirm").show();
     $("#form-edit").animate({height: 'toggle' }, 800, function(){
 
     });
-  }); 
+  });
 });
 
 $('#cancel').click(function(){
@@ -220,4 +187,17 @@ $('#cancel').click(function(){
 
     });
   }); 
+});
+
+$('#edite').click(function(){
+  alert('a');
+  if( $('span#presence').val() == "Going"){
+    $('span#presence').val('Not Going');
+  }
+  else if($('#presence').val() == "Not Going"){
+    $('span#presence').val('Going'); 
+  }
+  else{
+    $('span#presence').val('Going'); 
+  }
 });

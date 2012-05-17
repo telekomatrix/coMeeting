@@ -6,13 +6,12 @@
   </div>
 
   <div id="effect">
-  	<button type="submit" id="new" class="home-button"></button>
+    <button type="submit" id="new" class="home-button"></button>
   </div>
-
   <button type="button" id="cancel" class="home-button" style="display:none;">X</button>
-
 
 <% end %>
 
-
-<%= hidden_field_tag :locale, locale %>         <%# for the calendar translation %>    
+<%= javascript_tag do %>
+  window.locale = "<%= locale %>";
+<% end %>

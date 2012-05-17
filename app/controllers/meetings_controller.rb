@@ -27,8 +27,7 @@ class MeetingsController < ApplicationController
 
   def create
     params[:meeting][:topics].reject!( &:blank?)
-    params[:meeting][:topics].reject! { |s| s == 'add a new topic here' }
-    params[:participants].reject! { |s| s == 'add a new participant here' }
+    params[:participants].reject!( &:blank?)
 
     @meeting = Meeting.new(params[:meeting])
     # maybe you need @creator here
@@ -46,11 +45,9 @@ class MeetingsController < ApplicationController
         cp.save
 
         params[:participants].each do |email|
-          unless email.blank?
-            user = User.find_or_create_by_email(email)
-            participation = @meeting.participations.create(:user_id => user.id)
-            UserMailer.invite(@creator.name_formatted, participation).deliver
-          end
+          user = User.find_or_create_by_email(email)
+          participation = @meeting.participations.create(:user_id => user.id)
+          UserMailer.invite(@creator.name_formatted, participation).deliver
         end
 
         if @creator.email.blank?
@@ -93,6 +90,8 @@ class MeetingsController < ApplicationController
       flash[:error] = t("meeting.controller.update.error.notauthorized")
       redirect_to root_path
     else
+      participation.user.update_attribute(:name, params[:creator][:name])
+
       @meeting = participation.meeting
 
       admin_name = participation.user.name_formatted
