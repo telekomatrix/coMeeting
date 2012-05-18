@@ -30,4 +30,8 @@ CoMeeting::Application.configure do
   
   # Sets the correct host for emails
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # With :test, the email will not be delivered.
+  # Instead, it will be appended to an array (accessible via the attribute ActionMailer::Base.deliveries).
+  config.action_mailer.delivery_method = :smtp
 end

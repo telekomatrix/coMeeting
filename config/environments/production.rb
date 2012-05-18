@@ -68,4 +68,7 @@ CoMeeting::Application.configure do
 
   # Sets the correct host for emails
   config.action_mailer.default_url_options = { :host => 'comeeting.herokuapp.com' }
+
+  # Action Mailer will attempt to deliver email using this option. Another method is :sendmail
+  config.action_mailer.delivery_method = :smtp
 end
