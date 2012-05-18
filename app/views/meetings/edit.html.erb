@@ -1,5 +1,5 @@
 <div>
-  <%= form_for @meeting, :url => meeting_path(@participation.link), :html => { :class => :form } do |f| %>
+  <%= form_for @meeting, :url => meeting_path(@participation.link), :html => { :class => "" } do |f| %>
     
     <%= render :partial => "editform", :locals => {:f => f} %>
 
@@ -12,4 +12,8 @@
   <% end %>
 </div>
 
-<%= hidden_field_tag :locale, locale %>         <%# for the calendar translation %>
+<%= javascript_tag do %>
+  window.is_creator = "<%= @participation.is_creator %>";
+  window.participation_id = "<%= @participation.link %>";
+  window.locale = "<%= locale %>";
+<% end %>

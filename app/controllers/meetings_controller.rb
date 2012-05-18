@@ -92,6 +92,8 @@ class MeetingsController < ApplicationController
       flash[:error] = t("meeting.controller.update.error.notauthorized")
       redirect_to root_path
     else
+      participation.user.update_attribute(:name, params[:creator][:name])
+
       @meeting = participation.meeting
 
       admin_name = participation.user.name_formatted
@@ -100,7 +102,7 @@ class MeetingsController < ApplicationController
       params[:participants].reject!( &:blank? )
 
       @meeting.participations.each do |participation|
-        unless params[:participants].include?(participation.user.email)
+        unless params[:participants].include?(participation.user.email) || (participation.is_admin)
           participation.destroy
         end
       end

@@ -1,14 +1,9 @@
 <div id="form" class="form">
   <div id="extra" class="extra">
     <% if @participation.is_admin %>
-      <button type="button" id="edit" class="ent-button clickable"></button>
+      <%= render 'admin_buttons' %>
     <% else %>
-      <b><%= t("meeting.views.show.text.presence") %> - </b>
-      <% if @participation.is_attending == 1 %>
-        <%= t("meeting.views.show.text.attending.confirm", :default=> "Attending") %>
-      <% elsif @participation.is_attending == -1 %>
-        <%= t("meeting.views.show.text.attending.decline", :default=> "Not Attending") %>
-      <% end %>
+      <%= render 'participant_buttons' %>
     <% end %>
   </div>
   <div id="esqAct" class="esqAct">

@@ -7,45 +7,10 @@
 
   <button type="submit" id="confirm" class="home-button" style="display:none;"></button>
 <% end %>
-  
-<!--<% if @participation.is_admin %>
-  
-    <%= render 'admin_buttons' %>
-    
-<% else %>
 
-    <%= render 'participant_buttons' %>
-
-<% end %>
-</div>
-
-<div>
-
-  <%= render 'fields' %>
-
-</div>
-
-<%= render 'topics' %>
-
-<%= render 'participants' %>
-
-<% if @participation.is_attending != 0 %>
-  <div id="partialminutes">
-
-    <% if @participation.is_creator %>
-      <%= text_area_tag :minutes, @minutes, :onclick => "_idleNow = true;", :cols =>"40" %>
-    <% else %>
-      <%= render 'minutes' %>
-    <% end %>
-
-  </div>
-
-  <div>
-    <%= link_to image_tag("/assets/icons/application_edit.png", :alt => "")+ " " + t("meeting.pdf"), download_pdf_path(@participation.link) %>
-  </div>-->
-<% end %>
 
 <%= javascript_tag do %>
   window.is_creator = "<%= @participation.is_creator %>";
   window.participation_id = "<%= @participation.link %>";
+  window.locale = "<%= locale %>";
 <% end %>

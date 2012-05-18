@@ -3,23 +3,22 @@
     <div id="esqForm" class="esqForm">
       
       <div class="edit_field">
-        <b><%= label_tag "creator_name", t("meeting.views.new.text.name.label"), :class=> 'cenas' %>*</b>
+        <b><%= label_tag "creator_name", t("meeting.views.new.text.name.label") %>*</b>
         <%= text_field_tag :name, nil, :id => "creator_name", :name => "creator[name]", :class => "text_field", :value => @participation.user.name %>
         <span class="description"><i><%= t("meeting.views.new.text.name.description") %></i></span>
       </div>
       
       <div class="edit_field">
         <b><%= label_tag "creator_email", t("meeting.views.new.text.email.label") %>*</b>
-        <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field", :value => @participation.user.email %>
-        <span class="description"><i><%= t("meeting.views.new.text.email.description") %></i></span>
+        <%= email_field_tag :email, nil, :id => "creator_email", :name => "creator[email]", :class => "text_field", :value => @participation.user.email, :disabled => true %>
       </div>
       
-      <div class="edit_field">
+      <div class="edit_field3">
         <b><%= f.label :subject, t("meeting.views.new.text.subject.label") %></b>
         <%= f.text_field :subject, :class => "text_field" %>
       </div>
       
-      <div class="edit_field">
+      <div class="edit_field4">
         <b><%= f.label :location, t("meeting.views.new.text.location.label") %></b>
         <%= f.text_field :location, :class => "text_field" %>
       </div>
@@ -54,7 +53,7 @@
           <%= options_for_select('00'..'06', @meeting.duration.hour.to_i) %> 
         </select>
         <select class="sel_field" id="meeting_duration_5i" name="meeting[duration(5i)]"> 
-          <%= options_for_select(['00','15','30''45'], @meeting.duration.min.to_i) %> 
+          <%= options_for_select(['00','15','30','45'], @meeting.duration.min.to_i) %> 
         </select> 
       </div>
 
@@ -71,13 +70,13 @@
           <% if @meeting.topics.size > 0 %>
             <% @meeting.topics.each do |topic| %>
               <div>
-                <%= text_field_tag :topics, topic, :class => "text_field3", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+                <%= text_field_tag :topics, topic, :class => "text_field_no_border", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
               </div>
             <% end %>
           <% end %>
 
           <div>
-            <%= text_field_tag "meeting_topics", t("meeting.views.new.text.topics.help"), :class => "text_field_new", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag "meeting_topics", nil, :class => "text_field_no_border", :placeholder => t("meeting.views.new.text.topics.help"), :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
           </div>
           <% num = @meeting.topics.size + 1 %>
         </div>
@@ -89,15 +88,15 @@
         <div id="participantsDiv" class="area_scroll">
           <% if @meeting.participations.size > 0 %>
             <% @meeting.participations.each do |participation| %>
-              <% if !participation.user.email.nil? %>
+              <% if !participation.user.email.nil? && (participation.user.email != @participation.user.email) %>
                 <div>
-                  <%= text_field_tag :participants, participation.user.email, :class => "text_field3", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+                  <%= text_field_tag :participants, participation.user.email, :class => "text_field_no_border", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
                 </div>
               <% end %>
             <% end %>
           <% end %>
           <div>
-            <%= text_field_tag "meeting_participants", t("meeting.views.new.text.participants.help"), :name => "participants[]", :class => "text_field_new" %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag "meeting_participants", nil, :class => "text_field_no_border", :placeholder => t("meeting.views.new.text.participants.help"), :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
           </div>
           <% num = @meeting.participations.size + 1 %>
         </div>

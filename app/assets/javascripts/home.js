@@ -3,6 +3,8 @@ var button_text;
 
 $("#new").click(function(e){
   if (hidden){
+    $("#new").removeClass("home-button");
+    $("#new").addClass("confirm-button");
     $("#form").slideDown(800, function(){
         button_text = $("#new").text();
         $(this).find('input').filter(':first').focus();
@@ -20,6 +22,8 @@ $("#cancel").click(function(e){
   if (!hidden){
     $("#form").slideUp(800, function(){
         button_text = $("#new").text();
+        $("#new").removeClass("confirm-button");
+        $("#new").addClass("home-button");
     });
     hidden = true;
   }

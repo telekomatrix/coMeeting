@@ -8,7 +8,6 @@ html {
   height:100%;
   /*overflow-y:scroll; /* Easiest way to avoid the side jump when the scrollbar appears - making the scrollbar always visible... */
   overflow-y: auto;
-  /*background-color: transparent;*/
 }
 
 body {
@@ -21,14 +20,12 @@ body {
   background:-o-radial-gradient(#fff, #949494);
   background-repeat:no-repeat;
   background-position:center;
-	background-size: 200%;
- -o-background-size: 200%;
- -moz-background-size: 200%;
- -webkit-background-size: 200%;
+	background-size: 100% 100%;
+ -o-background-size: 100% 100%;
+ -moz-background-size: 100% 100%;
+ -webkit-background-size: 100% 100%;
   overflow-y: scroll;
   overflow-x: hidden;
-/**background-color:white; **/
-
 }
 
 ul {
@@ -129,13 +126,6 @@ ul {
   color:#000000;
   text-decoration:none;
 }
-
-/*#content {
-  padding-top:20px;
-  padding-left:20px;
-  padding-right:20px;
-  padding-bottom:70px; /* height of footer plus some
-}*/
 
 #footer {
   position:relative;
@@ -265,7 +255,7 @@ button.home-button:active, a.home-button:active {
 button.x-button {
 	position:absolute;
 	top:15px;
-	left:15px;
+	right:15px;
 	width:15px;
 	height:15px;
 	overflow:visible;
@@ -292,20 +282,41 @@ button.x-button-p {
 }
 
 button.ent-button {
-	position:absolute;
-	top:0px;
-	right:0px;
-	width:15px;
-	height:15px;
-	overflow:visible;
-	background-color:transparent;
-	background-image: url("buttons/buttonE.png");
-	background-size:15px 15px;
-	background-repeat:no-repeat;
-	background-position:center;
-	-webkit-appearance:none;
+  position:absolute;
+  top:0px;
+  right:0px;
+  width:15px;
+  height:15px;
+  overflow:visible;
+  background-color:transparent;
+  background-image: url("buttons/buttonE.png");
+  background-size:15px 15px;
+  background-repeat:no-repeat;
+  background-position:center;
+  -webkit-appearance:none;
 }
 
+button.dlp-button {
+  width:170px;
+  height:40px;
+  overflow:visible;
+  background-image: url("buttons/buttonsep.png");
+  background-size:170px 40px;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-color:transparent;
+}
+
+button.confirm-button {
+  width:170px;
+  height:40px;
+  overflow:visible;
+  background-image: url("buttons/button-confirm.png");
+  background-size:170px 40px;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-color:transparent;
+}
 
 
 /*  Inspired by http://particletree.com/features/rediscovering-the-button-element */
@@ -495,37 +506,13 @@ button.button:active, a.button:active {
 	
 }
 
-.text_field_new{
-	/*text_field antes de escrever*/
-	height:20px;
-	/*background-color:#F8F8F8;*/
-	width:182px;
-  margin-right:15px;
-	margin-bottom:5px;
-	margin-top:0px;
-  font-style:italic;
-  font-size:8pt;
-}
-
-.text_field3{
-	/*text_field nao selecionado*/
+.text_field_no_border{
 	height:20px;
 	background-color:transparent;
 	width:182px;
 	margin-bottom:5px;
   margin-right:15px;
 	
-}
-
-.text_field4{
-  /*text_field nao selecionado*/
-  height:20px;
-  background-color:transparent;
-  width:182px;
-  margin-bottom:0px;
-  margin-right:15px;
-  border-bottom: 1px solid #888;
-  
 }
 
 .text_area{
@@ -539,8 +526,8 @@ button.button:active, a.button:active {
 	margin-bottom:5px;
   font-family:Arial;
   font-size:13px;
-	
 }
+
 .sel_field{
 	/*sel_field da hora e isso*/
 	height:20px;
@@ -548,8 +535,8 @@ button.button:active, a.button:active {
 	border: 1px solid #888;
 	margin-top:5px;
 	margin-bottom:5px;
-	
 }
+
 .sel_field2{
 	/*sel_field do GMT*/
 	height:20px;
@@ -558,8 +545,8 @@ button.button:active, a.button:active {
 	border: 1px solid #888;
 	margin-top:5px;
 	margin-bottom:5px;
-	
 }
+
 .area_scroll{
 	height:205px;
 	width:226px;
@@ -569,20 +556,20 @@ button.button:active, a.button:active {
 }
 
 ::-webkit-scrollbar {
-width: 10px;
-height: 10px;
+  width: 10px;
+  height: 10px;
 }
 
 ::-webkit-scrollbar-button:start:decrement,
 ::-webkit-scrollbar-button:end:increment  {
-height: 30px;
-display: block;
-background-color: transparent;
+  height: 30px;
+  display: block;
+  background-color: transparent;
 }
 
 ::-webkit-scrollbar-track-piece  {
-background-color: #3b3b3b;
--webkit-border-radius: 6px;
+  background-color: #3b3b3b;
+  -webkit-border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
@@ -592,15 +579,14 @@ background-color: #3b3b3b;
   -webkit-border-radius: 6px;
 }
 
-button.dlp-button {
-	width:170px;
-	height:40px;
-	overflow:visible;
-	background-image: url("buttons/buttonsep.png");
-	background-size:170px 40px;
-	background-repeat:no-repeat;
-	background-position:center;
-	background-color:transparent;
+::-webkit-input-placeholder {
+  font-style:italic;
+  font-size:8pt;
+}
+
+:-moz-placeholder {
+  font-style:italic;
+  font-size:8pt;
 }
 
 textarea.static_minutes{
@@ -641,6 +627,14 @@ div.edit_field2{
   margin-bottom:54px; 
 }
 
+div.edit_field3{
+  margin-top:54px;
+}
+
+div.edit_field4{
+  margin-top:28px;
+}
+
 div#effect{
   /*margin-top:70px;*/
   padding-top:100px;
@@ -664,4 +658,33 @@ span.description{
 
 img.clickable:hover{
   cursor:pointer;
+}
+
+button#presence{
+  padding-left:25px;
+  margin-left:50px;
+}
+
+div.participant{
+  margin-bottom:10px;
+  overflow-y:auto;
+}
+div.participant_name{
+  left:20px;
+  float:left;
+}
+
+div.participant_buttons{
+  float:right;
+}
+
+span.participant_action{
+  padding-right:0px;
+}
+span.participant_action_alone{
+  padding-right:25px;
+}
+
+span.participant_email{
+  padding-right:5px;
 }
