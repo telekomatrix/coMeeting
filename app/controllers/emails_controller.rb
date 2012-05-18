@@ -10,7 +10,7 @@ class EmailsController < ApplicationController
         flash.now[:error] = t("email.controller.reinvite.error.notfound.recipient")
       else
 
-        UserMailer.invite(sender.user.name_formatted, recipient).deliver
+        #UserMailer.invite(sender.user.name_formatted, recipient).deliver
         flash.now[:notice] = t("email.controller.reinvite.notice")
 
       end

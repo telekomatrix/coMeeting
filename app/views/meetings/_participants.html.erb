@@ -5,23 +5,35 @@
   <div class="list">
       <% num = 0 %>
       <% @meeting.participations.each do |participation| %>
-          <div id="participant_<%=num%>">
+        <div id="participant_<%= num %>" class="participant">
+          <div class="participant_name">
             <%= participation.user.name_formatted %>
-            <% if @participation.id != participation.id %>
-              <a class="action_item"><img src="/assets/buttons/button-actions.png" alt="" class="clickable"></a>
-              <a class="email"><img src="/assets/buttons/button-email.png" alt="" class="clickable"></a>
-            <% else %>
-              <a class="action_item"><img src="/assets/buttons/button-actions.png" alt="" class="clickable"></a>
-            <% end %>
-            <!--<% unless participation.action_items.nil? %>
-              <% participation.action_items.each do |action_item| %>
-                  <%= action_item.todo %>
-                  <%= action_item.deadline %>
-                  <%= action_item.completed %>
-                </tr>
-              <% end %>
-            <% end %>-->
           </div>
+          <div class="participant_buttons">
+            <% if @participation.id != participation.id %>
+              <span class="participant_action">
+                <a class="action_item"><%= link_to image_tag("/assets/buttons/button-actions.png", :alt => "") %></a>
+              </span>
+              <span class="participant_email">
+                <a class="email"><%= link_to image_tag("/assets/buttons/button-email.png", :alt => ""), reinvite_path(:link => @participation.link, :id => participation.user.id), :remote => true, :method => :get %></a>
+              </span>
+            <% else %>
+              <span class="participant_action_alone">
+                <a class="action_item"><img src="/assets/buttons/button-actions.png" alt="" class="clickable"></a>
+              </span>
+            <% end %>
+          </div>
+          <!--<% unless participation.action_items.nil? %>
+            <% participation.action_items.each do |action_item| %>
+                <%= action_item.todo %>
+                <%= action_item.deadline %>
+                <%= action_item.completed %>
+            <% end %>
+          <% end %>-->
+        </div>
+        <% num = num + 1 %>
       <% end %>
   </div>
 <% end %>
+
+

@@ -88,7 +88,7 @@
         <div id="participantsDiv" class="area_scroll">
           <% if @meeting.participations.size > 0 %>
             <% @meeting.participations.each do |participation| %>
-              <% if !participation.user.email.nil? %>
+              <% if !participation.user.email.nil? && (participation.user.email != @participation.user.email) %>
                 <div>
                   <%= text_field_tag :participants, participation.user.email, :class => "text_field_no_border", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
                 </div>

@@ -198,3 +198,10 @@ $('#edite').click(function(){
     $('span#presence').val('Going'); 
   }
 });
+
+$('span.participant_email img').live('click', function(){
+  $(this).slideToggle('slow', function() {
+    $(this).slideToggle();
+  });
+});
+

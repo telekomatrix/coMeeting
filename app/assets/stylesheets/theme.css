@@ -664,3 +664,27 @@ button#presence{
   padding-left:25px;
   margin-left:50px;
 }
+
+div.participant{
+  margin-bottom:10px;
+  overflow-y:auto;
+}
+div.participant_name{
+  left:20px;
+  float:left;
+}
+
+div.participant_buttons{
+  float:right;
+}
+
+span.participant_action{
+  padding-right:0px;
+}
+span.participant_action_alone{
+  padding-right:25px;
+}
+
+span.participant_email{
+  padding-right:5px;
+}
