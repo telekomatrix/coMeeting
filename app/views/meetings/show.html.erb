@@ -4,7 +4,7 @@
   <%= form_for @meeting, :url => meeting_path(@participation.link) do |f| %>
     <%= render :partial => 'editform', :locals => {:f => f}  %>
 
-    <button type="submit" id="confirm" class="home-button" style="display:none;"></button>
+    <button type="submit" id="confirm" class="home-button" style="display:none;" title="<%= t("meeting.views.show.buttons.save.title") %>"></button>
   <% end %>
 <% end %>
 

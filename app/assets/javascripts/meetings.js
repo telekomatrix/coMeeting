@@ -30,20 +30,33 @@ $(document).ready(function() {
   }
 });
 
+var changedMinutes = false;
+
+$('#minutes').live('focusout', function(){
+  $("#saved_alert").hide();
+});
 
 function updateMinutes() {
-  $.ajax({
-    type    : 'POST',
-    url     : '/meetings/'+participation_id+'/update_minutes',
-    data    : { authenticity_token: $('meta[name="csrf-token"]').attr('content'), minutes: $('#minutes').val() },
-  });
+  if(changedMinutes) {
+      $.ajax({
+        type    : 'POST',
+        url     : '/meetings/'+participation_id+'/update_minutes',
+        data    : { authenticity_token: $('meta[name="csrf-token"]').attr('content'), minutes: $('#minutes').val() },
+        success : function (){
+          $('#saved_alert').toggle('slow');
+        }
+      });
+  }
 }
 
 function getMinutes() {
-  /*$.ajax({
+  $.ajax({
     type    : 'GET',
-    url     : '/meetings/'+participation_id+'/show_minutes'
-  });*/
+    url     : '/meetings/'+participation_id+'/show_minutes',
+    success : function(){
+      alert('ola');
+    }
+  });
 }
 
 
@@ -76,8 +89,12 @@ function _makeIdle(){
 };
  
 function _active(event){
-    var t = new Date().getTime();
-    _idleTimestamp = t + _idleTimeout;
+  /* Avoid sending events without anything being written */
+  $('#saved_alert').hide();
+  changedMinutes = true;
+
+  var t = new Date().getTime();
+  _idleTimestamp = t + _idleTimeout;
  
   if(_idleNow){
     setIdleTimeout(_idleTimeout);

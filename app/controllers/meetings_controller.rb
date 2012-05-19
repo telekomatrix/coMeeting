@@ -123,7 +123,6 @@ class MeetingsController < ApplicationController
     end
   end
 
-
   def destroy
     participation = Participation.find_by_link(params[:id])
     if participation.nil?
@@ -148,8 +147,6 @@ class MeetingsController < ApplicationController
     participation = Participation.find_by_link(params[:id])
 
     if !participation.nil? && participation.is_creator
-      puts 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
-      puts params
       participation.meeting.update_attribute(:minutes, params[:minutes])
     end
 
