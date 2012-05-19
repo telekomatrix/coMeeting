@@ -1,6 +1,8 @@
 var hidden = true;
 var button_text;
 
+$('#meeting_date').datepicker();
+
 $("#new").click(function(e){
   if (hidden){
     $("#new").removeClass("home-button");
