@@ -48,7 +48,7 @@ pt:
       edit:
         label:                                  "Editar"
       delete:
-        label:                                  "Eliminar"
+        label:                                  "Apagar reunião"
         confirm:                                "Tem a certeza de que quer eliminar esta reunião?"
     controller:
       show:

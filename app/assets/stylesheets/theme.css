@@ -556,6 +556,17 @@ button.button:active, a.button:active {
 	margin-bottom:5px;
 }
 
+#delete {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+#delete:link, #delete:visited, #delete:hover, #delete:active {
+  color:#000000;
+  text-decoration:none;
+}
+
 ::-webkit-scrollbar {
   width: 10px;
   height: 10px;
