@@ -9,8 +9,6 @@
 //= require jquery-ui
 //= require global
 //= require translations
-//= require datepicker
 //= require home
 //= require meetings
 //= require textarea
-//= require jquery.autoresize

@@ -20,15 +20,6 @@ $(document).ready(function() {
   // }
   
   if (is_creator != undefined){
-    // $('#minutes')
-    // .autoResize({
-    //   maxHeight: 500,
-    //   minHeight: 490,
-    //   maxWidth: 560,
-    //   minWidth: 560
-    // });
-    // I guess if everything has a fixed size then this is not needed?
-
     if (is_creator == 'true') {
       _initMinutesListener();
       $('#minutes').tabby();

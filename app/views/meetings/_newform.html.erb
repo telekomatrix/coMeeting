@@ -26,7 +26,7 @@
   
   <div class="edit_field">
     <b><%= f.label :date, t("meeting.views.new.text.date.label") %></b>
-    <%= f.text_field :date, :class => "text_field" %>
+    <%= f.text_field :date, :value => current_date, :class => "text_field" %>
   </div>
   
   <div class="edit_field">
