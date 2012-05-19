@@ -12,3 +12,4 @@
 //= require home
 //= require meetings
 //= require textarea
+//= require bootstrap-datepicker
