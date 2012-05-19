@@ -158,10 +158,10 @@ class MeetingsController < ApplicationController
 
 
   def show_minutes
-    participation = Participation.find_by_link(params[:id])
+    @participation = Participation.find_by_link(params[:id])
 
-    unless participation.nil?
-      @minutes = participation.meeting.minutes
+    unless @participation.nil?
+      @minutes = @participation.meeting.minutes
     else
       render :nothing => true
     end

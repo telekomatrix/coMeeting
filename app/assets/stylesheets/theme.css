@@ -524,8 +524,8 @@ button.button:active, a.button:active {
 	width:247px;
 	margin-top:5px;
 	margin-bottom:5px;
-  font-family:Arial;
-  font-size:13px;
+  font-family:Verdana;
+  font-size:8pt;
 }
 
 .sel_field{
@@ -601,11 +601,12 @@ textarea.static_minutes{
  font-size:8pt;
 }
 
-textarea#minutes{
+textarea.minutes{
  resize: none;
  width:560px;
  height:245px;
  overflow-y: scroll;
+ background-color:#F8F8F8;
  border: 1px solid #888;
  /*margin-top:5px;
  margin-bottom:5px;*/
