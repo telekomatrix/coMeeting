@@ -9,12 +9,14 @@
     <%= render 'participants' %>
   </div>
   <div id="dirAct" class="dirAct">
-  <p><b><%= t("activerecord.attributes.meeting.minutes") %></b></p>
-  <div class="inner" id="partialstatic_minutes">
-    <%= render :partial => 'static_minutes' %>
-  </div>
-  <div class="inner" id="partialminutes">
-    <%= render :partial => 'minutes' %>
-  </div>
+    <p>
+      <b><%= t("activerecord.attributes.meeting.minutes") %></b>
+    </p>
+    <div class="inner" id="partialstatic_minutes">
+      <%= render :partial => 'static_minutes' %>
+    </div>
+    <div class="inner" id="partialminutes">
+      <%= render :partial => 'minutes' %>
+    </div>
   </div>
 </div>

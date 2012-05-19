@@ -118,7 +118,6 @@ en:
           cancel:                               "Cancel"
       show:
         text:
-          presence:                             "Presence"
           attending:
             unknown:                            "Yet to answer"
             confirm:                            "Attending"
@@ -130,6 +129,16 @@ en:
             not_attended:                       "Did not attend"
           created_by:                           "Meeting created by"
           participants:                         "Participants"
+        buttons:
+          edit:
+            alt:                                "Edit meeting"
+            title:                              "Click here to edit the meeting details."
+          assign_action_item:
+            alt:                                "Assign action item"
+            title:                              "Click here to assign an action item to the user."
+          send_email:
+            alt:                                "Resend email invitation"
+            title:                              "Click here to resend an email invitation to the user."
 
   email:
     controller:

@@ -12,14 +12,25 @@
           <div class="participant_buttons">
             <% if @participation.id != participation.id %>
               <span class="participant_action">
-                <a class="action_item"><%= link_to image_tag("/assets/buttons/button-actions.png", :alt => "") %></a>
+                <%= image_tag("/assets/buttons/button-actions.png",
+                              :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
+                              :title => t("meeting.views.show.buttons.assign_action_item.title"),
+                              :class => "clickable") %>
               </span>
               <span class="participant_email">
-                <a class="email"><%= link_to image_tag("/assets/buttons/button-email.png", :alt => ""), reinvite_path(:link => @participation.link, :id => participation.user.id), :remote => true, :method => :get %></a>
+                <%= link_to image_tag("/assets/buttons/button-email.png",
+                                      :alt => t("meeting.views.show.buttons.send_email.alt"),
+                                      :title => t("meeting.views.show.buttons.send_email.title")),
+                            reinvite_path(:link => @participation.link,
+                                          :id => participation.user.id),
+                            :remote => true %>
               </span>
             <% else %>
               <span class="participant_action_alone">
-                <a class="action_item"><img src="/assets/buttons/button-actions.png" alt="" class="clickable"></a>
+                <%= image_tag("/assets/buttons/button-actions.png",
+                              :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
+                              :title => t("meeting.views.show.buttons.assign_action_item.title"),
+                              :class => "clickable") %>
               </span>
             <% end %>
           </div>

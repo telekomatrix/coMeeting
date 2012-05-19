@@ -129,6 +129,16 @@ pt:
             not_attended:                       "Não esteve presente"
           created_by:                           "Reunião criada por"
           participants:                         "Participantes"
+        buttons:
+          edit:
+            alt:                                "Editar reunião"
+            title:                              "Clique aqui para editar os detalhes da reunião."
+          assign_action_item:
+            alt:                                "Atribuir tarefa"
+            title:                              "Clique aqui para atribuir uma tarefa a este utilizador."
+          send_email:
+            alt:                                "Reenviar email"
+            title:                              "Clique aqui para reenviar um convite de participação ao utilizador."
 
   email:
     controller:
