@@ -49,10 +49,10 @@ function updateMinutes() {
 }
 
 function getMinutes() {
-  $.ajax({
+  /*$.ajax({
     type    : 'GET',
     url     : '/meetings/'+participation_id+'/show_minutes'
-  });
+  });*/
 }
 
 

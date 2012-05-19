@@ -100,7 +100,7 @@ class MeetingsController < ApplicationController
       params[:participants].reject!( &:blank? )
 
       @meeting.participations.each do |participation|
-        unless params[:participants].include?(participation.user.email) || (participation.is_admin)
+        unless params[:participants].include?(participation.user.email) || (participation.is_creator)
           participation.destroy
         end
       end
@@ -158,10 +158,10 @@ class MeetingsController < ApplicationController
 
 
   def show_minutes
-    participation = Participation.find_by_link(params[:id])
+    @participation = Participation.find_by_link(params[:id])
 
-    unless participation.nil?
-      @minutes = participation.meeting.minutes
+    unless @participation.nil?
+      @minutes = @participation.meeting.minutes
     else
       render :nothing => true
     end

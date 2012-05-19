@@ -1,11 +1,12 @@
 <%= render :partial => 'showform' %>
 
 <button id="dlp" class="dlp-button"></button>
+<% if @participation.is_admin %>
+  <%= form_for @meeting, :url => meeting_path(@participation.link), :html => { :class => "" } do |f| %>
+    <%= render :partial => 'editform', :locals => {:f => f}  %>
 
-<%= form_for @meeting, :url => meeting_path(@participation.link), :html => { :class => "" } do |f| %>
-  <%= render :partial => 'editform', :locals => {:f => f}  %>
-
-  <button type="submit" id="confirm" class="home-button" style="display:none;"></button>
+    <button type="submit" id="confirm" class="home-button" style="display:none;"></button>
+  <% end %>
 <% end %>
 
 
