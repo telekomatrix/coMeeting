@@ -119,6 +119,7 @@ en:
       show:
         text:
           attending:
+            label:                              "Presence"
             unknown:                            "Yet to answer"
             confirm:                            "Attending"
             decline:                            "Not Attending"
@@ -129,6 +130,8 @@ en:
             not_attended:                       "Did not attend"
           created_by:                           "Meeting created by"
           participants:                         "Participants"
+          or:                                   "or"
+          change:                               "Change"
         buttons:
           edit:
             alt:                                "Edit meeting"

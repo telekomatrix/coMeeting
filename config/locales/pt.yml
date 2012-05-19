@@ -119,6 +119,7 @@ pt:
       show:
         text:
           attending:
+            label:                              "Presença"
             unknown:                            "Por confirmar"
             confirm:                            "Vou estar presente"
             decline:                            "Não vou estar presente"
@@ -129,6 +130,8 @@ pt:
             not_attended:                       "Não esteve presente"
           created_by:                           "Reunião criada por"
           participants:                         "Participantes"
+          or:                                   "ou"
+          change:                               "Mudar"
         buttons:
           edit:
             alt:                                "Editar reunião"
