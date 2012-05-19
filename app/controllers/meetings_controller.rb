@@ -102,7 +102,7 @@ class MeetingsController < ApplicationController
       params[:participants].reject!( &:blank? )
 
       @meeting.participations.each do |participation|
-        unless params[:participants].include?(participation.user.email) || (participation.is_admin)
+        unless params[:participants].include?(participation.user.email) || (participation.is_creator)
           participation.destroy
         end
       end
