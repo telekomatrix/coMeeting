@@ -62,14 +62,13 @@ module CoMeeting
 
     # Sets the correct settings for sending emails through Gmail.
     # Each host is defined in each different environment.
-    config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      :enable_starttls_auto => true,
       :address => 'smtp.gmail.com',
       :port => '587',
       :authentication => 'plain',
       :user_name => 'comeeting.occi@gmail.com',
       :password => 'occi.comeeting',
+      :enable_starttls_auto => true
     }
   end
 end
