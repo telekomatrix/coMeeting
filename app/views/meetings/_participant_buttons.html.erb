@@ -1,23 +1,37 @@
-<div id="attending">
+<div id="extra" class="extra">
+	<div class="attendance">
+		<b><%= t("meeting.views.show.text.attending.label") %> - </b>
+		<% if @participation.is_attending == 0 %>
+			<%= link_to t("meeting.views.show.text.attending.confirm"), confirm_participation_path(@participation.link), :remote => true, :method => :post, :class => "attendance_button" %>
+			<%= t("meeting.views.show.text.or") %>
+			<%= link_to t("meeting.views.show.text.attending.decline"), decline_participation_path(@participation.link), :remote => true, :method => :post, :class => "attendance_button" %>
+		<% elsif @participation.is_attending == 1 %>
+			<%= t("meeting.views.show.text.attending.confirm")%> (<%= link_to t("meeting.views.show.text.change"), decline_participation_path(@participation.link), :remote => true, :method => :post, :class => "attendance_button" %>)
+		<% elsif @participation.is_attending == -1 %>
+		<%= t("meeting.views.show.text.attending.decline")%> (<%= link_to t("meeting.views.show.text.change"), confirm_participation_path(@participation.link), :remote => true, :method => :post, :class => "attendance_button" %>)
+		<% end %>
+	</div>
+	<!--<div id="attending">
+	
+	<% if @participation.is_attending == 0 %>       <%# User still has not decided %>
+		
+	  
 
-<% if @participation.is_attending == 0 %>       <%# User still has not decided %>
+	  
 
-  <%= link_to image_tag("/assets/icons/tick.png", :alt => "")+ " " + t("meeting.views.show.text.attending.confirm"), confirm_participation_path(@participation.link), :remote => true, :method => :post %>
+	<% elsif @participation.is_attending == 1 %>    <%# User is attending %>
 
-  <%= link_to image_tag("/assets/icons/cross.png", :alt => "")+ " " + t("meeting.views.show.text.attending.decline"), decline_participation_path(@participation.link), :remote => true, :method => :post %>
+	  <span><%= t("meeting.views.show.text.attending.confirmed") %></span>
 
-<% elsif @participation.is_attending == 1 %>    <%# User is attending %>
+	  <%= link_to image_tag("/assets/icons/cross.png", :alt => "")+ " " + t("meeting.views.show.text.attending.decline"), decline_participation_path(@participation.link), :remote => true, :method => :post %>
 
-  <span><%= t("meeting.views.show.text.attending.confirmed") %></span>
+	<% else %>                                      <%# User is not attending %>
 
-  <%= link_to image_tag("/assets/icons/cross.png", :alt => "")+ " " + t("meeting.views.show.text.attending.decline"), decline_participation_path(@participation.link), :remote => true, :method => :post %>
+	  <%= link_to image_tag("/assets/icons/tick.png", :alt => "")+ " " + t("meeting.views.show.text.attending.confirm"), confirm_participation_path(@participation.link), :remote => true, :method => :post %>
 
-<% else %>                                      <%# User is not attending %>
+	  <span><%= t("meeting.views.show.text.attending.declined") %></span>
+	    
+	<% end %>
 
-  <%= link_to image_tag("/assets/icons/tick.png", :alt => "")+ " " + t("meeting.views.show.text.attending.confirm"), confirm_participation_path(@participation.link), :remote => true, :method => :post %>
-
-  <span><%= t("meeting.views.show.text.attending.declined") %></span>
-    
-<% end %>
-
+	</div>-->
 </div>

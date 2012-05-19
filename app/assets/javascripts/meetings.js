@@ -112,47 +112,54 @@ $('#attending a').click(function(){
 
 var topicNumber = document.getElementById('topicNumber');
 var topicsDiv = document.getElementById("topicsDiv");
-/* FIX ME - MARTELADAS */
-var localeTopic = null;
-var localeParticipant = null;
 
+/* Add new on key up */
 $('#topicsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(topicNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_no_border' name='meeting[topics][]' type='text' placeholder='" + t[locale]['new_topic'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_no_border' name='meeting[topics][]' type='text' placeholder='" + t[locale]['new_topic'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='delete_button clickable'>";
       topicsDiv.appendChild(newDiv);
 
       topicNumber.value = num + 1;
     }
   });
 
+/* Remove topic on click*/
 $('#topicsDiv img').live('click', function(){
-  if(topicsDiv.childElementCount > 2){
+  if(topicsDiv.childElementCount > 1){
     $(this).parent().remove();
   }
   else{
     $(this).prev().val('');
   }
+});
+
+/* Remove topic input when blank and out of focus*/
+$('#topicsDiv div:not(:last-child) input').live('focusout', function(){
+  if($(this).val() == ''){
+    $(this).parent().remove();
+  }  
 });
 
 
 var participantNumber = document.getElementById('participantNumber');
 var participantsDiv = document.getElementById("participantsDiv");
 
-
+/* Add participant on click */
 $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='clickable'>";
+      newDiv.innerHTML = "<input class='text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='delete_button clickable'>";
       participantsDiv.appendChild(newDiv);
       participantNumber.value = num + 1;
     }
   });
 
+/* Remove participant on click */
 $('#participantsDiv img').live('click', function(){
-  if(participantsDiv.childElementCount > 2){
+  if(participantsDiv.childElementCount > 1){
     $(this).parent().remove();
   }
   else{
@@ -160,9 +167,12 @@ $('#participantsDiv img').live('click', function(){
   }
 });
 
-$('.participantDiv img').live('click', function(){
-
-})
+/* Remove topic input when blank and out of focus*/
+$('#participantsDiv div:not(:last-child) input').live('focusout', function(){
+  if($(this).val() == ''){
+    $(this).parent().remove();
+  }  
+});
 
 
 $('#edit').click(function(){

@@ -70,13 +70,13 @@
           <% if @meeting.topics.size > 0 %>
             <% @meeting.topics.each do |topic| %>
               <div>
-                <%= text_field_tag :topics, topic, :class => "text_field_no_border", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+                <%= text_field_tag :topics, topic, :class => "text_field_no_border", :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="delete_button clickable">
               </div>
             <% end %>
           <% end %>
 
           <div>
-            <%= text_field_tag "meeting_topics", nil, :class => "text_field_no_border", :placeholder => t("meeting.views.new.text.topics.help"), :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag "meeting_topics", nil, :class => "text_field_no_border", :placeholder => t("meeting.views.new.text.topics.help"), :name => "meeting[topics][]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="delete_button clickable">
           </div>
           <% num = @meeting.topics.size + 1 %>
         </div>
@@ -90,13 +90,13 @@
             <% @meeting.participations.each do |participation| %>
               <% if !participation.user.email.nil? && (participation.user.email != @participation.user.email) %>
                 <div>
-                  <%= text_field_tag :participants, participation.user.email, :class => "text_field_no_border", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+                  <%= text_field_tag :participants, participation.user.email, :class => "text_field_no_border", :name => "participants[]", %> <img src="/assets/buttons/buttonXpart.png" alt="" class="delete_button clickable">
                 </div>
               <% end %>
             <% end %>
           <% end %>
           <div>
-            <%= text_field_tag "meeting_participants", nil, :class => "text_field_no_border", :placeholder => t("meeting.views.new.text.participants.help"), :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="clickable">
+            <%= text_field_tag "meeting_participants", nil, :class => "text_field_no_border", :placeholder => t("meeting.views.new.text.participants.help"), :name => "participants[]"%> <img src="/assets/buttons/buttonXpart.png" alt="" class="delete_button clickable">
           </div>
           <% num = @meeting.participations.size + 1 %>
         </div>
