@@ -1,56 +1,58 @@
 <% unless @meeting.participations.nil? %>
-  <p>
+  <p class="header_with_margin">
     <b><%= t("meeting.views.show.text.participants") %></b>
   </p>
-  <div class="list">
-      <% num = 0 %>
-      <% @meeting.participations.each do |participation| %>
-        <div id="participant_<%= num %>" class="participant">
-          <div class="participant_name">
-            <% if participation.is_attending == 1 || participation.is_creator %>
-              <%= image_tag("/assets/buttons/button-going.png",
-                          :alt => t("meeting.views.show.text.attending.confirm"),
-                          :title => t("meeting.views.show.text.attending.confirm"),
-                          :class => "attendance") %>
-            <% elsif participation.is_attending == 0 %>
-              <%= image_tag("/assets/buttons/button-unconfirmed.png",
-                          :alt => t("meeting.views.show.text.attending.unknown"),
-                          :title => t("meeting.views.show.text.attending.unknown"),
-                          :class => "attendance") %>
-            <% elsif participation.is_attending == -1 %>
-              <%= image_tag("/assets/buttons/button-not-going.png",
-                          :alt => t("meeting.views.show.text.attending.declined"),
-                          :title => t("meeting.views.show.text.attending.declined"),
-                          :class => "attendance") %>
+  <div class="area_scroll_act">
+    <% num = 0 %>
+    <% @meeting.participations.each do |participation| %>
+      <div class="participant_attendance">
+        <% if participation.is_attending == 1 || participation.is_creator %>
+          <%= image_tag("/assets/buttons/button-going.png",
+                      :alt => t("meeting.views.show.text.attending.confirm"),
+                      :title => t("meeting.views.show.text.attending.confirm"),
+                      :class => "attendance") %>
+        <% elsif participation.is_attending == 0 %>
+          <%= image_tag("/assets/buttons/button-unconfirmed.png",
+                      :alt => t("meeting.views.show.text.attending.unknown"),
+                      :title => t("meeting.views.show.text.attending.unknown"),
+                      :class => "attendance") %>
+        <% elsif participation.is_attending == -1 %>
+          <%= image_tag("/assets/buttons/button-not-going.png",
+                      :alt => t("meeting.views.show.text.attending.declined"),
+                      :title => t("meeting.views.show.text.attending.declined"),
+                      :class => "attendance") %>
+        <% end %>
+      </div>
+      <div id="participant_<%= num %>" class="participant">
+        <div class="participant_name">
+          <%= participation.user.name_formatted %>
+        </div>
+        <% if @participation.is_admin %>
+          <div class="participant_buttons">
+            <% if @participation.id != participation.id %>
+              <span class="participant_action">
+                <%= image_tag("/assets/buttons/button-actions.png",
+                              :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
+                              :title => t("meeting.views.show.buttons.assign_action_item.title"),
+                              :class => "clickable") %>
+              </span>
+              <span class="participant_email">
+                <%= link_to image_tag("/assets/buttons/button-email.png",
+                                      :alt => t("meeting.views.show.buttons.send_email.alt"),
+                                      :title => t("meeting.views.show.buttons.send_email.title")),
+                            reinvite_path(:link => @participation.link,
+                                          :id => participation.user.id),
+                            :remote => true %>
+              </span>
+            <% else %>
+              <span class="participant_action_alone">
+                <%= image_tag("/assets/buttons/button-actions.png",
+                              :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
+                              :title => t("meeting.views.show.buttons.assign_action_item.title"),
+                              :class => "clickable") %>
+              </span>
             <% end %>
-            <%= participation.user.name_formatted %>
           </div>
-          <% if @participation.is_admin %>
-            <div class="participant_buttons">
-              <% if @participation.id != participation.id %>
-                <span class="participant_action">
-                  <%= image_tag("/assets/buttons/button-actions.png",
-                                :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
-                                :title => t("meeting.views.show.buttons.assign_action_item.title"),
-                                :class => "clickable") %>
-                </span>
-                <span class="participant_email">
-                  <%= link_to image_tag("/assets/buttons/button-email.png",
-                                        :alt => t("meeting.views.show.buttons.send_email.alt"),
-                                        :title => t("meeting.views.show.buttons.send_email.title")),
-                              reinvite_path(:link => @participation.link,
-                                            :id => participation.user.id),
-                              :remote => true %>
-                </span>
-              <% else %>
-                <span class="participant_action_alone">
-                  <%= image_tag("/assets/buttons/button-actions.png",
-                                :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
-                                :title => t("meeting.views.show.buttons.assign_action_item.title"),
-                                :class => "clickable") %>
-                </span>
-              <% end %>
-            </div>
           <% end %>
           <!--<% unless participation.action_items.nil? %>
             <% participation.action_items.each do |action_item| %>
@@ -59,9 +61,9 @@
                 <%= action_item.completed %>
             <% end %>
           <% end %>-->
-        </div>
-        <% num = num + 1 %>
-      <% end %>
+      </div>
+      <% num = num + 1 %>
+    <% end %>
   </div>
 <% end %>
 
