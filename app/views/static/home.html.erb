@@ -1,3 +1,14 @@
+<% if @meeting.errors.any? %>
+  <% @meeting.errors.messages.each do |message| %>
+    <div class="message"><%= message.last.last.html_safe %></div>
+  <% end %>
+<% end %>
+
+<% if @creator.errors.any? %>
+  <% @creator.errors.messages.each do |message| %>
+    <div class="message"><%= message.last.last.html_safe %></div>
+  <% end %>
+<% end %>
 
 <%= form_for @meeting, :url => meetings_path, :html => { :class => "" } do |f| %>
   

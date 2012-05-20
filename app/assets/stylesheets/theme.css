@@ -703,6 +703,7 @@ span.participant_email{
 
 img.attendance{
   padding: 5px 4px 5px 4px;
+  vertical-align: top;
 }
 
 a.attendance_button{
