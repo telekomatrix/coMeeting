@@ -1,0 +1,6 @@
+$('#flash').hide();
+$("#flash").html('<%= escape_javascript(render 'shared/messages') %>');
+$("#extra").html('<%= escape_javascript(render 'meetings/participant_buttons') %>');
+$('#extra').slideDown();
+$('#flash').animate({ opacity: 'toggle', height: 'toggle' }, 1000);
+setTimeout(hideFlashMessages, 2500);

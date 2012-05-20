@@ -223,3 +223,7 @@ $('span.participant_email img').live('click', function(){
   });
 });
 
+// Function called when a participant changes his/her status (attend/decline)
+$('#extra').click(function(){
+  $(this).slideUp();
+});
