@@ -41,7 +41,7 @@ class Meeting < ActiveRecord::Base
       if participation.is_attending == 0
         participants += " " + I18n.t("pdf.attending.unanswered")
       elsif participation.is_attending == 1
-        participants += " " + I18n.t("pdf.attending.confirmed")
+        participants += " " + I18n.t("pdf.attending.attended")
       elsif participation.is_attending == -1
         participants += " " + I18n.t("pdf.attending.declined")
       end

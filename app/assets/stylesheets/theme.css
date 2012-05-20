@@ -558,11 +558,12 @@ img.delete_button{
   position: absolute;
   bottom: 10px;
   left: 10px;
+  text-decoration:none;
+  color:#000000;
 }
 
-#delete:link, #delete:visited, #delete:hover, #delete:active {
-  color:#000000;
-  text-decoration:none;
+#delete:hover{
+  color:#B0171F;
 }
 
 ::-webkit-scrollbar {
@@ -701,9 +702,7 @@ span.participant_email{
 }
 
 img.attendance{
-  position: absolute;
-  left:8px;
-  padding-top:5px;
+  padding: 5px 4px 5px 4px;
 }
 
 a.attendance_button{

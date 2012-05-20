@@ -132,6 +132,7 @@ en:
           participants:                         "Participants"
           or:                                   "or"
           change:                               "Change"
+          saved:                                "Saved minutes"
         buttons:
           edit:
             alt:                                "Edit meeting"
@@ -142,6 +143,10 @@ en:
           send_email:
             alt:                                "Resend email invitation"
             title:                              "Click here to resend an email invitation to the user."
+          save:
+            title:                              "Click here to save modifications"
+          discard:
+            title:                              "Click here to discard modifications"
 
   email:
     controller:

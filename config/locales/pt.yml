@@ -132,6 +132,7 @@ pt:
           participants:                         "Participantes"
           or:                                   "ou"
           change:                               "Mudar"
+          saved:                                "Acta gravada"
         buttons:
           edit:
             alt:                                "Editar reunião"
@@ -142,6 +143,10 @@ pt:
           send_email:
             alt:                                "Reenviar email"
             title:                              "Clique aqui para reenviar um convite de participação ao utilizador."
+          save:
+            title:                              "Clique aqui para salvar as suas alterações"
+          discard:
+            title:                              "Clique aqui para discartar as suas alterações"
 
   email:
     controller:
