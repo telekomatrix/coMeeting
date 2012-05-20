@@ -119,7 +119,8 @@ ul {
 #drop-items {
   padding:10px;
   line-height:30px;
-  font-size:15px;
+  font-size:12px;
+  font-family:Verdana;
 }
 
 #drop-items a:link, #drop-items a:visited, #drop-items a:hover, #drop-items a:active {
@@ -292,8 +293,8 @@ button.x-button-p {
 
 button.ent-button {
   position:absolute;
-  top:0px;
-  right:0px;
+  top:15px;
+  right:15px;
   width:15px;
   height:15px;
   overflow:visible;
@@ -529,6 +530,9 @@ p.header_with_margin{
 }
 
 .text_field_no_border{
+  font-size: 1.2em;
+  padding: 1px 0;
+  margin: 0;
 	height:20px;
 	background-color:transparent;
 	width:182px;
@@ -760,4 +764,10 @@ a.attendance_button{
   color:#000000;
   text-decoration:underline;
   font-style:italic;
+}
+
+ul.ui-autocomplete.ui-menu{
+    max-width:182px;
+    font-size:8pt;
+    font-family:Verdana;
 }

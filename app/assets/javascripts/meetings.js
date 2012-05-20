@@ -204,19 +204,6 @@ $('#cancel').click(function(){
   }); 
 });
 
-$('#edite').click(function(){
-  alert('a');
-  if( $('span#presence').val() == "Going"){
-    $('span#presence').val('Not Going');
-  }
-  else if($('#presence').val() == "Not Going"){
-    $('span#presence').val('Going'); 
-  }
-  else{
-    $('span#presence').val('Going'); 
-  }
-});
-
 $('span.participant_email img').live('click', function(){
   $(this).slideToggle('slow', function() {
     $(this).slideToggle();
@@ -226,4 +213,23 @@ $('span.participant_email img').live('click', function(){
 // Function called when a participant changes his/her status (attend/decline)
 $('#extra').click(function(){
   $(this).slideUp();
+});
+
+$('.auto_search_complete').live('keyup', function(){
+  $('.auto_search_complete').autocomplete({
+      minLength: 1,
+      delay: 600,
+      source: function(request, response) {
+        $.ajax({
+          type: "GET",
+          url: "/participations/get_admin_circles.js",
+          dataType: "text",
+          data: {term: request.term, participation_id: participation_id, authenticity_token: $('meta[name="csrf-token"]').attr('content'),},
+          success: function( data ) {
+            var res = data.split(",");
+            response( res);
+          }
+        });
+      }          
+  });
 });
