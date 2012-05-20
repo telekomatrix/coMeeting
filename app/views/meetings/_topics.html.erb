@@ -1,8 +1,8 @@
 <% unless @meeting.topics.blank? %>
-  <p>
+  <p class="header_with_margin">
     <b><%= t("activerecord.attributes.meeting.topics") %></b>
   </p>
-  <div class="list">
+  <div class="list_margin">
     <% @meeting.topics.each do |topic| %>
       <p><%= topic %></p>
     <% end %>

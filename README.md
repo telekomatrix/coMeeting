@@ -13,5 +13,4 @@ Projecto no âmbito das disciplinas OCCI e IHC. Realizado por:
 * Botões com imagens não são traduzidos
 * Datepicker
 * Adicionar e **remover** action items
-* Footer
 * Get updating minutes to work

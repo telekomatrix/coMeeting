@@ -127,13 +127,21 @@ ul {
   text-decoration:none;
 }
 
+.wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
+}
+.push {
+  height: 50px; /* .push must be the same height as .footer */
+}
+
 #footer {
-  position:relative;
   bottom:0;
   left:0;
   right:0;
-  padding-left:20px;
-  padding-right:20px;
+  padding-left:43.90%;
   height:50px;
   line-height:50px;
   font-size:12px;
@@ -306,6 +314,7 @@ button.dlp-button {
   background-repeat:no-repeat;
   background-position:center;
   background-color:transparent;
+  padding-bottom:20px;
 }
 
 button.confirm-button {
@@ -434,6 +443,23 @@ button.button:active, a.button:active {
 	padding-left:20px;
 	padding-right:10px;
 }
+
+.esqAct_no_margin{
+  position:absolute;
+  top:40px;
+  left:0px;
+  width:185px;
+  height:550px;
+  
+  text-align:left;
+  padding-top:10px;
+  padding-right:10px;
+}
+
+p.header_with_margin{
+  margin-left:20px;
+}
+
 .dirAct{
 	position:absolute;
 	top:40px;
@@ -554,6 +580,14 @@ img.delete_button{
 	margin-bottom:5px;
 }
 
+.area_scroll_act{
+  height:205px;
+  width:206px;
+  overflow-y:auto;
+  margin-top:5px;
+  margin-bottom:5px;
+}
+
 #delete {
   position: absolute;
   bottom: 10px;
@@ -573,7 +607,7 @@ img.delete_button{
 
 ::-webkit-scrollbar-button:start:decrement,
 ::-webkit-scrollbar-button:end:increment  {
-  height: 30px;
+  height: 10px;
   display: block;
   background-color: transparent;
 }
@@ -616,7 +650,7 @@ textarea.minutes{
  resize: none;
  width:550px;
  height:245px;
- overflow-y: scroll;
+ overflow-y: auto;
  background-color:#F8F8F8;
  border: 1px solid #888;
  /*margin-top:5px;
@@ -629,6 +663,14 @@ div.list{
   overflow-y:auto;
   margin-top:5px;
   margin-bottom:5px;
+}
+
+div.list_margin{
+  height:230px;
+  overflow-y:auto;
+  margin-top:5px;
+  margin-bottom:5px;
+  margin-left:21px;
 }
 
 div.edit_field{
@@ -684,6 +726,7 @@ div.participant{
 div.participant_name{
   left:20px;
   float:left;
+  padding-left:2px;
 }
 
 div.participant_buttons{
@@ -702,8 +745,12 @@ span.participant_email{
 }
 
 img.attendance{
-  padding: 5px 4px 5px 4px;
+  padding: 5px 3px 3px 5px;
   vertical-align: top;
+}
+div.participant_attendance{
+  float: left;
+  margin-left: 5px;
 }
 
 a.attendance_button{
