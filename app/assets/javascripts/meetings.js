@@ -159,7 +159,7 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='delete_button clickable'>";
+      newDiv.innerHTML = "<input autocomplete='off' class='auto_search_complete text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='delete_button clickable'>";
       participantsDiv.appendChild(newDiv);
       participantNumber.value = num + 1;
     }
