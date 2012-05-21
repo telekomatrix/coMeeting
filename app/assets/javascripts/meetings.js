@@ -159,7 +159,7 @@ $('#participantsDiv div:last-child input').live('keyup', function(){
     if ($(this).val() != "") {
       var num = parseInt(participantNumber.value);
       var newDiv = document.createElement('div');
-      newDiv.innerHTML = "<input class='text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='delete_button clickable'>";
+      newDiv.innerHTML = "<input autocomplete='off' class='auto_search_complete text_field_no_border' name='participants[]' type='text' placeholder='" + t[locale]['new_participant'] + "'> <img src='/assets/buttons/buttonXpart.png' alt='' class='delete_button clickable'>";
       participantsDiv.appendChild(newDiv);
       participantNumber.value = num + 1;
     }
@@ -204,24 +204,12 @@ $('#cancel').click(function(){
   }); 
 });
 
-$('#edite').click(function(){
-  alert('a');
-  if( $('span#presence').val() == "Going"){
-    $('span#presence').val('Not Going');
-  }
-  else if($('#presence').val() == "Not Going"){
-    $('span#presence').val('Going'); 
-  }
-  else{
-    $('span#presence').val('Going'); 
-  }
-});
-
 $('span.participant_email img').live('click', function(){
   $(this).slideToggle('slow', function() {
     $(this).slideToggle();
   });
 });
+
 
 // Function called when a participant changes his/her status (attend/decline)
 $('#extra').click(function(){
@@ -233,3 +221,24 @@ $('#extra').click(function(){
 $('.action_button').click(function(){
   $(this).parents().eq(1).next().slideToggle();
 }); 
+
+
+// Function called when an admin is editing the meeting participants. Autocompletes the field.
+$('.auto_search_complete').live('keyup', function(){
+  $('.auto_search_complete').autocomplete({
+      minLength: 1,
+      delay: 600,
+      source: function(request, response) {
+        $.ajax({
+          type: "GET",
+          url: "/participations/get_admin_circles.js",
+          dataType: "text",
+          data: {term: request.term, participation_id: participation_id, authenticity_token: $('meta[name="csrf-token"]').attr('content'),},
+          success: function( data ) {
+            var res = data.split(",");
+            response( res);
+          }
+        });
+      }          
+  });
+});

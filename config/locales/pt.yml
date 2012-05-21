@@ -133,6 +133,7 @@ pt:
           or:                                   "ou"
           change:                               "Mudar"
           saved:                                "Acta gravada"
+          updated:                              "Acta actualizada"
         buttons:
           edit:
             alt:                                "Editar reunião"

@@ -31,4 +31,21 @@ class ParticipationsController < ApplicationController
       render 'change'
     end
   end
+
+  respond_to :js
+  def get_admin_circles
+    participation = Participation.find_by_link(params[:participation_id])
+    @data = ""
+    if !participation.nil?
+      user = participation.user
+      user.circles.each do |u|
+        email = u.associate.email
+        if email.include?(params[:term])
+          @data = @data + email.to_s + ', '
+        end
+      end
+    end
+
+    respond_with(@data)
+  end
 end

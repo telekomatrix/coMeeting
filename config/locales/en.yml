@@ -133,6 +133,7 @@ en:
           or:                                   "or"
           change:                               "Change"
           saved:                                "Saved minutes"
+          updated:                              "Updated minutes"
         buttons:
           edit:
             alt:                                "Edit meeting"
