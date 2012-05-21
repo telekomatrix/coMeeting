@@ -1,4 +1,10 @@
 class ParticipationsController < ApplicationController
+  def update
+    puts 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'
+    puts params
+    render :nothing => true
+  end
+
   def confirm
     @participation = Participation.find_by_link(params[:id])
 

@@ -95,7 +95,7 @@ ul {
 }
 
 .bubble:before {
-  content:' ';
+  content:'';
   position:absolute;
   width:0;
   height:0;
@@ -106,7 +106,7 @@ ul {
 }
 
 .bubble:after {
-  content:' ';
+  content:'';
   position:absolute;
   width:0;
   height:0;
@@ -722,6 +722,7 @@ button#presence{
 div.participant{
   margin-bottom:10px;
   overflow-y:auto;
+  position:relative;
 }
 div.participant_name{
   left:20px;
@@ -731,6 +732,16 @@ div.participant_name{
 
 div.participant_buttons{
   float:right;
+}
+
+.action_items {
+  position:absolute;
+  top:50px;
+  left:0;
+  right:0;
+  z-index:1;
+  height:100px;
+  background-color:red;
 }
 
 span.participant_action{

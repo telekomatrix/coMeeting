@@ -227,3 +227,9 @@ $('span.participant_email img').live('click', function(){
 $('#extra').click(function(){
   $(this).slideUp();
 });
+
+
+// Function called when an admin clicks on an assign action item button
+$('.action_button').click(function(){
+  $(this).parents().eq(1).next().slideToggle();
+}); 

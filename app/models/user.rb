@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   has_many :inverse_associates, :through => :inverse_connections, :source => :user
 
   def circles
-    connections | inverse_connections
-    # associates | inverse_associates
+    #connections | inverse_connections
+    associates | inverse_associates
   end
 
   def self.find_or_new(email, name)

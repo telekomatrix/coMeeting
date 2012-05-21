@@ -3,7 +3,6 @@
     <b><%= t("meeting.views.show.text.participants") %></b>
   </p>
   <div class="area_scroll_act">
-    <% num = 0 %>
     <% @meeting.participations.each do |participation| %>
       <div class="participant_attendance">
         <% if participation.is_attending == 1 || participation.is_creator %>
@@ -23,7 +22,7 @@
                       :class => "attendance") %>
         <% end %>
       </div>
-      <div id="participant_<%= num %>" class="participant">
+      <div class="participant">
         <div class="participant_name">
           <%= participation.user.name_formatted %>
         </div>
@@ -34,7 +33,7 @@
                 <%= image_tag("/assets/buttons/button-actions.png",
                               :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
                               :title => t("meeting.views.show.buttons.assign_action_item.title"),
-                              :class => "clickable") %>
+                              :class => "action_button clickable") %>
               </span>
               <span class="participant_email">
                 <%= link_to image_tag("/assets/buttons/button-email.png",
@@ -49,20 +48,30 @@
                 <%= image_tag("/assets/buttons/button-actions.png",
                               :alt => t("meeting.views.show.buttons.assign_action_item.alt"),
                               :title => t("meeting.views.show.buttons.assign_action_item.title"),
-                              :class => "clickable") %>
+                              :class => "action_button clickable") %>
               </span>
             <% end %>
           </div>
-          <% end %>
-          <!--<% unless participation.action_items.nil? %>
-            <% participation.action_items.each do |action_item| %>
-                <%= action_item.todo %>
-                <%= action_item.deadline %>
-                <%= action_item.completed %>
+          <div class="action_items" style="display:none">
+            <%= form_for participation, :url => participation_path(participation), :remote => true, do |f| %>
+
+              <%= render :partial => "participations/action_item", :locals => {:f => participation} %>
+
+              <button class="button" type="submit">
+                <%= image_tag("/assets/icons/tick.png", :alt => "") %> bla
+              </button>
+
             <% end %>
-          <% end %>-->
+          </div>
+        <% end %>
+        <!--<% unless participation.action_items.nil? %>
+          <% participation.action_items.each do |action_item| %>
+              <%= action_item.todo %>
+              <%= action_item.deadline %>
+              <%= action_item.completed %>
+          <% end %>
+        <% end %>-->
       </div>
-      <% num = num + 1 %>
     <% end %>
   </div>
 <% end %>

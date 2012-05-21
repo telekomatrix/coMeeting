@@ -6,6 +6,7 @@ CoMeeting::Application.routes.draw do
 
   post 'participations/:id/confirm' => 'participations#confirm', :as => 'confirm_participation'
 	post 'participations/:id/decline' => 'participations#decline', :as => 'decline_participation'
+  put  'participations/:id' => 'participations#update', :as => 'participation'
 
 	post 'meetings/:id/update_minutes' => 'meetings#update_minutes'
 	get 'meetings/:id/show_minutes' => 'meetings#show_minutes'

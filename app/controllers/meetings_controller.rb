@@ -83,6 +83,8 @@ class MeetingsController < ApplicationController
     
   def update
     participation = Participation.find_by_link(params[:id])
+    puts 'XXXXXXXXXXXXXXXXXXXXXXXXX'
+    puts params
     if participation.nil?
       flash[:error] = t("meeting.controller.update.error.notfound")
       redirect_to root_path

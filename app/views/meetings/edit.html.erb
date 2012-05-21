@@ -1,5 +1,5 @@
 <div>
-  <%= form_for @meeting, :url => meeting_path(@participation.link), :html => { :class => "" } do |f| %>
+  <%= form_for @meeting, :url => meeting_path(@participation.link) do |f| %>
     
     <%= render :partial => "editform", :locals => {:f => f} %>
 
