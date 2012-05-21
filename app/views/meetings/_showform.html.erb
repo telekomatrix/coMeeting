@@ -1,9 +1,11 @@
 <div id="form" class="form">
-  <% if @participation.is_admin %>
-    <%= render 'admin_buttons' %>
-  <% else %>
-    <%= render 'participant_buttons' %>
-  <% end %>
+  <div id="extra" class="extra">
+    <% if @participation.is_admin %>
+      <%= render 'admin_buttons' %>
+    <% else %>
+      <%= render 'participant_buttons' %>
+    <% end %>
+  </div>
   <div id="esqAct" class="esqAct_no_margin">
     <%= render 'topics' %>
     <%= render 'participants' %>
