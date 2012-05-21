@@ -51,19 +51,6 @@ ul {
   text-decoration:none;
 }
 
-#main-navigation {
-  position:absolute;
-  top:18px;
-  left:20px;
-  height:32px;
-  line-height:32px;
-}
-
-#main-navigation a:link, #main-navigation a:visited, #main-navigation a:hover, #main-navigation a:active {
-  color:#000000;
-  text-decoration:none;
-}
-
 #user-navigation {
   position:absolute;
   top:35px;
@@ -135,7 +122,7 @@ ul {
   margin: 0 auto -50px; /* the bottom margin is the negative value of the footer's height */
 }
 .push {
-  height: 50px; /* .push must be the same height as .footer */
+  height: 100px; /* .push must be the same height as .footer */
 }
 
 #footer {
@@ -144,11 +131,33 @@ ul {
   right:0;
   margin-left:auto;
   margin-right:auto;
-  width:182px;
   height:50px;
   line-height:50px;
   font-size:12px;
   font-family:Verdana;
+}
+
+#footer span {
+  float:left;
+  padding-left:40px;
+}
+
+.footer-nav {
+  float:right;
+}
+
+.footer-nav ul {
+  list-style-type:none;
+}
+
+.footer-nav li {
+  display:inline-block;
+  padding-right:40px;
+}
+
+.footer-nav a:link, .footer-nav a:visited, .footer-nav a:hover, .footer-nav a:active {
+  color:#000000;
+  text-decoration:none;
 }
 
 #footer-wrapper {
