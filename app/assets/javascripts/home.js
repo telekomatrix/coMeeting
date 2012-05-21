@@ -13,10 +13,12 @@ function checkNameOrEmail(){
   if($("#creator_email").val() != "" || $("#creator_name").val() != ""){
     $("#new").removeClass("pending-button");
     $("#new").addClass("confirm-button");
+    $('#new').attr('title', t[locale]['confirm_title']);
   }
   else{
     $("#new").removeClass("confirm-button");
-    $("#new").addClass("pending-button"); 
+    $("#new").addClass("pending-button");
+    $('#new').attr('title', t[locale]['pending_title']);
   }
 }
 
@@ -27,6 +29,7 @@ $("#new").click(function(e){
   if (hidden){
     $("#new").removeClass("home-button");
     $("#new").addClass("pending-button");
+    $('#new').attr('title', t[locale]['pending_title']);
     $("#form").slideDown(800, function(){
         button_text = $("#new").text();
         $(this).find('input').filter(':first').focus();

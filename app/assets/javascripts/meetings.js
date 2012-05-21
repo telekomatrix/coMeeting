@@ -53,9 +53,6 @@ function getMinutes() {
   $.ajax({
     type    : 'GET',
     url     : '/meetings/'+participation_id+'/show_minutes',
-    success : function(){
-      alert('ola');
-    }
   });
 }
 
