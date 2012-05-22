@@ -305,6 +305,8 @@ button.x-button-p {
 
 button.ent-button {
   position:absolute;
+  top:15px;
+  right:15px;
   width:15px;
   height:15px;
   overflow:visible;
@@ -494,12 +496,12 @@ p.header_with_margin{
 	padding-left:10px;
 	padding-right:20px;
 }
-.extra{
+
+#extra{
 	position:absolute;
-	top:15px;
-	right:15px;
-	width:400px;
-	height:15px;
+	top:20px;
+	right:30px;
+  width:300px;
 	text-align:right;
 }
 
