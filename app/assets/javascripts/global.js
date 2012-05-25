@@ -21,5 +21,5 @@ $(document).ready(function() {
 });
 
 function hideFlashMessages() {
-  $('#flash').animate({ opacity: 'toggle', height: 'toggle' }, 2500);
+  $('#flash').animate({ opacity: 'toggle', width: 'toggle' }, 2500);
 }

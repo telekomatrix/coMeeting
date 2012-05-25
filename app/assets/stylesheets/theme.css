@@ -192,8 +192,11 @@ div.centered {
 
 /* flash-messages */
 #flash {
-  text-align:center;
-  font-size:17px;
+  position: absolute;
+  top: 120px;
+  left: 10px;
+  text-align: center;
+  font-size: 17px;
 }
 #flash .message {
   display:inline-block;
@@ -719,10 +722,6 @@ div.edit_field4{
 div#effect{
   /*margin-top:70px;*/
   padding-top:100px;
-}
-
-div#flash_effect{
-  margin-top:35px;
 }
 
 button#dlp{
