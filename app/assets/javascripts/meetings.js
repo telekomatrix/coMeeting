@@ -244,5 +244,7 @@ $('.auto_search_complete').live('keyup', function(){
 });
 
 $('.question').click(function(){
-  $(this).next().slideToggle();
+  div = $(this).next();
+  div.css('width', '460px'); /* Jump bug fix. Reference: http://api.jquery.com/slideToggle/#comment-76397516 */
+  div.slideToggle();
 });

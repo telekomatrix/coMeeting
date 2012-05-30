@@ -228,10 +228,6 @@ hr {
   border:1px solid #000000;
 }
 
-hr.edit{
-  
-}
-
 a.home-button:link, a.home-button:visited, button.home-button {
   color:#FFFFFF;
   background-color:#000000;
@@ -802,7 +798,7 @@ ul.ui-autocomplete.ui-menu{
     font-family:Verdana;
 }
 
-.pag{
+.pag {
   width: 500px;
   margin: 70px auto 0 auto;
   font-family: Verdana;
@@ -817,10 +813,10 @@ ul.ui-autocomplete.ui-menu{
   -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.8);  
 }
 
-.uniCol{
-  width:460px;
-  padding:20px;
-  text-align:left;
+.uniCol {
+  width: 460px;
+  padding: 20px;
+  text-align: left;
 }
 
 .uniCol .pad {
@@ -833,5 +829,10 @@ ul.ui-autocomplete.ui-menu{
 }
 
 .question:hover {
-  cursor:pointer;
+  cursor: pointer;
+}
+
+.answer {
+  position: relative;
+  overflow: hidden;
 }
