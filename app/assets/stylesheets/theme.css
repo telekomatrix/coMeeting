@@ -836,3 +836,12 @@ ul.ui-autocomplete.ui-menu{
   position: relative;
   overflow: hidden;
 }
+
+.back {
+  margin-top: 30px;
+}
+
+.back img {
+  width: 170px;
+  height: 40px;
+}
