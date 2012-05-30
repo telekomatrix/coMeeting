@@ -16,7 +16,7 @@ CoMeeting::Application.routes.draw do
 
 		resources :users, :only => [:index, :destroy]
     
-    ['about', 'privacy', 'us'].each { |r|
+    ['about', 'faq', 'privacy', 'us'].each { |r|
       get "/#{r}", :controller => 'static', :action => r
     }
 		

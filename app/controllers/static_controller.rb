@@ -4,11 +4,11 @@ class StaticController < ApplicationController
     @creator = User.new
   end
   
-	def management
-	end
-  
 	def about
 	end
+
+  def faq
+  end
   
   def privacy
   end
@@ -16,6 +16,3 @@ class StaticController < ApplicationController
   def us
   end
 end
-
-
-

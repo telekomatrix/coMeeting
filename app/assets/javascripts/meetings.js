@@ -242,3 +242,7 @@ $('.auto_search_complete').live('keyup', function(){
       }          
   });
 });
+
+$('.question').click(function(){
+  $(this).next().slideToggle();
+});

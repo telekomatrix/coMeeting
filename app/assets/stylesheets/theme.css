@@ -193,7 +193,7 @@ div.centered {
 /* flash-messages */
 #flash {
   position: absolute;
-  top: 120px;
+  top: 12px0px;
   left: 10px;
   text-align: center;
   font-size: 17px;
@@ -800,4 +800,38 @@ ul.ui-autocomplete.ui-menu{
     max-width:182px;
     font-size:8pt;
     font-family:Verdana;
+}
+
+.pag{
+  width: 500px;
+  margin: 70px auto 0 auto;
+  font-family: Verdana;
+  font-size: 8pt;
+  line-height: 14pt;
+  background: white;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.8);
+  -moz-box-shadow: 0 0 10px rgba(0,0,0,0.8);
+  -webkit-box-shadow: 0 0 10px rgba(0,0,0,0.8);  
+}
+
+.uniCol{
+  width:460px;
+  padding:20px;
+  text-align:left;
+}
+
+.uniCol .pad {
+  padding-bottom: 10px;
+}
+
+.question {
+  text-decoration: underline;
+  padding-top: 10px;
+}
+
+.question:hover {
+  cursor:pointer;
 }
