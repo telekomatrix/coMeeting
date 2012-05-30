@@ -243,8 +243,9 @@ $('.auto_search_complete').live('keyup', function(){
   });
 });
 
+// Function called when a user clicks a question on the FAQ page
 $('.question').click(function(){
   div = $(this).next();
-  div.css('width', '460px'); /* Jump bug fix. Reference: http://api.jquery.com/slideToggle/#comment-76397516 */
+  div.css('width', '460px'); // Jump bug fix. Reference: http://api.jquery.com/slideToggle/#comment-76397516 
   div.slideToggle();
 });
