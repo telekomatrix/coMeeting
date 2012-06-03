@@ -832,3 +832,9 @@ ul.ui-autocomplete.ui-menu{
   width: 170px;
   height: 40px;
 }
+
+.home_info{
+  width:800px;
+  height:200px;
+  margin-top:70px;
+}
