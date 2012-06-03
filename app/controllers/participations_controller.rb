@@ -41,7 +41,7 @@ class ParticipationsController < ApplicationController
       user.circles.each do |u|
         email = u.email
         if email.include?(params[:term])
-          @data = @data + email.to_s + ', '
+          @data = @data + email.to_s + ','
         end
       end
     end
