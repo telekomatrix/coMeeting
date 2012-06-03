@@ -39,7 +39,7 @@ class ParticipationsController < ApplicationController
     if !participation.nil?
       user = participation.user
       user.circles.each do |u|
-        email = u.associate.email
+        email = u.email
         if email.include?(params[:term])
           @data = @data + email.to_s + ', '
         end
