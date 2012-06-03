@@ -312,18 +312,6 @@ button.ent-button {
   -webkit-appearance:none;
 }
 
-button.dlp-button {
-  width:170px;
-  height:40px;
-  overflow:visible;
-  background-image: url("buttons/buttonsep.png");
-  background-size:170px 40px;
-  background-repeat:no-repeat;
-  background-position:center;
-  background-color:transparent;
-  padding-bottom:20px;
-}
-
 button.confirm-button {
   width:170px;
   height:40px;
@@ -836,7 +824,11 @@ ul.ui-autocomplete.ui-menu{
   margin-top: 30px;
 }
 
-.back img {
+.pdf {
+  margin-top: 100px;
+}
+
+.back img, .pdf img {
   width: 170px;
   height: 40px;
 }
