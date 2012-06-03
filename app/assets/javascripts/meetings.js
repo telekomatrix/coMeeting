@@ -25,7 +25,7 @@ $(document).ready(function() {
       $('#minutes').tabby();
     }
     else {
-      //setInterval('getMinutes()', 4000);
+      setInterval('getMinutes()', 4000);
     }
   }
 });
