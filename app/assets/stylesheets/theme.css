@@ -193,17 +193,12 @@ div.centered {
 /* flash-messages */
 #flash {
   position: absolute;
-  top: 12px0px;
-  left: 10px;
+  top: 127px;
   text-align: center;
   font-size: 17px;
 }
 #flash .message {
-  display:inline-block;
-  max-width:1000px;
-  min-width:600px;
-  width:70%;
-  margin: 0 auto 15px;
+  width:800px;
   border-radius:3px;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
