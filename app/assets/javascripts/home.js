@@ -30,6 +30,7 @@ $("#new").click(function(e){
     $("#new").removeClass("home-button");
     $("#new").addClass("pending-button");
     $('#new').attr('title', t[locale]['pending_title']);
+    $(".home_info").hide();
     $("#form").slideDown(800, function(){
         button_text = $("#new").text();
         $(this).find('input').filter(':first').focus();
