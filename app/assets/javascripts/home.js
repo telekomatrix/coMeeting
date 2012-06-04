@@ -50,6 +50,7 @@ $("#cancel").click(function(e){
         $("#new").removeClass("pending-button");
         $("#new").removeClass("confirm-button");
         $("#new").addClass("home-button");
+        $(".home_info").fadeIn(2000);
     });
     hidden = true;
   }
