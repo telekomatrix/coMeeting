@@ -71,4 +71,14 @@ CoMeeting::Application.configure do
 
   # Action Mailer will attempt to deliver email using this option. Another method is :sendmail
   config.action_mailer.delivery_method = :smtp
+
+  # Sets the correct settings for sending emails through Gmail.
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.gmail.com',
+    :port => '587',
+    :authentication => 'plain',
+    :user_name => 'comeeting.occi@gmail.com',
+    :password => 'occi.comeeting',
+    :enable_starttls_auto => true
+  }
 end

@@ -33,5 +33,5 @@ CoMeeting::Application.configure do
 
   # With :test, the email will not be delivered.
   # Instead, it will be appended to an array (accessible via the attribute ActionMailer::Base.deliveries).
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :letter_opener
 end

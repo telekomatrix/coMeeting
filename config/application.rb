@@ -59,16 +59,5 @@ module CoMeeting
 
     # Prevents ApplicationController from loading all the helpers.
     config.action_controller.include_all_helpers = true
-
-    # Sets the correct settings for sending emails through Gmail.
-    # Each host is defined in each different environment.
-    config.action_mailer.smtp_settings = {
-      :address => 'smtp.gmail.com',
-      :port => '587',
-      :authentication => 'plain',
-      :user_name => 'comeeting.occi@gmail.com',
-      :password => 'occi.comeeting',
-      :enable_starttls_auto => true
-    }
   end
 end
